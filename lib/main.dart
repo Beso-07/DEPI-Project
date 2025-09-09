@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(BookStore());
+  runApp(IslamicApp());
 }
 
-class BookStore extends StatelessWidget {
-  const BookStore({super.key});
+class IslamicApp extends StatelessWidget {
+  const IslamicApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      //home: ,
+    );
   }
 }
