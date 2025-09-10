@@ -21,10 +21,11 @@ class _SplashscreenState extends State<Splashscreen> {
             child: Container(
               height: MediaQuery.of(context).size.height,
               width:  MediaQuery.of(context).size.width,
-              child: Image.asset('assets/images/splash_screen.png',fit: BoxFit.cover,),
+              child: Image.asset('assets/images/photo.png',fit: BoxFit.cover,),
             ),
           ),
         ),
       ),);
   }
 }
+
