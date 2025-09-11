@@ -1,4 +1,5 @@
 import 'package:depiproject/constants/imagesPath.dart';
+import 'package:depiproject/views/onboarding/onboarding_view.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatefulWidget {
@@ -13,10 +14,10 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => const OnboardingView()),
-      // );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => OnBoardingScreen()),
+      );
     });
   }
 
