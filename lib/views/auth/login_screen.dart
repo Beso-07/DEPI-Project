@@ -1,4 +1,7 @@
 import 'package:depiproject/constants/imagesPath.dart';
+import 'package:depiproject/views/auth/sign_screen.dart';
+import 'package:depiproject/views/auth/widgets/%D9%8Dsocial_options.dart';
+import 'package:depiproject/views/auth/widgets/Button_custom.dart';
 import 'package:depiproject/views/auth/widgets/Login_visitor.dart';
 import 'package:depiproject/views/auth/widgets/Textfield_custom.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +10,7 @@ class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
   final TextEditingController _nameTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
-
+  final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,72 +28,130 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(Imagespath.onboarding), // الصورة
-              fit: BoxFit.cover, // عشان تملأ الخلفية
+        child: Form(
+          key: _key,
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(Imagespath.onboarding),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            children: [
-              Column(
+            padding: const EdgeInsets.all(10),
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
-                  const Text(
-                    "رتّل",
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontFamily: 'Lateef',
-                    ),
-                  ),
-                  Image.asset(Imagespath.logo,
-                      width: 40, color: const Color.fromARGB(255, 0, 0, 0)),
-                  const LoginVisitor()
-                ],
-              ),
-              const SizedBox(height: 10),
-              const SizedBox(height: 10),
-              widget("أو"),
-              const SizedBox(height: 20),
-              CustomTextField(controller: _nameTextController, lable: "اسمك"),
-              const SizedBox(
-                height: 20,
-              ),
-              CustomTextField(
-                controller: _passwordTextController,
-                lable: "كلمة المرور",
-                isPassword: true,
-                keyboardType: const TextInputType.numberWithOptions(),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "نسيت كلمة المرور ؟",
+                  Column(
+                    children: [
+                      const Text(
+                        "رتّل",
                         style: TextStyle(
-                          color: Colors.green,
-                          fontSize: 20,
+                          fontSize: 40,
                           fontFamily: 'Lateef',
                         ),
-                      )),
+                      ),
+                      Image.asset(Imagespath.logo,
+                          width: 40, color: const Color.fromARGB(255, 0, 0, 0)),
+                      const LoginVisitor()
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  widget("أو"),
+                  const SizedBox(height: 20),
+                  CustomTextField(
+                    controller: _nameTextController,
+                    lable: "اسمك",
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return "! يجب ادخال اسمك ";
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextField(
+                    controller: _passwordTextController,
+                    lable: "كلمة المرور",
+                    isPassword: true,
+                    validator: (value) {
+                      if (value == null || value.length < 6) {
+                        return "كلمة المرور يجب أن تكون 6 أحرف أو أكثر";
+                      }
+
+                      return null;
+                    },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                          onPressed: () {},
+                          child: const Text(
+                            "نسيت كلمة المرور ؟",
+                            style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 20,
+                              fontFamily: 'Lateef',
+                            ),
+                          )),
+                    ],
+                  ),
+                  const SizedBox(height: 15),
+                  CustomButton(
+                    title: "تسجيل الدخول",
+                    onTap: () {
+                      if (_key.currentState!.validate()) {}
+                    },
+                  ),
+                  const SizedBox(height: 18),
+                  widget("تسجيل الدخول يوسطة"),
+                  const SizedBox(height: 18),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SocialOptions(
+                        icon: Imagespath.facebook,
+                        action: () {},
+                      ),
+                      SocialOptions(
+                        icon: Imagespath.google,
+                        action: () {},
+                      ),
+                      SocialOptions(
+                        icon: Imagespath.apple,
+                        action: () {},
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 18),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SignScreen()),
+                            );
+                          },
+                          child: const Text("انشاء حساب جديد",
+                              style: TextStyle(
+                                fontSize: 19,
+                                color: Colors.green,
+                                fontFamily: 'Lateef',
+                                decoration: TextDecoration.underline,
+                                decorationColor: Colors.green,
+                                decorationThickness: 4,
+                              ))),
+                      const Text("ليس لديك حساب؟")
+                    ],
+                  )
                 ],
               ),
-              const SizedBox(height: 7),
-              widget("تسجيل الدخول يوسطة"),
-              Expanded(
-                  child: Row(
-                children: [
-                  Container(
-                      child: const Icon(
-                    Icons.facebook,
-                    color: Colors.blue,
-                  )),
-                ],
-              ))
-            ],
+            ),
           ),
         ),
       ),

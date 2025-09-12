@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
 class LoginVisitor extends StatelessWidget {
-  const LoginVisitor({
-    super.key,
-  });
+  final double? size;
+  const LoginVisitor({super.key, this.size});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
         onPressed: () {},
-        child: const Text(
+        child: Text(
           "الدخول كزائر",
           style: TextStyle(
             color: Colors.green,
-            fontSize: 36,
+            fontSize: size ?? 36,
             fontFamily: 'Lateef',
             decoration: TextDecoration.underline,
             decorationColor: Colors.green,

@@ -56,10 +56,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         },
                         child: obscureText
                             ? const ImageIcon(
-                                AssetImage(Imagespath.logo),
+                                AssetImage(Imagespath.eyeSlash),
                               )
                             : const ImageIcon(
-                                AssetImage(Imagespath.logo),
+                                AssetImage(Imagespath.eye),
                               ),
                       ),
                 border: InputBorder.none,

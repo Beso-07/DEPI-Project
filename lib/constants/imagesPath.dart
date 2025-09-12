@@ -5,4 +5,5 @@ class Imagespath {
   static const eyeSlash = "assets/images/eyebrow.png";
   static const google = "assets/images/google.png";
   static const facebook = "assets/images/facebook.png";
+  static const apple = "assets/images/apple-logo.png";
 }
