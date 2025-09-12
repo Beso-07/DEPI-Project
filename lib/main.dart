@@ -1,3 +1,4 @@
+import 'package:depiproject/views/auth/login_screen.dart';
 import 'package:depiproject/views/splash/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,6 @@ class IslamicApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashView());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: LoginScreen());
   }
 }
