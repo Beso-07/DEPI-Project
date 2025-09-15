@@ -15,48 +15,38 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Positioned.fill(
-            child: Image.asset(Imagespath.onboarding, fit: BoxFit.cover),
+          OnboardingItem(
+            title: onBoardingData[currentPage]["title"]!,
+            text: onBoardingData[currentPage]["text"]!,
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              OnboardingItem(
-                title: onBoardingData[currentPage]["title"]!,
-                text: onBoardingData[currentPage]["text"]!,
+          const SizedBox(height: 20),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
               ),
-
-              SizedBox(height: 20),
-
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                ),
-                onPressed: () {
-                  setState(() {
-                    if (currentPage < onBoardingData.length - 1) {
-                      currentPage++;
-                    } else {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
-                      );
-                    }
-                  });
-                },
-                child: Text(
-                  currentPage == onBoardingData.length - 1 ? "ابدأ" : "التالي",
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-              ),
-              SizedBox(height: 40),
-            ],
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+            ),
+            onPressed: () {
+              setState(() {
+                if (currentPage < onBoardingData.length - 1) {
+                  currentPage++;
+                } else {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
+                }
+              });
+            },
+            child: Text(
+              currentPage == onBoardingData.length - 1 ? "ابدأ" : "التالي",
+              style: const TextStyle(fontSize: 18, color: Colors.white),
+            ),
           ),
         ],
       ),
