@@ -1,5 +1,6 @@
 import 'package:depiproject/constants/imagesPath.dart';
 import 'package:depiproject/constants/onboarding_data.dart';
+import 'package:depiproject/views/auth/login_screen.dart';
 import 'package:depiproject/views/onboarding/widgets/onboarding_item.dart';
 import 'package:flutter/material.dart';
 
@@ -42,10 +43,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     if (currentPage < onBoardingData.length - 1) {
                       currentPage++;
                     } else {
-                      // Navigator.pushReplacement(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => LoginView()),
-                      // );
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginScreen()),
+                      );
                     }
                   });
                 },
