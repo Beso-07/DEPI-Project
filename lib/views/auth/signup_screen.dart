@@ -1,15 +1,17 @@
 import 'package:depiproject/constants/imagesPath.dart';
-import 'package:depiproject/views/Auth/signup_screen.dart';
 import 'package:depiproject/views/Auth/widgets/line_widget.dart';
 import 'package:depiproject/views/Auth/widgets/social_option.dart';
+import 'package:depiproject/views/auth/login_screen.dart';
 import 'package:depiproject/views/auth/widgets/Button_custom.dart';
 import 'package:depiproject/views/auth/widgets/Textfield_custom.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
-  final TextEditingController _nameTextController = TextEditingController();
+class SignupScreen extends StatelessWidget {
+  SignupScreen({super.key});
+  final TextEditingController _emailTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
+  final TextEditingController _passwordConfirmTextController =
+      TextEditingController();
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               children: [
                 const Text(
-                  "تسجيل الدخول ",
+                  "انشاء حساب جديد",
                   style: TextStyle(
                     fontSize: 40,
                     fontFamily: 'Lateef',
@@ -50,8 +52,8 @@ class LoginScreen extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * .03,
                 ),
                 CustomTextField(
-                  controller: _nameTextController,
-                  lable: "البرد الالكتروني او اسم المستخدم",
+                  controller: _emailTextController,
+                  lable: "البريد الالكتروني ",
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "! يجب ادخال اسمك ";
@@ -77,26 +79,23 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .02,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    InkWell(
-                        onTap: () {},
-                        child: const Text(
-                          "نسيت كلمة المرور ؟",
-                          style: TextStyle(
-                            color: Colors.green,
-                            fontSize: 20,
-                            fontFamily: 'Lateef',
-                          ),
-                        )),
-                  ],
+                CustomTextField(
+                  controller: _passwordConfirmTextController,
+                  lable: "تأكيد كلمة المرور ",
+                  isPassword: true,
+                  validator: (value) {
+                    if (value == null || value.length < 6) {
+                      return "كلمة المرور يجب ان تطابق كلمة المرور السابقة";
+                    }
+
+                    return null;
+                  },
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .02,
                 ),
                 CustomButton(
-                  title: "تسجيل الدخول",
+                  title: "انشاء حساب ",
                   onTap: () {
                     if (_key.currentState!.validate()) {}
                   },
@@ -104,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .05,
                 ),
-                const LineWidget(text: "تسجيل الدخول بوسطة"),
+                const LineWidget(text:"انشاء حساب بواسطة"),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .02,
                 ),
@@ -126,10 +125,10 @@ class LoginScreen extends StatelessWidget {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignupScreen()),
+                                builder: (context) => LoginScreen()),
                           );
                         },
-                        child: const Text("انشاء حساب جديد",
+                        child: const Text(" تسجيل الدخول ",
                             style: TextStyle(
                               fontSize: 24,
                               color: Colors.green,
@@ -140,7 +139,7 @@ class LoginScreen extends StatelessWidget {
                               decorationThickness: 4,
                             ))),
                     const Text(
-                      " ليس لديك حساب؟",
+                      " لديك حساب بالفعل؟",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),

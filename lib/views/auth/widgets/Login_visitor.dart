@@ -6,15 +6,15 @@ class LoginVisitor extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-        onPressed: () {},
+    return InkWell(
+        onTap: () {},
         child: Text(
           "الدخول كزائر",
           style: TextStyle(
             color: Colors.green,
             fontSize: size ?? 36,
             fontFamily: 'Lateef',
-            decoration: TextDecoration.underline,
+            //decoration: TextDecoration.underline,
             decorationColor: Colors.green,
             decorationThickness: 4,
           ),

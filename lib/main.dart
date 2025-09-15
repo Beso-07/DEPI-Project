@@ -2,7 +2,7 @@ import 'package:depiproject/views/splash/splash_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(IslamicApp());
+  runApp(const IslamicApp());
 }
 
 class IslamicApp extends StatelessWidget {
@@ -10,6 +10,6 @@ class IslamicApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashView());
+    return const MaterialApp(debugShowCheckedModeBanner: false, home: SplashView());
   }
 }

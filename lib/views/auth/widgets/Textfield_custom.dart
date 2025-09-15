@@ -1,5 +1,5 @@
-import 'package:depiproject/constants/imagesPath.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomTextField extends StatefulWidget {
   final bool? isPassword;
@@ -29,43 +29,48 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.grey.withOpacity(.2)),
-            ),
-            child: TextFormField(
-              controller: widget.controller,
-              keyboardType: widget.keyboardType,
-              obscureText: widget.isPassword! ? obscureText : false,
-              obscuringCharacter: "*",
-              validator: widget.validator,
-              textDirection: TextDirection.rtl,
-              textAlign: TextAlign.right,
-              decoration: InputDecoration(
-                hintText: widget.lable,
-                hintTextDirection: TextDirection.rtl,
-                prefixIcon: !widget.isPassword!
-                    ? null
-                    : InkWell(
-                        onTap: () {
-                          obscureText = !obscureText;
-                          setState(() {});
-                        },
-                        child: obscureText
-                            ? const ImageIcon(
-                                AssetImage(Imagespath.eyeSlash),
-                              )
-                            : const ImageIcon(
-                                AssetImage(Imagespath.eye),
-                              ),
-                      ),
-                border: InputBorder.none,
-              ),
-            )),
+        TextFormField(
+          controller: widget.controller,
+          keyboardType: widget.keyboardType,
+          obscureText: widget.isPassword! ? obscureText : false,
+          obscuringCharacter: "*",
+          validator: widget.validator,
+          textDirection: TextDirection.rtl,
+          textAlign: TextAlign.right,
+          decoration: InputDecoration(
+            enabledBorder: myBorder(),
+            focusedBorder: myBorder(),
+            errorBorder: myBorder(),
+            hintText: widget.lable,
+            hintTextDirection: TextDirection.rtl,
+            prefixIcon: !widget.isPassword!
+                ? null
+                : InkWell(
+                    onTap: () {
+                      obscureText = !obscureText;
+                      setState(() {});
+                    },
+                    child: obscureText
+                        ? const Icon(
+                            FontAwesomeIcons.eyeSlash,
+                            size: 22,
+                          )
+                        : const Icon(
+                            FontAwesomeIcons.eye,
+                            size: 22,
+                          ),
+                  ),
+            border: InputBorder.none,
+          ),
+        ),
       ],
+    );
+  }
+
+  OutlineInputBorder myBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: const BorderSide(color: Colors.grey),
     );
   }
 }

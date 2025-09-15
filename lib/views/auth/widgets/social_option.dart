@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 
 class SocialOptions extends StatelessWidget {
   final String icon;
-  final void Function() action;
-  const SocialOptions({super.key, required this.icon, required this.action});
+  final void Function() onTap;
+  const SocialOptions({super.key, required this.icon, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: action,
+      onTap: onTap,
       child: Container(
-          width: 100,
-          height: 60,
           decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(7),
@@ -19,7 +17,7 @@ class SocialOptions extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Image.asset(
             icon,
-            width: 50,
+            width: 30,
           )),
     );
   }

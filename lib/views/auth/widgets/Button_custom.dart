@@ -17,6 +17,7 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 56,
+        width: MediaQuery.of(context).size.width * .85,
         decoration: BoxDecoration(
           color: Colors.green,
           borderRadius: BorderRadius.circular(15),
@@ -25,7 +26,8 @@ class CustomButton extends StatelessWidget {
           child: Text(
             title,
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
           ),
