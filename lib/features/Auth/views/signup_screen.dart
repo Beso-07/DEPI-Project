@@ -2,7 +2,7 @@ import 'package:depiproject/core/constants/app_string.dart';
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/features/Auth/views/login_screen.dart';
 import 'package:depiproject/features/Auth/widgets/Button_custom.dart';
-import 'package:depiproject/features/Auth/widgets/Textfield_custom.dart';
+import 'package:depiproject/features/Auth/widgets/custom_textfield.dart';
 import 'package:depiproject/features/Auth/widgets/line_widget.dart';
 import 'package:depiproject/features/Auth/widgets/social_option.dart';
 import 'package:flutter/material.dart';
@@ -96,7 +96,7 @@ class SignupScreen extends StatelessWidget {
                   },
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .02,
+                  height: MediaQuery.of(context).size.height * .04,
                 ),
                 CustomButton(
                   title: "انشاء حساب ",
@@ -122,8 +122,13 @@ class SignupScreen extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * .05,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    const Text(
+                      " لديك حساب بالفعل؟",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
                     InkWell(
                         onTap: () {
                           Navigator.pushReplacement(
@@ -141,11 +146,6 @@ class SignupScreen extends StatelessWidget {
                               decorationColor: Colors.green,
                               decorationThickness: 4,
                             ))),
-                    const Text(
-                      " لديك حساب بالفعل؟",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    )
                   ],
                 )
               ],

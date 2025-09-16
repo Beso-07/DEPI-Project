@@ -43,7 +43,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             errorBorder: myBorder(),
             hintText: widget.lable,
             hintTextDirection: TextDirection.rtl,
-            prefixIcon: !widget.isPassword!
+            suffixIcon: !widget.isPassword!
                 ? null
                 : InkWell(
                     onTap: () {

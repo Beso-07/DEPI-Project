@@ -2,9 +2,10 @@ import 'package:depiproject/core/constants/app_string.dart';
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/features/Auth/views/signup_screen.dart';
 import 'package:depiproject/features/Auth/widgets/Button_custom.dart';
-import 'package:depiproject/features/Auth/widgets/Textfield_custom.dart';
+import 'package:depiproject/features/Auth/widgets/custom_textfield.dart';
 import 'package:depiproject/features/Auth/widgets/line_widget.dart';
 import 'package:depiproject/features/Auth/widgets/social_option.dart';
+import 'package:depiproject/features/home/views/home_view.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -82,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * .02,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     InkWell(
                         onTap: () {},
@@ -103,7 +104,12 @@ class LoginScreen extends StatelessWidget {
                 CustomButton(
                   title: "تسجيل الدخول",
                   onTap: () {
-                    if (_key.currentState!.validate()) {}
+                    if (_key.currentState!.validate()) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeView()),
+                      );
+                    }
                   },
                 ),
                 SizedBox(
@@ -127,8 +133,13 @@ class LoginScreen extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * .05,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    const Text(
+                      " ليس لديك حساب؟",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
                     InkWell(
                         onTap: () {
                           Navigator.pushReplacement(
@@ -146,11 +157,6 @@ class LoginScreen extends StatelessWidget {
                               decorationColor: Colors.green,
                               decorationThickness: 4,
                             ))),
-                    const Text(
-                      " ليس لديك حساب؟",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    )
                   ],
                 )
               ],
