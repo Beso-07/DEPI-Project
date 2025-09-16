@@ -1,4 +1,4 @@
-import 'package:depiproject/views/splash/splash_view.dart';
+import 'package:depiproject/features/splash/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {

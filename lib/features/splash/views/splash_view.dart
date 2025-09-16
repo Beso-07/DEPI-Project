@@ -1,5 +1,6 @@
-import 'package:depiproject/constants/imagesPath.dart';
-import 'package:depiproject/views/onboarding/onboarding_view.dart';
+import 'package:depiproject/core/constants/app_string.dart';
+import 'package:depiproject/core/constants/assets.dart';
+import 'package:depiproject/features/onboarding/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatefulWidget {
@@ -29,16 +30,16 @@ class _SplashViewState extends State<SplashView> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'الذكر',
+            const Text(
+              AppString.appNameER,
               style: TextStyle(
-                fontSize: 30,
+                fontSize: 50,
                 fontFamily: 'Lateef',
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),
             ),
-            Image.asset(Imagespath.logo, width: 90, color: Colors.white),
+            Image.asset(Imagespath.logo2, width: 90, color: Colors.white),
           ],
         ),
       ),

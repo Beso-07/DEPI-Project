@@ -1,17 +1,16 @@
-import 'package:depiproject/constants/imagesPath.dart';
-import 'package:depiproject/views/Auth/widgets/line_widget.dart';
-import 'package:depiproject/views/Auth/widgets/social_option.dart';
-import 'package:depiproject/views/auth/login_screen.dart';
-import 'package:depiproject/views/auth/widgets/Button_custom.dart';
-import 'package:depiproject/views/auth/widgets/Textfield_custom.dart';
+import 'package:depiproject/core/constants/app_string.dart';
+import 'package:depiproject/core/constants/assets.dart';
+import 'package:depiproject/features/Auth/views/signup_screen.dart';
+import 'package:depiproject/features/Auth/widgets/Button_custom.dart';
+import 'package:depiproject/features/Auth/widgets/Textfield_custom.dart';
+import 'package:depiproject/features/Auth/widgets/line_widget.dart';
+import 'package:depiproject/features/Auth/widgets/social_option.dart';
 import 'package:flutter/material.dart';
 
-class SignupScreen extends StatelessWidget {
-  SignupScreen({super.key});
-  final TextEditingController _emailTextController = TextEditingController();
+class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
+  final TextEditingController _nameTextController = TextEditingController();
   final TextEditingController _passwordTextController = TextEditingController();
-  final TextEditingController _passwordConfirmTextController =
-      TextEditingController();
   final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -23,13 +22,15 @@ class SignupScreen extends StatelessWidget {
             key: _key,
             child: Column(
               children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * .02,
+                ),
                 const Text(
-                  "انشاء حساب جديد",
+                  "تسجيل الدخول ",
                   style: TextStyle(
                     fontSize: 40,
                     fontFamily: 'Lateef',
-                    fontWeight: FontWeight.w500,
-                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
@@ -38,22 +39,23 @@ class SignupScreen extends StatelessWidget {
                 Column(
                   children: [
                     const Text(
-                      "الزكر",
+                      AppString.appNameER,
                       style: TextStyle(
-                        fontSize: 40,
-                        fontFamily: 'Lateef',
-                      ),
+                          fontSize: 35,
+                          fontFamily: 'Lateef',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green),
                     ),
-                    Image.asset(Imagespath.logo,
-                        width: 40, color: const Color.fromARGB(255, 0, 0, 0)),
+                    Image.asset(Imagespath.logo2,
+                        width: 50, color: Colors.green)
                   ],
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .03,
                 ),
                 CustomTextField(
-                  controller: _emailTextController,
-                  lable: "البريد الالكتروني ",
+                  controller: _nameTextController,
+                  lable: "البرد الالكتروني ",
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "! يجب ادخال اسمك ";
@@ -79,23 +81,27 @@ class SignupScreen extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .02,
                 ),
-                CustomTextField(
-                  controller: _passwordConfirmTextController,
-                  lable: "تأكيد كلمة المرور ",
-                  isPassword: true,
-                  validator: (value) {
-                    if (value == null || value.length < 6) {
-                      return "كلمة المرور يجب ان تطابق كلمة المرور السابقة";
-                    }
-
-                    return null;
-                  },
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    InkWell(
+                        onTap: () {},
+                        child: const Text(
+                          "نسيت كلمة المرور ؟",
+                          style: TextStyle(
+                            color: Colors.green,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Lateef',
+                          ),
+                        )),
+                  ],
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .02,
                 ),
                 CustomButton(
-                  title: "انشاء حساب ",
+                  title: "تسجيل الدخول",
                   onTap: () {
                     if (_key.currentState!.validate()) {}
                   },
@@ -103,14 +109,17 @@ class SignupScreen extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .05,
                 ),
-                const LineWidget(text:"انشاء حساب بواسطة"),
+                const LineWidget(text: "تسجيل الدخول بوسطة"),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .02,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SocialOptions(icon: Imagespath.facebook, onTap: () {}),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * .1,
+                    ),
                     SocialOptions(icon: Imagespath.google, onTap: () {}),
                   ],
                 ),
@@ -125,24 +134,22 @@ class SignupScreen extends StatelessWidget {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginScreen()),
+                                builder: (context) => SignupScreen()),
                           );
                         },
-                        child: const Text(" تسجيل الدخول ",
+                        child: const Text("انشاء حساب جديد",
                             style: TextStyle(
                               fontSize: 24,
                               color: Colors.green,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Lateef',
-                              //decoration: TextDecoration.underline,
                               decorationColor: Colors.green,
                               decorationThickness: 4,
                             ))),
                     const Text(
-                      " لديك حساب بالفعل؟",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
+                      " ليس لديك حساب؟",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     )
                   ],
                 )
