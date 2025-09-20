@@ -7,7 +7,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Row(
       children: [
-        Icon(Icons.notifications_outlined, color: Colors.white, size: 30),
+        Icon(Icons.menu, color: Colors.white, size: 30),
         Spacer(),
         Icon(Icons.account_circle, color: Colors.white, size: 30),
       ],

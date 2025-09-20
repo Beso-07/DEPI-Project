@@ -17,7 +17,7 @@ class _SplashViewState extends State<SplashView> {
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => OnBoardingScreen()),
+        MaterialPageRoute(builder: (context) => const OnBoardingScreen()),
       );
     });
   }
@@ -31,7 +31,7 @@ class _SplashViewState extends State<SplashView> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              AppString.appNameER,
+              AppString.appNameAR,
               style: TextStyle(
                 fontSize: 50,
                 fontFamily: 'Lateef',

@@ -1,3 +1,3 @@
 class AppString {
-  static const String appNameER = "تقوي";
+  static const String appNameAR = "تقوي";
 }

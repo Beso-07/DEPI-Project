@@ -1,7 +1,7 @@
 import 'package:depiproject/core/constants/app_string.dart';
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/features/Auth/views/signup_screen.dart';
-import 'package:depiproject/features/Auth/widgets/Button_custom.dart';
+import 'package:depiproject/features/Auth/widgets/custom_bitton.dart';
 import 'package:depiproject/features/Auth/widgets/custom_textfield.dart';
 import 'package:depiproject/features/Auth/widgets/line_widget.dart';
 import 'package:depiproject/features/Auth/widgets/social_option.dart';
@@ -40,7 +40,7 @@ class LoginScreen extends StatelessWidget {
                 Column(
                   children: [
                     const Text(
-                      AppString.appNameER,
+                      AppString.appNameAR,
                       style: TextStyle(
                           fontSize: 35,
                           fontFamily: 'Lateef',
@@ -107,7 +107,7 @@ class LoginScreen extends StatelessWidget {
                     if (_key.currentState!.validate()) {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => HomeView()),
+                        MaterialPageRoute(builder: (context) => const HomeView()),
                       );
                     }
                   },

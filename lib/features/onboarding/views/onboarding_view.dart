@@ -1,11 +1,13 @@
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/core/constants/onboarding_data.dart';
 import 'package:depiproject/features/Auth/views/login_screen.dart';
-import 'package:depiproject/features/Auth/widgets/Button_custom.dart';
+import 'package:depiproject/features/Auth/widgets/custom_bitton.dart';
 import 'package:depiproject/features/onboarding/widgets/onboarding_item.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({super.key});
+
   @override
   _OnBoardingScreenState createState() => _OnBoardingScreenState();
 }
