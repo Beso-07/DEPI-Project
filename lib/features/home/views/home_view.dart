@@ -15,18 +15,18 @@ class HomeView extends StatelessWidget {
       body: Column(
         children: [
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.only(left: 16, right: 16, top: 24),
             child: CustomAppBar(),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * .02,
+            height: MediaQuery.of(context).size.height * .01,
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: PrayTime(),
           ),
           SizedBox(
-            height: height * .15,
+            height: height * .05,
           ),
           const CategoryVector()
         ],

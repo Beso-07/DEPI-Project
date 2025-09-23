@@ -26,25 +26,23 @@ class CategoryVector extends StatelessWidget {
               child: Row(
                 children: [
                   CategoryItem(
+                      text: 'القران الكريم',
+                      img: Imagespath.quran,
+                      onTap: () {}),
+                  const VerticalDivider(color: Colors.grey),
+                  CategoryItem(
+                      text: 'الأذكار', img: Imagespath.azkar, onTap: () {}),
+                  const VerticalDivider(color: Colors.grey),
+                  CategoryItem(
                       text: 'مواقيت الصلاة',
-                      img: Imagespath.logo,
+                      img: Imagespath.prayer,
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>  PrayerTimeView()),
+                              builder: (context) => PrayerTimeView()),
                         );
                       }),
-                  const VerticalDivider(color: Colors.grey),
-                  CategoryItem(
-                      text: 'القران الكريم',
-                      img: Imagespath.logo,
-                      onTap: () {}),
-                  const VerticalDivider(color: Colors.grey),
-                  CategoryItem(
-                      text: 'القران الكريم',
-                      img: Imagespath.logo,
-                      onTap: () {}),
                 ],
               ),
             ),
@@ -54,18 +52,14 @@ class CategoryVector extends StatelessWidget {
               child: Row(
                 children: [
                   CategoryItem(
-                      text: 'القران الكريم',
-                      img: Imagespath.logo,
-                      onTap: () {}),
+                      text: 'الأدعية', img: Imagespath.doaa, onTap: () {}),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'القران الكريم',
-                      img: Imagespath.logo,
-                      onTap: () {}),
+                      text: 'احاديث', img: Imagespath.hadith, onTap: () {}),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'القران الكريم',
-                      img: Imagespath.logo,
+                      text: 'قصص الأنبياء',
+                      img: Imagespath.story,
                       onTap: () {}),
                 ],
               ),
@@ -76,19 +70,13 @@ class CategoryVector extends StatelessWidget {
               child: Row(
                 children: [
                   CategoryItem(
-                      text: 'القران الكريم',
-                      img: Imagespath.logo,
-                      onTap: () {}),
+                      text: 'التسبيح', img: Imagespath.sebha, onTap: () {}),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'القران الكريم',
-                      img: Imagespath.logo,
-                      onTap: () {}),
+                      text: 'القبلة', img: Imagespath.qibla, onTap: () {}),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'القران الكريم',
-                      img: Imagespath.logo,
-                      onTap: () {}),
+                      text: 'التقويم', img: Imagespath.timing, onTap: () {}),
                 ],
               ),
             ),

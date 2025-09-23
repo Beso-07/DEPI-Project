@@ -1,5 +1,4 @@
 class Imagespath {
-  static const logo = 'assets/images/logo.png';
   static const logo2 = 'assets/images/logo2.png';
   static const google = "assets/images/google.png";
   static const facebook = "assets/images/facebook.png";
@@ -7,4 +6,13 @@ class Imagespath {
   static const onboarding_2 = "assets/images/onboarding_2.png";
   static const onboarding_3 = "assets/images/onboarding_3.png";
   static const dot = "assets/images/dot.png";
+  static const quran = 'assets/images/logo.png';
+  static const qibla = 'assets/images/qibla.png';
+  static const sebha = 'assets/images/sebha.png';
+  static const doaa = 'assets/images/doaa.png';
+  static const prayer = 'assets/images/prayer.png';
+  static const hadith = 'assets/images/hadith.png';
+  static const story = 'assets/images/story.png';
+  static const azkar = 'assets/images/azkar.png';
+  static const timing = 'assets/images/timing.png';
 }
