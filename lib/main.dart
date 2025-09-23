@@ -1,8 +1,11 @@
+import 'package:depiproject/core/services/location_service.dart';
 import 'package:depiproject/features/splash/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  LocationService.getCurrentLocation();
   runApp(const IslamicApp());
 }
 

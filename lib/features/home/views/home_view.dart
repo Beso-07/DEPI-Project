@@ -10,28 +10,26 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.kPrimaryColor2,
-        body: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: CustomAppBar(),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * .02,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: PrayTime(),
-            ),
-            SizedBox(
-              height: height * .15,
-            ),
-            const CategoryVector()
-          ],
-        ),
+    return Scaffold(
+      backgroundColor: AppColors.kPrimaryColor2,
+      body: Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: CustomAppBar(),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .02,
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: PrayTime(),
+          ),
+          SizedBox(
+            height: height * .15,
+          ),
+          const CategoryVector()
+        ],
       ),
     );
   }
