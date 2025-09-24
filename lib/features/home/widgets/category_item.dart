@@ -30,6 +30,9 @@ class CategoryItem extends StatelessWidget {
                 color: AppColors.kPrimaryColor,
                 width: 50,
               ),
+              const SizedBox(
+                height: 5,
+              ),
               Text(
                 text,
                 style: const TextStyle(
