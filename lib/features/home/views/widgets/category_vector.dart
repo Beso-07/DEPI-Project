@@ -1,6 +1,6 @@
 import 'package:depiproject/core/constants/assets.dart';
-import 'package:depiproject/features/home/widgets/category_item.dart';
-import 'package:depiproject/features/prayer_time/views/prayer_time_view.dart';
+import 'package:depiproject/features/home/views/widgets/category_item.dart';
+import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
 import 'package:flutter/material.dart';
 
 class CategoryVector extends StatelessWidget {
@@ -39,8 +39,7 @@ class CategoryVector extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => PrayerTimeView()),
+                          MaterialPageRoute(builder: (context) => PrayerView()),
                         );
                       }),
                 ],

@@ -28,7 +28,7 @@ class CategoryItem extends StatelessWidget {
               Image.asset(
                 img,
                 color: AppColors.kPrimaryColor,
-                width: 50,
+                width: 40,
               ),
               const SizedBox(
                 height: 5,
@@ -38,7 +38,7 @@ class CategoryItem extends StatelessWidget {
                 style: const TextStyle(
                   color: AppColors.kPrimaryColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontSize: 10,
                 ),
               )
             ],

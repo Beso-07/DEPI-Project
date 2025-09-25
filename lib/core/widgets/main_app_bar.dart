@@ -3,12 +3,18 @@ import 'package:flutter/material.dart';
 class MainAppBar extends StatelessWidget {
   const MainAppBar({
     super.key,
+    required this.title,
   });
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 32),
+      padding: EdgeInsets.only(
+          left: width * .03, right: width * .03, top: height * .03),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -21,9 +27,9 @@ class MainAppBar extends StatelessWidget {
               size: 30,
             ),
           ),
-          const Text(
-            'مواقيت الصلاة',
-            style: TextStyle(fontSize: 30),
+          Text(
+            title,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           IconButton(
             onPressed: () {},
@@ -37,4 +43,3 @@ class MainAppBar extends StatelessWidget {
     );
   }
 }
-

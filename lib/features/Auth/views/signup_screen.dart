@@ -30,13 +30,13 @@ class SignupScreen extends StatelessWidget {
                 const Text(
                   "انشاء حساب جديد",
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 26,
                     fontFamily: 'Lateef',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .1,
+                  height: MediaQuery.of(context).size.height * .01,
                 ),
                 Column(
                   children: [
@@ -127,7 +127,7 @@ class SignupScreen extends StatelessWidget {
                     const Text(
                       " لديك حساب بالفعل؟",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                     ),
                     InkWell(
                         onTap: () {
@@ -139,7 +139,7 @@ class SignupScreen extends StatelessWidget {
                         },
                         child: const Text(" تسجيل الدخول ",
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 16,
                               color: Colors.green,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Lateef',

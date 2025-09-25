@@ -29,13 +29,13 @@ class LoginScreen extends StatelessWidget {
                 const Text(
                   "تسجيل الدخول ",
                   style: TextStyle(
-                    fontSize: 40,
+                    fontSize: 26,
                     fontFamily: 'Lateef',
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .1,
+                  height: MediaQuery.of(context).size.height * .02,
                 ),
                 Column(
                   children: [
@@ -91,7 +91,7 @@ class LoginScreen extends StatelessWidget {
                           "نسيت كلمة المرور ؟",
                           style: TextStyle(
                             color: Colors.green,
-                            fontSize: 24,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'Lateef',
                           ),
@@ -107,7 +107,8 @@ class LoginScreen extends StatelessWidget {
                     if (_key.currentState!.validate()) {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const HomeView()),
+                        MaterialPageRoute(
+                            builder: (context) => const HomeView()),
                       );
                     }
                   },
@@ -138,7 +139,7 @@ class LoginScreen extends StatelessWidget {
                     const Text(
                       " ليس لديك حساب؟",
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                     ),
                     InkWell(
                         onTap: () {
@@ -150,7 +151,7 @@ class LoginScreen extends StatelessWidget {
                         },
                         child: const Text("انشاء حساب جديد",
                             style: TextStyle(
-                              fontSize: 24,
+                              fontSize: 16,
                               color: Colors.green,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Lateef',
