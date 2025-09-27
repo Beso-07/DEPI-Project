@@ -1,4 +1,5 @@
 import 'package:depiproject/core/constants/assets.dart';
+import 'package:depiproject/features/ahadith/views/rawi_name_view.dart';
 import 'package:depiproject/features/home/views/widgets/category_item.dart';
 import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +63,13 @@ class CategoryVector extends StatelessWidget {
                       text: 'الأدعية', img: Imagespath.doaa, onTap: () {}),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'احاديث', img: Imagespath.hadith, onTap: () {}),
+                      text: 'احاديث', img: Imagespath.hadith, onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const RawiNameView()),
+                        );
+
+                      }),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
                       text: 'قصص الأنبياء',
