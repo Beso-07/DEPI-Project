@@ -15,4 +15,5 @@ class Imagespath {
   static const story = 'assets/images/story.png';
   static const azkar = 'assets/images/azkar.png';
   static const timing = 'assets/images/timing.png';
+  static const ayah =  'assets/images/ayah.png';
 }
