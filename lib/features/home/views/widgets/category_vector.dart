@@ -3,6 +3,8 @@ import 'package:depiproject/features/home/views/widgets/category_item.dart';
 import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../../Quran/views/quran_content.dart';
+
 class CategoryVector extends StatelessWidget {
   const CategoryVector({
     super.key,
@@ -28,7 +30,13 @@ class CategoryVector extends StatelessWidget {
                   CategoryItem(
                       text: 'القران الكريم',
                       img: Imagespath.quran,
-                      onTap: () {}),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QuranContent()),
+                        );
+                      }),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
                       text: 'الأذكار', img: Imagespath.azkar, onTap: () {}),
