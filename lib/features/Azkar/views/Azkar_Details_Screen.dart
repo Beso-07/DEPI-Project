@@ -1,9 +1,11 @@
-import 'package:depiproject/core/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
+import 'package:depiproject/core/constants/colors.dart';
 
 class AzkarDetailsScreen extends StatelessWidget {
   final String? title;
-  final List<String>? list;
+  final List<Zekr>? list;
 
   const AzkarDetailsScreen({
     super.key,
@@ -18,15 +20,12 @@ class AzkarDetailsScreen extends StatelessWidget {
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
         ],
-        title: Text(
-          title ?? "",
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 36,
-            fontFamily: 'Lateef',
-            color: Colors.green,
-          ),
-        ),
+        title: Text(title ?? "",
+            style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Lateef',
+                fontSize: 36,
+                color: Colors.green)),
         centerTitle: true,
       ),
       body: list == null || list!.isEmpty
@@ -36,66 +35,62 @@ class AzkarDetailsScreen extends StatelessWidget {
               itemCount: list!.length,
               itemBuilder: (context, index) {
                 final zekr = list![index];
-
                 return Card(
                   margin: const EdgeInsets.symmetric(vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  elevation: 4,
+                  elevation: 3,
                   color: Colors.green.shade50,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        // النص
                         Text(
-                          "[\"$zekr\"]",
+                          " {\"${zekr.zekr}\"}",
                           style: const TextStyle(
-                            fontSize: 31,
+                            fontSize: 32,
                             fontFamily: 'Lateef',
                             fontWeight: FontWeight.bold,
-                            color: Colors.black87,
                           ),
                           textAlign: TextAlign.center,
                         ),
-
-                        const SizedBox(height: 12),
                         const Divider(),
-
-                        // التكرار + الأزرار
                         Row(
                           children: [
-                            const Text(
-                              "مرة واحدة",
-                              style: TextStyle(
-                                fontSize: 16,
+                            Text(
+                              "↺ ${zekr.count} مرات",
+                              style: const TextStyle(
+                                fontSize: 25,
                                 fontFamily: 'Lateef',
                                 color: AppColors.kPrimaryColor2,
                               ),
                             ),
                             const Spacer(),
                             IconButton(
-                              onPressed: () {
-                                // حفظ
-                              },
+                              onPressed: () {},
                               icon: const Icon(
                                 Icons.bookmark_border,
                                 color: Colors.green,
                               ),
                             ),
+                            const SizedBox(width: 7),
                             IconButton(
                               onPressed: () {
-                                // نسخ
+                                Clipboard.setData(
+                                    ClipboardData(text: zekr.zekr));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text("تم نسخ الذكر ✅"),
+                                    backgroundColor: AppColors.kPrimaryColor2,
+                                  ),
+                                );
                               },
-                              icon: const Icon(
-                                Icons.copy_all_rounded,
-                                color: Colors.blueGrey,
-                              ),
+                              icon: const Icon(Icons.copy_all_rounded,
+                                  color: Colors.blueGrey),
                             ),
                           ],
-                        ),
+                        )
                       ],
                     ),
                   ),

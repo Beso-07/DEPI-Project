@@ -1,31 +1,24 @@
-import 'dart:developer';
-import 'package:bloc/bloc.dart';
-import 'package:depiproject/core/network/dio_helper.dart';
-import 'package:meta/meta.dart';
+import 'dart:convert';
+
+import 'package:depiproject/features/Azkar/model_view/cubit/azkar_view_state.dart';
 import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'azkar_view_state.dart';
-
-class AzkarViewCubit extends Cubit<AzkarViewState> {
-  AzkarViewCubit() : super(AzkarViewInitial());
+class AzkarCubit extends Cubit<AzkarState> {
+  AzkarCubit() : super(AzkarInitial());
 
   Future<void> getAzkar() async {
-    emit(AzkarViewLoading());
+    emit(AzkarLoading());
+    Future.delayed(Duration(seconds: 4));
     try {
-      final response = await DioHelper().getData(
-        url:
-            "https://raw.githubusercontent.com/nawafalqari/azkar-api/56df51279ab6eb86dc2f6202c7de26c8948331c1/azkar.json",
-      );
-      await Future.delayed(Duration(seconds: 3));
-      if (response.statusCode == 200) {
-        final azkar = Azkar.fromJson(response.data);
-
-        emit(AzkarViewSuccess(azkar));
-      } else {
-        emit(AzkarViewError("Error: ${response.statusMessage}"));
-      }
+      final String response =
+          await rootBundle.loadString('assets/json/azkar.json');
+      final data = jsonDecode(response);
+      final azkar = AzkarModel.fromJson(data);
+      emit(AzkarSuccess(azkar));
     } catch (e) {
-      emit(AzkarViewError(e.toString()));
+      emit(AzkarError(e.toString()));
     }
   }
 }

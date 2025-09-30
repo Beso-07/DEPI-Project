@@ -1,92 +1,42 @@
-import 'dart:convert';
+class Zekr {
+  final String zekr;
+  final int count;
+  Zekr({required this.zekr, required this.count});
+  factory Zekr.fromJson(Map<String, dynamic> json) =>
+      Zekr(zekr: json['zekr'], count: json['count']);
+}
 
-Azkar azkarFromJson(String str) => Azkar.fromJson(json.decode(str));
-
-String azkarToJson(Azkar data) => json.encode(data.toJson());
-
-class Azkar {
-  final List<Zekr> morningAzkar;
-  final List<Zekr> eveningAzkar;
-  final List<Zekr> afterPrayerAzkar;
-  final List<Zekr> tasbeeh;
-  final List<Zekr> sleepAzkar;
-  final List<Zekr> wakeUpAzkar;
+class AzkarModel {
+  final List<Zekr> morning;
+  final List<Zekr> evening;
+  final List<Zekr> sleep;
+  final List<Zekr> wakeUp;
+  final List<Zekr> afterPrayer;
   final List<Zekr> quranicDua;
   final List<Zekr> prophetsDua;
 
-  Azkar({
-    required this.morningAzkar,
-    required this.eveningAzkar,
-    required this.afterPrayerAzkar,
-    required this.tasbeeh,
-    required this.sleepAzkar,
-    required this.wakeUpAzkar,
+  AzkarModel({
+    required this.morning,
+    required this.evening,
+    required this.sleep,
+    required this.wakeUp,
+    required this.afterPrayer,
     required this.quranicDua,
     required this.prophetsDua,
   });
 
-  factory Azkar.fromJson(Map<String, dynamic> json) => Azkar(
-        morningAzkar:
-            List<Zekr>.from(json["أذكار الصباح"].map((x) => Zekr.fromJson(x))),
-        eveningAzkar:
-            List<Zekr>.from(json["أذكار المساء"].map((x) => Zekr.fromJson(x))),
-        afterPrayerAzkar: List<Zekr>.from(
-            json["أذكار بعد السلام من الصلاة المفروضة"]
-                .map((x) => Zekr.fromJson(x))),
-        tasbeeh: List<Zekr>.from(json["تسابيح"].map((x) => Zekr.fromJson(x))),
-        sleepAzkar:
-            List<Zekr>.from(json["أذكار النوم"].map((x) => Zekr.fromJson(x))),
-        wakeUpAzkar: List<Zekr>.from(
-            json["أذكار الاستيقاظ"].map((x) => Zekr.fromJson(x))),
-        quranicDua:
-            List<Zekr>.from(json["أدعية قرآنية"].map((x) => Zekr.fromJson(x))),
-        prophetsDua: List<Zekr>.from(
-            json["أدعية الأنبياء"].map((x) => Zekr.fromJson(x))),
-      );
+  factory AzkarModel.fromJson(Map<String, dynamic> json) {
+    List<Zekr> parseList(List data) =>
+        data.map((e) => Zekr.fromJson(e)).toList();
 
-  Map<String, dynamic> toJson() => {
-        "أذكار الصباح": List<dynamic>.from(morningAzkar.map((x) => x.toJson())),
-        "أذكار المساء": List<dynamic>.from(eveningAzkar.map((x) => x.toJson())),
-        "أذكار بعد السلام من الصلاة المفروضة":
-            List<dynamic>.from(afterPrayerAzkar.map((x) => x.toJson())),
-        "تسابيح": List<dynamic>.from(tasbeeh.map((x) => x.toJson())),
-        "أذكار النوم": List<dynamic>.from(sleepAzkar.map((x) => x.toJson())),
-        "أذكار الاستيقاظ":
-            List<dynamic>.from(wakeUpAzkar.map((x) => x.toJson())),
-        "أدعية قرآنية": List<dynamic>.from(quranicDua.map((x) => x.toJson())),
-        "أدعية الأنبياء":
-            List<dynamic>.from(prophetsDua.map((x) => x.toJson())),
-      };
-}
-
-class Zekr {
-  final String? category;
-  final String? count;
-  final String? description;
-  final String? reference;
-  final String? content;
-
-  Zekr({
-    this.category,
-    this.count,
-    this.description,
-    this.reference,
-    this.content,
-  });
-
-  factory Zekr.fromJson(Map<String, dynamic> json) => Zekr(
-        category: json["category"],
-        count: json["count"],
-        description: json["description"],
-        reference: json["reference"],
-        content: json["content"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "category": category,
-        "count": count,
-        "description": description,
-        "reference": reference,
-        "content": content,
-      };
+    return AzkarModel(
+      morning: parseList(json['morning']),
+      evening: parseList(json['evening']),
+      sleep: parseList(json['sleep']),
+      wakeUp: parseList(json['wakeUp']),
+      afterPrayer: parseList(json['afterPrayer']),
+      quranicDua: parseList(json['quranicDua']),
+      prophetsDua: parseList(json['prophetsDua']),
+    );
+  }
 }

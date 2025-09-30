@@ -1,20 +1,17 @@
-part of 'azkar_view_cubit.dart';
+import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
 
-@immutable
-abstract class AzkarViewState {}
+abstract class AzkarState {}
 
-class AzkarViewInitial extends AzkarViewState {}
+class AzkarInitial extends AzkarState {}
 
-class AzkarViewLoading extends AzkarViewState {}
+class AzkarLoading extends AzkarState {}
 
-class AzkarViewSuccess extends AzkarViewState {
-  final Azkar azkar;
-
-  AzkarViewSuccess(this.azkar);
+class AzkarSuccess extends AzkarState {
+  final AzkarModel azkar;
+  AzkarSuccess(this.azkar);
 }
 
-class AzkarViewError extends AzkarViewState {
+class AzkarError extends AzkarState {
   final String message;
-
-  AzkarViewError(this.message);
+  AzkarError(this.message);
 }
