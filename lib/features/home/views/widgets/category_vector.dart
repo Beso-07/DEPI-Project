@@ -1,6 +1,7 @@
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/features/Azkar/views/Azkar_view.dart';
 import 'package:depiproject/features/ahadith/views/rawi_name_view.dart';
+import 'package:depiproject/features/calender/views/calender_view.dart';
 import 'package:depiproject/features/home/views/widgets/category_item.dart';
 import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
 import 'package:flutter/material.dart';
@@ -29,17 +30,17 @@ class CategoryVector extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  CategoryItem(
-                      text: 'القران الكريم',
-                      img: Imagespath.quran,
-                      // onTap: () {
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => QuranContent()),
-                      //   );
-                      // }
-                      ),
+                  const CategoryItem(
+                    text: 'القران الكريم',
+                    img: Imagespath.quran,
+                    // onTap: () {
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => QuranContent()),
+                    //   );
+                    // }
+                  ),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
                       text: 'الأذكار',
@@ -74,12 +75,14 @@ class CategoryVector extends StatelessWidget {
                       text: 'الأدعية', img: Imagespath.doaa, onTap: () {}),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'احاديث', img: Imagespath.hadith, onTap: () {
+                      text: 'احاديث',
+                      img: Imagespath.hadith,
+                      onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const RawiNameView()),
+                          MaterialPageRoute(
+                              builder: (context) => const RawiNameView()),
                         );
-
                       }),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
@@ -101,7 +104,14 @@ class CategoryVector extends StatelessWidget {
                       text: 'القبلة', img: Imagespath.qibla, onTap: () {}),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'التقويم', img: Imagespath.timing, onTap: () {}),
+                      text: 'التقويم',
+                      img: Imagespath.timing,
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return CalenderView();
+                        }));
+                      }),
                 ],
               ),
             ),

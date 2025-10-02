@@ -21,7 +21,7 @@ class IslamicApp extends StatelessWidget {
       locale: Locale('ar'),
       supportedLocales: [
         Locale('en'),
-        Locale('ar'),
+        Locale('ar','SA'),
       ],
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
