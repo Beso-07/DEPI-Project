@@ -1,5 +1,4 @@
 import 'package:depiproject/core/services/location_service.dart';
-import 'package:depiproject/features/Azkar/views/Azkar_view.dart';
 
 import 'package:depiproject/features/splash/views/splash_view.dart';
 import 'package:device_preview/device_preview.dart';
@@ -29,7 +28,7 @@ class IslamicApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      home: AzkarCategoriesView(),
+      home: SplashView(),
     );
   }
 }
