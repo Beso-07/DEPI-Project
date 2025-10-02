@@ -57,10 +57,10 @@ class SignupScreen extends StatelessWidget {
                 ),
                 CustomTextField(
                   controller: _emailTextController,
-                  lable: "البريد الالكتروني ",
+                  lable: "البريد الإلكتروني",
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return "! يجب ادخال اسمك ";
+                    if (!value!.endsWith("@gmail.com")) {
+                      return "يجب أن ينتهي البريد الإلكتروني بـ @gmail.com !";
                     }
                     return null;
                   },

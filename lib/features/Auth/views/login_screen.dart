@@ -57,10 +57,10 @@ class LoginScreen extends StatelessWidget {
                 ),
                 CustomTextField(
                   controller: _nameTextController,
-                  lable: "البرد الالكتروني ",
+                  lable: "البريد الإلكتروني",
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return "! يجب ادخال اسمك ";
+                    if (!value!.contains("@gmail.com")) {
+                      return "يجب أن ينتهي البريد الإلكتروني بـ @gmail.com !";
                     }
                     return null;
                   },
