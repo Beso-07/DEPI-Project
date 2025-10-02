@@ -39,7 +39,7 @@ class _OtpScreenState extends State<OtpScreen> {
                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => ForgetPassScreen(),), (route) => false,);
                 },
                 child: Align(
-                  alignment: AlignmentGeometry.topLeft,
+                  alignment: Alignment.topLeft,
                   child: Padding(
                     padding:  EdgeInsets.only(left: w*.03 , top: w*.1),
                     child: Container(
@@ -58,7 +58,7 @@ class _OtpScreenState extends State<OtpScreen> {
               ),
         
               Align(
-                alignment: AlignmentGeometry.topRight,
+                alignment: Alignment.topRight,
                 child: Padding(
                   padding:  EdgeInsets.only(top: w*.08 , right: w*.07),
                   child: Text("التحقق من الايميل الالكتروني" , style: TextStyle(
@@ -69,7 +69,7 @@ class _OtpScreenState extends State<OtpScreen> {
         
         
                 Align(
-                  alignment: AlignmentGeometry.topRight,
+                  alignment: Alignment.topRight,
                   child: Padding(
                     padding:  EdgeInsets.symmetric(horizontal: w*.07 , vertical: h*.025),
                     child: Text(

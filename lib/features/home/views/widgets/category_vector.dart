@@ -32,13 +32,14 @@ class CategoryVector extends StatelessWidget {
                   CategoryItem(
                       text: 'القران الكريم',
                       img: Imagespath.quran,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => QuranContent()),
-                        );
-                      }),
+                      // onTap: () {
+                      //   Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => QuranContent()),
+                      //   );
+                      // }
+                      ),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
                       text: 'الأذكار',
