@@ -3,9 +3,8 @@ import 'package:depiproject/features/Quran/models/quran_model.dart';
 import 'package:depiproject/features/Quran/views/quran_page.dart';
 import 'package:flutter/material.dart';
 
-
-class sura_widget extends StatelessWidget {
-  const sura_widget({
+class SuraWidget extends StatelessWidget {
+  const SuraWidget({
     super.key,
     required this.suraName,
     required this.surah,
@@ -25,17 +24,22 @@ class sura_widget extends StatelessWidget {
           ),
         );
       },
-      child: Container(child:Stack(
-        alignment: Alignment.center,
-        children:[
-         Image.asset(Imagespath.sura,height: 100,width: 100,),
-         Image.asset(Imagespath.sura,height: 90,width: 90,),
-      Text(suraName,style: TextStyle(
-        fontFamily: 'Lateef',
-        fontSize: 40
-      
-      ),)
-      ])),
+      child: Stack(alignment: Alignment.center, children: [
+        Image.asset(
+          Imagespath.sura,
+          height: 100,
+          width: 100,
+        ),
+        // Image.asset(
+        //   Imagespath.sura,
+        //   height: 90,
+        //   width: 90,
+        // ),
+        Text(
+          suraName,
+          style: const TextStyle(fontFamily: 'Lateef', fontSize: 26),
+        )
+      ]),
     );
   }
 }

@@ -1,12 +1,12 @@
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/features/Azkar/views/Azkar_view.dart';
+import 'package:depiproject/features/Quran/views/quran_content.dart';
 import 'package:depiproject/features/ahadith/views/rawi_name_view.dart';
 import 'package:depiproject/features/calender/views/calender_view.dart';
 import 'package:depiproject/features/home/views/widgets/category_item.dart';
 import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../../Quran/views/quran_content.dart';
 
 class CategoryVector extends StatelessWidget {
   const CategoryVector({
@@ -30,16 +30,16 @@ class CategoryVector extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  const CategoryItem(
+                   CategoryItem(
                     text: 'القران الكريم',
                     img: Imagespath.quran,
-                    // onTap: () {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => QuranContent()),
-                    //   );
-                    // }
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => QuranContent()),
+                      );
+                    }
                   ),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
@@ -109,7 +109,7 @@ class CategoryVector extends StatelessWidget {
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return CalenderView();
+                          return const CalenderView();
                         }));
                       }),
                 ],

@@ -41,7 +41,6 @@ class _QuranPageState extends State<QuranPage> {
         children: [
           MainAppBar(title: widget.surah.name ?? 'سورة'),
           
-          // Surah Info Section
           Container(
             width: double.infinity,
             padding: EdgeInsets.all(16),
