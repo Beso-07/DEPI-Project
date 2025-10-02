@@ -1,5 +1,6 @@
 import 'package:depiproject/core/constants/app_string.dart';
 import 'package:depiproject/core/constants/assets.dart';
+import 'package:depiproject/features/Auth/views/forget_pass_screen.dart';
 import 'package:depiproject/features/Auth/views/signup_screen.dart';
 import 'package:depiproject/features/Auth/widgets/custom_bitton.dart';
 import 'package:depiproject/features/Auth/widgets/custom_textfield.dart';
@@ -56,10 +57,10 @@ class LoginScreen extends StatelessWidget {
                 ),
                 CustomTextField(
                   controller: _nameTextController,
-                  lable: "البرد الالكتروني ",
+                  lable: "البريد الإلكتروني",
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return "! يجب ادخال اسمك ";
+                    if (!value!.contains("@gmail.com")) {
+                      return "يجب أن ينتهي البريد الإلكتروني بـ @gmail.com !";
                     }
                     return null;
                   },
@@ -86,7 +87,9 @@ class LoginScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     InkWell(
-                        onTap: () {},
+                        onTap: () {
+                     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => ForgetPassScreen(),), (route) => false,);
+                        },
                         child: const Text(
                           "نسيت كلمة المرور ؟",
                           style: TextStyle(
