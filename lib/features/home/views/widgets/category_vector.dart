@@ -1,4 +1,5 @@
 import 'package:depiproject/core/constants/assets.dart';
+import 'package:depiproject/features/Azkar/views/Azkar_view.dart';
 import 'package:depiproject/features/ahadith/views/rawi_name_view.dart';
 import 'package:depiproject/features/home/views/widgets/category_item.dart';
 import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
@@ -40,7 +41,16 @@ class CategoryVector extends StatelessWidget {
                       }),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'الأذكار', img: Imagespath.azkar, onTap: () {}),
+                      text: 'الأذكار',
+                      img: Imagespath.azkar,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AzkarCategoriesView()),
+                        );
+                      }),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
                       text: 'مواقيت الصلاة',
