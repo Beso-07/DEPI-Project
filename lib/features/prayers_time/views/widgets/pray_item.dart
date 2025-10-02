@@ -14,12 +14,12 @@ class PrayItem extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const Icon(Icons.sunny),
           Text(
-            '$time ص',
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            time,
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
           )
         ],
       ),

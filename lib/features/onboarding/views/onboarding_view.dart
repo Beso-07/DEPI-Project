@@ -17,14 +17,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * .03,
+              height: height * .05,
             ),
             OnboardingItem(
               title: onBoardingData[index]["title"]!,
@@ -37,7 +39,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               children: List.generate(3, (dotIndex) {
                 return Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.01,
+                    horizontal: width * 0.01,
                   ),
                   child: Image.asset(
                     Imagespath.dot,
@@ -48,7 +50,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               }),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * .03,
+              height: height * .05,
             ),
             CustomButton(
               title: index != 2 ? ' التالي' : ' ابدأ',
@@ -66,7 +68,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               },
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * .04,
+              height: height * .04,
             ),
           ],
         ),

@@ -9,31 +9,32 @@ class OnboardingItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
           img,
-          height: 350,
+          height: 220,
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * .05,
+          height: height * .05,
         ),
         Text(
           title,
           style: const TextStyle(
-            fontSize: 26,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
           textAlign: TextAlign.center,
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * .015,
+          height: height * .015,
         ),
         Text(
           text,
           style: const TextStyle(
-            fontSize: 20,
+            fontSize: 14,
             color: Colors.grey,
             fontWeight: FontWeight.w600,
           ),

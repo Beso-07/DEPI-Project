@@ -1,7 +1,7 @@
 import 'package:depiproject/core/constants/colors.dart';
-import 'package:depiproject/features/home/widgets/category_vector.dart';
-import 'package:depiproject/features/home/widgets/custom_app_bar.dart';
-import 'package:depiproject/features/home/widgets/pray_time.dart';
+import 'package:depiproject/features/home/views/widgets/category_vector.dart';
+import 'package:depiproject/features/home/views/widgets/custom_app_bar.dart';
+import 'package:depiproject/features/home/views/widgets/pray_time.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -26,7 +26,7 @@ class HomeView extends StatelessWidget {
             child: PrayTime(),
           ),
           SizedBox(
-            height: height * .05,
+            height: height * .15,
           ),
           const CategoryVector()
         ],
