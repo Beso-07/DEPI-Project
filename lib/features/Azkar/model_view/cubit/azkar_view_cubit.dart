@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:depiproject/features/Azkar/model_view/cubit/azkar_view_state.dart';
-import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
+import 'package:depiproject/features/Azkar/models/azkar_model.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

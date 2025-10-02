@@ -1,4 +1,4 @@
-import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
+import 'package:depiproject/features/Azkar/models/azkar_model.dart';
 
 abstract class AzkarState {}
 

@@ -39,7 +39,6 @@ class DateHelper {
 
   static String getNextPrayer(PrayerTimeModel model) {
     final now = DateTime.now();
-    print(now);
 
     DateTime parseTime(String time) {
       final parts = time.split(' ');

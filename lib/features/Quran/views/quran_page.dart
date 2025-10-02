@@ -43,8 +43,8 @@ class _QuranPageState extends State<QuranPage> {
           
           Container(
             width: double.infinity,
-            padding: EdgeInsets.all(16),
-            margin: EdgeInsets.all(16),
+            padding:const EdgeInsets.all(16),
+            margin: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.green.shade50,
               borderRadius: BorderRadius.circular(12),
@@ -61,7 +61,7 @@ class _QuranPageState extends State<QuranPage> {
                     color: Colors.green.shade800,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
                   widget.surah.transliteration ?? '',
                   style: TextStyle(
@@ -69,7 +69,7 @@ class _QuranPageState extends State<QuranPage> {
                     color: Colors.green.shade600,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   '${widget.surah.type} • ${widget.surah.totalVerses} آية',
                   style: TextStyle(
@@ -84,7 +84,7 @@ class _QuranPageState extends State<QuranPage> {
           // Navigation Controls
           if (!isLoading && verses.isNotEmpty && (verses.length / 10).ceil() > 1)
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -92,7 +92,7 @@ class _QuranPageState extends State<QuranPage> {
                     onPressed: () {
                       if (pageController.hasClients) {
                         pageController.previousPage(
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.easeInOut,
                         );
                       }
@@ -101,13 +101,13 @@ class _QuranPageState extends State<QuranPage> {
                       backgroundColor: Colors.green.shade100,
                       foregroundColor: Colors.green.shade800,
                     ),
-                    child: Text('السابقة'),
+                    child: const Text('السابقة'),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       if (pageController.hasClients) {
                         pageController.nextPage(
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.easeInOut,
                         );
                       }
@@ -116,20 +116,20 @@ class _QuranPageState extends State<QuranPage> {
                       backgroundColor: Colors.green.shade100,
                       foregroundColor: Colors.green.shade800,
                     ),
-                    child: Text('التالية'),
+                    child: const Text('التالية'),
                   ),
                 ],
               ),
             ),
           
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           
           // Verses Section
           Expanded(
             child: isLoading
-                ? Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator())
                 : verses.isEmpty
-                    ? Center(child: Text('لا توجد آيات متاحة'))
+                    ? const Center(child: Text('لا توجد آيات متاحة'))
                     : PageView.builder(
                         controller: pageController,
                         itemCount: (verses.length / 10).ceil(), // 10 verses per page
@@ -142,12 +142,12 @@ class _QuranPageState extends State<QuranPage> {
                           List<Verse> pageVerses = verses.sublist(startIndex, endIndex);
                           
                           return Container(
-                            padding: EdgeInsets.all(16),
+                            padding: const EdgeInsets.all(16),
                             child: Column(
                               children: [
                                 // Page Number
                                 Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                                   decoration: BoxDecoration(
                                     color: Colors.green.shade100,
                                     borderRadius: BorderRadius.circular(20),
@@ -160,7 +160,7 @@ class _QuranPageState extends State<QuranPage> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 16),
+                                const SizedBox(height: 16),
                                 
                                 // Verses
                                 Expanded(
@@ -171,8 +171,8 @@ class _QuranPageState extends State<QuranPage> {
                                         if (pageIndex == 0 && widget.surah.id != 9)
                                           Container(
                                             width: double.infinity,
-                                            margin: EdgeInsets.only(bottom: 16),
-                                            padding: EdgeInsets.all(16),
+                                            margin: const EdgeInsets.only(bottom: 16),
+                                            padding: const EdgeInsets.all(16),
                                             decoration: BoxDecoration(
                                               color: Colors.green.shade50,
                                               borderRadius: BorderRadius.circular(12),
@@ -195,8 +195,8 @@ class _QuranPageState extends State<QuranPage> {
                                         ...pageVerses.map((verse) {
                                           return Container(
                                             width: double.infinity,
-                                            margin: EdgeInsets.only(bottom: 16),
-                                            padding: EdgeInsets.all(16),
+                                            margin: const EdgeInsets.only(bottom: 16),
+                                            padding: const EdgeInsets.all(16),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius: BorderRadius.circular(12),
@@ -204,7 +204,7 @@ class _QuranPageState extends State<QuranPage> {
                                                 BoxShadow(
                                                   color: Colors.grey.shade200,
                                                   blurRadius: 4,
-                                                  offset: Offset(0, 2),
+                                                  offset: const Offset(0, 2),
                                                 ),
                                               ],
                                             ),
@@ -213,7 +213,7 @@ class _QuranPageState extends State<QuranPage> {
                                               children: [
                                                 // Verse Number
                                                 Container(
-                                                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                                   decoration: BoxDecoration(
                                                     color: Colors.green.shade100,
                                                     borderRadius: BorderRadius.circular(12),
@@ -226,14 +226,14 @@ class _QuranPageState extends State<QuranPage> {
                                                     ),
                                                   ),
                                                 ),
-                                                SizedBox(height: 12),
+                                                const SizedBox(height: 12),
                                                 
                                                 // Verse Text
                                                 Text(
                                                   verse.text ?? '',
                                                   textAlign: TextAlign.right,
                                                   textDirection: TextDirection.rtl,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontFamily: 'Lateef',
                                                     fontSize: 24,
                                                     height: 1.8,
@@ -243,7 +243,7 @@ class _QuranPageState extends State<QuranPage> {
                                               ],
                                             ),
                                           );
-                                        }).toList(),
+                                        }),
                                       ],
                                     ),
                                   ),

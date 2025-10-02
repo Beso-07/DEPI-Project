@@ -36,7 +36,7 @@ class _OtpScreenState extends State<OtpScreen> {
               
               GestureDetector(
                 onTap: () {
-                   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => ForgetPassScreen(),), (route) => false,);
+                   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const ForgetPassScreen(),), (route) => false,);
                 },
                 child: Align(
                   alignment: Alignment.topLeft,
@@ -49,7 +49,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         color: const Color.fromARGB(91, 158, 158, 158),
                         borderRadius: BorderRadius.circular(50)
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Icon(Icons.arrow_forward_ios),
                       ),
                     ),
@@ -61,7 +61,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 alignment: Alignment.topRight,
                 child: Padding(
                   padding:  EdgeInsets.only(top: w*.08 , right: w*.07),
-                  child: Text("التحقق من الايميل الالكتروني" , style: TextStyle(
+                  child: const Text("التحقق من الايميل الالكتروني" , style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),),
@@ -72,7 +72,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   alignment: Alignment.topRight,
                   child: Padding(
                     padding:  EdgeInsets.symmetric(horizontal: w*.07 , vertical: h*.025),
-                    child: Text(
+                    child: const Text(
                       "تم ارسال لينك الي الايميل الخاص بك ادخل الكود للتحق من الايميل" ,
                       textAlign: TextAlign.center,
                       maxLines: 2
@@ -170,7 +170,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       color: const Color.fromARGB(255, 24, 118, 195),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "  تاكيد الكود",
                         style: TextStyle(
@@ -189,7 +189,7 @@ class _OtpScreenState extends State<OtpScreen> {
                Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     textAlign: TextAlign.start,
                     "لم تتلقي اي بعد ؟",
                     style: TextStyle(
@@ -199,9 +199,9 @@ class _OtpScreenState extends State<OtpScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => ForgetPassScreen(),), (route) => false,);
+                   Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const ForgetPassScreen(),), (route) => false,);
                     },
-                    child: Text(
+                    child: const Text(
                       textAlign: TextAlign.start,
                       "اعاده ارسال الايميل",
                       style: TextStyle(color:Color.fromARGB(255, 50, 111, 160), fontSize: 17),

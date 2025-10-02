@@ -88,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     InkWell(
                         onTap: () {
-                     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => ForgetPassScreen(),), (route) => false,);
+                     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const ForgetPassScreen(),), (route) => false,);
                         },
                         child: const Text(
                           "نسيت كلمة المرور ؟",

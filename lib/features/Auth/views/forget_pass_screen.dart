@@ -49,7 +49,7 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                           decoration: BoxDecoration(
                               color: const Color.fromARGB(91, 158, 158, 158),
                               borderRadius: BorderRadius.circular(50)),
-                          child: Center(
+                          child:const  Center(
                             child: Icon(Icons.arrow_forward_ios),
                           ),
                         ),
@@ -61,7 +61,7 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                       alignment: Alignment.topRight,
                       child: Padding(
                         padding: EdgeInsets.only(top: w * .08, right: w * .07),
-                        child: Text(
+                        child: const Text(
                           "اعاده تعيين كلمه المرور",
                           style: TextStyle(
                             fontSize: 20,
@@ -74,7 +74,7 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                       alignment: Alignment.topRight,
                       child: Padding(
                         padding: EdgeInsets.only(right: w * .07, top: w * .02),
-                        child: Text(
+                        child:const Text(
                           "ادخل الايميل لتستطيع استعاده كلمه المرور",
                           style: TextStyle(color: Colors.grey, fontSize: 15),
                         ),
@@ -98,15 +98,15 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                       },
                       // inputFormatters: [LengthLimitingTextInputFormatter(11)],
                       style:
-                          TextStyle(color: const Color.fromARGB(255, 0, 0, 0)),
-                      decoration: InputDecoration(
+                          const TextStyle(color:  Color.fromARGB(255, 0, 0, 0)),
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(
-                              color: const Color.fromARGB(255, 207, 205, 205)),
+                              color: Color.fromARGB(255, 207, 205, 205)),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              color: const Color.fromARGB(255, 207, 205, 205)),
+                              color: Color.fromARGB(255, 207, 205, 205)),
                         ),
                         hintStyle: TextStyle(
                           color: Colors.grey,
@@ -134,7 +134,7 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                         if (global.currentState!.validate()) {
                           Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
-                              builder: (context) => OtpScreen(),
+                              builder: (context) => const OtpScreen(),
                             ),
                             (route) => false,
                           );
@@ -147,7 +147,7 @@ class _ForgetPassScreenState extends State<ForgetPassScreen> {
                           color: const Color.fromARGB(255, 24, 118, 195),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             " اعاده الارسال",
                             style: TextStyle(

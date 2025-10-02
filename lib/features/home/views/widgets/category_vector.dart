@@ -1,5 +1,5 @@
 import 'package:depiproject/core/constants/assets.dart';
-import 'package:depiproject/features/Azkar/views/Azkar_view.dart';
+import 'package:depiproject/features/Azkar/views/azkar_view.dart';
 import 'package:depiproject/features/Quran/views/quran_content.dart';
 import 'package:depiproject/features/ahadith/views/rawi_name_view.dart';
 import 'package:depiproject/features/calender/views/calender_view.dart';
