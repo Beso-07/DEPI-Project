@@ -1,7 +1,7 @@
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/features/Azkar/views/azkar_view.dart';
 import 'package:depiproject/features/Quran/views/quran_content.dart';
-import 'package:depiproject/features/ahadith/views/rawi_name_view.dart';
+import 'package:depiproject/features/ahadith/view/rawi_name_view.dart';
 import 'package:depiproject/features/calender/views/calender_view.dart';
 import 'package:depiproject/features/home/views/widgets/category_item.dart';
 import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
