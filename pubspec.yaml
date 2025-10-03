@@ -19,6 +19,7 @@ dependencies:
   flutter_bloc: ^9.1.1
   flutter_localizations:
     sdk: flutter
+  flutter_slider_drawer: ^3.0.2
   font_awesome_flutter: ^10.9.0
   geocode: ^1.0.3
   geocoding: ^4.0.0

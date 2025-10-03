@@ -1,5 +1,4 @@
 import 'package:depiproject/core/services/location_service.dart';
-
 import 'package:depiproject/features/splash/views/splash_view.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
