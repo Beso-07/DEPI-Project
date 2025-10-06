@@ -17,4 +17,7 @@ class Imagespath {
   static const timing = 'assets/images/timing.png';
   static const sura = 'assets/images/emblem.jpg';
   static const ayah = "assets/images/ayah.png";
+    static const pattern = "assets/images/bg_pattern.png";
+
+
 }
