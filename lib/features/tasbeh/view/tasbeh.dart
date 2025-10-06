@@ -6,8 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Tasbeh extends StatelessWidget {
   Tasbeh({super.key});
-  int counter = 0;
-  String curretZeker = 'اَسْتَغْفِرُ اللَّهَ';
+
   final List<String> azkarList = [
     'اَسْتَغْفِرُ اللَّهَ',
     'سُبْحَانَ اللَّهِ',
@@ -54,7 +53,7 @@ class Tasbeh extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          curretZeker,
+                          cubit.currentZeker,
                           style: const TextStyle(
                               fontFamily: "lateef", fontSize: 50),
                         ),
@@ -68,10 +67,12 @@ class Tasbeh extends StatelessWidget {
                             color: AppColors.kPrimaryColor2,
                           ),
                           onSelected: (value) {
-                            curretZeker = value;
-                            counter = 0;
-                            cubit.showZeker(value, curretZeker);
-                            cubit.resetCount(counter);
+                            // cubit.currentZeker = value;
+                            // cubit.counter = 0;
+                            cubit.showZeker(
+                              value,
+                            );
+                            cubit.resetCount();
                           },
                           itemBuilder: (context) {
                             return azkarList.map((zikr) {
@@ -94,7 +95,7 @@ class Tasbeh extends StatelessWidget {
                       height: height * 0.05,
                     ),
                     Text(
-                      counter.toInt().toString(),
+                      cubit.counter.toString(),
                       style: const TextStyle(
                         fontSize: 40,
                       ),
@@ -104,8 +105,8 @@ class Tasbeh extends StatelessWidget {
                     ),
                     FloatingActionButton(
                       onPressed: () {
-                        counter++;
-                        cubit.showcount(counter);
+                        // counter++;
+                        cubit.showcount();
                       },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50)),
@@ -126,7 +127,10 @@ class Tasbeh extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       InkWell(
-                        onTap: () => {counter = 0, cubit.resetCount(counter)},
+                        onTap: () => {
+                          // counter = 0,
+                          cubit.resetCount()
+                        },
                         child: const Text(
                           "اعادة ضبط ",
                           style: TextStyle(
