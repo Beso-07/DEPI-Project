@@ -2,7 +2,7 @@ import 'package:depiproject/features/Azkar/models/azkar_model.dart';
 import 'package:depiproject/features/Azkar/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:depiproject/features/Azkar/views/azkar_Details_Screen.dart';
+import 'package:depiproject/features/Azkar/views/azkar_details_screen.dart';
 import 'package:depiproject/features/Azkar/model_view/cubit/azkar_view_cubit.dart';
 import 'package:depiproject/features/Azkar/model_view/cubit/azkar_view_state.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
