@@ -1,3 +1,4 @@
+import 'package:depiproject/core/constants/app_Bar.dart';
 import 'package:depiproject/features/Azkar/models/azkar_model.dart';
 import 'package:depiproject/features/Azkar/models/category_model.dart';
 import 'package:flutter/material.dart';
@@ -15,18 +16,7 @@ class AzkarCategoriesView extends StatelessWidget {
     return BlocProvider(
       create: (_) => AzkarCubit()..getAzkar(),
       child: Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
-          ],
-          title: const Text("الأذكار",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 36,
-                  fontFamily: 'Lateef',
-                  color: Colors.green)),
-          centerTitle: true,
-        ),
+        appBar: appBarWidget(text: "الاذكار", onPress: () {}),
         body: BlocBuilder<AzkarCubit, AzkarState>(
           builder: (context, state) {
             if (state is AzkarLoading) {
