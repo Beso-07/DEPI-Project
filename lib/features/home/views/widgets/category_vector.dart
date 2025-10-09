@@ -1,4 +1,5 @@
 import 'package:depiproject/core/constants/assets.dart';
+import 'package:depiproject/features/AsmaulHusna/view/asmaulHusna_screen.dart';
 import 'package:depiproject/features/Azkar/views/azkar_view.dart';
 import 'package:depiproject/features/Quran/views/quran_content.dart';
 import 'package:depiproject/features/ahadith/view/rawi_name_view.dart';
@@ -11,7 +12,6 @@ import 'package:depiproject/features/tasbeh/model_view/cubit/tasabeh_cubit.dart'
 import 'package:depiproject/features/tasbeh/view/tasbeh.dart' show Tasbeh;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoryVector extends StatelessWidget {
   const CategoryVector({
@@ -91,9 +91,15 @@ class CategoryVector extends StatelessWidget {
                       }),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'قصص الأنبياء',
-                      img: Imagespath.story,
-                      onTap: () {}),
+                      text: "أسماء الله الحسنى",
+                      img: Imagespath.asmaulHusna,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AsmaulHusnaScreen()),
+                        );
+                      }),
                 ],
               ),
             ),

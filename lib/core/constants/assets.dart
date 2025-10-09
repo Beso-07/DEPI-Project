@@ -22,4 +22,5 @@ class Imagespath {
   static const compass2 = "assets/images/compass.png";
   static const cadrant = "assets/images/cadrant.png";
   static const compasss = "assets/images/compasss.png";
+  static const asmaulHusna = 'assets/images/asmaul_husna.png';
 }
