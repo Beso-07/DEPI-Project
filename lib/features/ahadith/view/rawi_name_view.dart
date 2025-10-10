@@ -90,7 +90,7 @@ class RawiNameView extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Image.asset(
-                                      Imagespath.story,
+                                      Imagespath.prophet,
                                       color: AppColors.kPrimaryColor,
                                     ),
                                     SizedBox(
