@@ -5,8 +5,13 @@ import 'package:depiproject/features/ahadith/view/rawi_name_view.dart';
 import 'package:depiproject/features/calender/views/calender_view.dart';
 import 'package:depiproject/features/home/views/widgets/category_item.dart';
 import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
-import 'package:flutter/material.dart';
+import 'package:depiproject/features/prophets/views/prophets_view.dart';
+import 'package:depiproject/features/tasbeh/model_view/cubit/tasabeh_cubit.dart'
+    show TasabehCubit;
+import 'package:depiproject/features/tasbeh/view/tasbeh.dart' show Tasbeh;
 
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoryVector extends StatelessWidget {
   const CategoryVector({
@@ -101,7 +106,15 @@ class CategoryVector extends StatelessWidget {
                       text: 'التسبيح', img: Imagespath.sebha, onTap: () {}),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'القبلة', img: Imagespath.qibla, onTap: () {}),
+                      text: 'الأنبياء',
+                      img: Imagespath.prophet,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ProphetsView()),
+                        );
+                      }),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
                       text: 'التقويم',

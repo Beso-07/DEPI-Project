@@ -1,6 +1,6 @@
 name: depiproject
 description: "A new Flutter project."
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # Version of your app
 version: 1.0.0+1
@@ -32,6 +32,7 @@ dependencies:
   shared_preferences: ^2.5.3
   sleek_circular_slider: ^2.0.1
   table_calendar: ^3.2.0
+  package_info_plus: ^8.0.0
 
 dev_dependencies:
   flutter_lints: ^3.0.0
