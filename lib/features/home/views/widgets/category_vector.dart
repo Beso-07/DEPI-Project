@@ -128,10 +128,10 @@ class CategoryVector extends StatelessWidget {
                       text: 'القبلة',
                       img: Imagespath.qibla,
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => QiblahView()),
-                        );
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(builder: (context) => ()),
+                        // );
                       }),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
