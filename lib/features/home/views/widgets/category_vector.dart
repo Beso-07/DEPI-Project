@@ -12,6 +12,7 @@ import 'package:depiproject/features/tasbeh/model_view/cubit/tasabeh_cubit.dart'
 import 'package:depiproject/features/tasbeh/view/tasbeh.dart' show Tasbeh;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoryVector extends StatelessWidget {
   const CategoryVector({
