@@ -1,4 +1,5 @@
 import 'package:depiproject/core/constants/colors.dart';
+import 'package:depiproject/features/settings/views/custom_settings.dart';
 import 'package:flutter/material.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -64,7 +65,12 @@ class CustomDrawer extends StatelessWidget {
             CustomDrawerItem(
               icon: Icons.settings,
               text: 'الاعدادات',
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CustomSettings()),
+                );
+              },
             ),
             CustomDrawerItem(
               icon: Icons.logout,
