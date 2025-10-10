@@ -111,7 +111,7 @@ class _QuranContentState extends State<QuranContent>
                       ),
                     );
                   }
-                  return SizedBox.shrink();
+                  return const SizedBox.shrink();
                 },
               ),
 

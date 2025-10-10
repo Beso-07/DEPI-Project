@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -26,6 +25,7 @@ class CostomOtpTextFormField extends StatelessWidget {
           if (value!.isEmpty) {
             return "";
           }
+          return null;
         },
         controller: otpControler,
         keyboardType: TextInputType.number,
@@ -38,19 +38,16 @@ class CostomOtpTextFormField extends StatelessWidget {
             onChanged!(value);
           }
         },
-
         textAlign: TextAlign.center,
-        style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), fontSize: 14),
+        style:
+            const TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 14),
         decoration: InputDecoration(
           border: OutlineInputBorder(
-            borderSide: BorderSide(color:Colors.grey),
-            borderRadius: BorderRadius.circular(10)
-          ),
+              borderSide: const BorderSide(color: Colors.grey),
+              borderRadius: BorderRadius.circular(10)),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color:Colors.grey),
-            borderRadius: BorderRadius.circular(10)
-
-          ),
+              borderSide: const BorderSide(color: Colors.grey),
+              borderRadius: BorderRadius.circular(10)),
         ),
       ),
     );
