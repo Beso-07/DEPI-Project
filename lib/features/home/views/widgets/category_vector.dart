@@ -6,6 +6,7 @@ import 'package:depiproject/features/ahadith/view/rawi_name_view.dart';
 import 'package:depiproject/features/calender/views/calender_view.dart';
 import 'package:depiproject/features/home/views/widgets/category_item.dart';
 import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
+import 'package:depiproject/features/doaa/views/adyaaa.dart';
 import 'package:depiproject/features/prophets/views/prophets_view.dart';
 import 'package:depiproject/features/tasbeh/model_view/cubit/tasabeh_cubit.dart'
     show TasabehCubit;
@@ -77,9 +78,18 @@ class CategoryVector extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  CategoryItem(
-                      text: 'الأدعية', img: Imagespath.doaa, onTap: () {}),
-                  const VerticalDivider(color: Colors.grey),
+                CategoryItem(
+  text: 'الأدعية',
+  img: Imagespath.doaa,
+  onTap: () {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const DoaaPage(),
+      ),
+    );
+  },
+),
+const VerticalDivider(color: Colors.grey),
                   CategoryItem(
                       text: 'احاديث',
                       img: Imagespath.hadith,
