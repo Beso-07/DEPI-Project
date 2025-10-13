@@ -1,4 +1,3 @@
-import 'package:depiproject/core/constants/app_Bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:depiproject/features/Azkar/models/azkar_model.dart';
@@ -17,7 +16,18 @@ class AzkarDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarWidget(text: title!, onPress: () {}),
+      appBar: AppBar(
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
+        ],
+        title: Text(title ?? "",
+            style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Lateef',
+                fontSize: 36,
+                color: Colors.green)),
+        centerTitle: true,
+      ),
       body: list == null || list!.isEmpty
           ? const Center(child: Text("لا يوجد أذكار"))
           : ListView.builder(

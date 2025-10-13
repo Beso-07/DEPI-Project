@@ -1,9 +1,8 @@
-import 'package:depiproject/core/constants/app_Bar.dart';
 import 'package:depiproject/features/Azkar/models/azkar_model.dart';
 import 'package:depiproject/features/Azkar/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:depiproject/features/Azkar/views/azkar_details_screen.dart';
+import 'package:depiproject/features/Azkar/views/azkar_Details_Screen.dart';
 import 'package:depiproject/features/Azkar/model_view/cubit/azkar_view_cubit.dart';
 import 'package:depiproject/features/Azkar/model_view/cubit/azkar_view_state.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,7 +15,18 @@ class AzkarCategoriesView extends StatelessWidget {
     return BlocProvider(
       create: (_) => AzkarCubit()..getAzkar(),
       child: Scaffold(
-        appBar: appBarWidget(text: "الاذكار", onPress: () {}),
+        appBar: AppBar(
+          actions: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
+          ],
+          title: const Text("الأذكار",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 36,
+                  fontFamily: 'Lateef',
+                  color: Colors.green)),
+          centerTitle: true,
+        ),
         body: BlocBuilder<AzkarCubit, AzkarState>(
           builder: (context, state) {
             if (state is AzkarLoading) {

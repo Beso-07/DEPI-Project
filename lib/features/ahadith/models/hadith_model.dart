@@ -13,6 +13,7 @@ class HadithModel {
   final List<Hadith> tirmidhi;
   final List<Hadith> elnasaee;
   final List<Hadith> abudawood;
+  
 
   HadithModel({
     required this.ahmad,
@@ -21,6 +22,7 @@ class HadithModel {
     required this.tirmidhi,
     required this.elnasaee,
     required this.abudawood,
+   
   });
 
   factory HadithModel.fromJson(Map<String, dynamic> json) {
@@ -34,6 +36,7 @@ class HadithModel {
       tirmidhi: parseList(json['tirmidhi']),
       elnasaee: parseList(json['elnasaee']),
       abudawood: parseList(json['abudawood']),
+     
     );
   }
 }
