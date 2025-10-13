@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:depiproject/core/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -28,56 +29,55 @@ class _DoaaPageState extends State<DoaaPage> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: const Color(0xfff5f8f3),
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: true,
-        title: const Text(
-          'الأدعية والتحصين',
-          style: TextStyle(
-            color: Colors.green,
-            fontWeight: FontWeight.bold,
+      body: Column(
+        children: [
+          const MainAppBar(title: 'الأدعية'),
+          SizedBox(
+            height: height * .03,
           ),
-        ),
-      ),
-      body: _doaaList.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              padding: const EdgeInsets.all(12),
-              itemCount: _doaaList.length,
-              itemBuilder: (context, index) {
-                var item = _doaaList[index];
-                return Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16)),
-                  margin: const EdgeInsets.symmetric(vertical: 6),
-                  child: ExpansionTile(
-                    leading: const Icon(Icons.menu_book, color: Colors.green),
-                    title: Text(
-                      item['category'],
-                      textDirection: TextDirection.rtl,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                    children: [
-                      ...item['array'].map<Widget>(
-                        (dua) => ListTile(
+          _doaaList.isEmpty
+              ? const Center(child: CircularProgressIndicator())
+              : Expanded(
+                  child: ListView.builder(
+                    padding: const EdgeInsets.all(12),
+                    itemCount: _doaaList.length,
+                    itemBuilder: (context, index) {
+                      var item = _doaaList[index];
+                      return Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16)),
+                        margin: const EdgeInsets.symmetric(vertical: 6),
+                        child: ExpansionTile(
+                          leading:
+                              const Icon(Icons.menu_book, color: Colors.green),
                           title: Text(
-                            dua['text'],
+                            item['category'],
                             textDirection: TextDirection.rtl,
-                            style: const TextStyle(fontSize: 15),
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
                           ),
+                          children: [
+                            ...item['array'].map<Widget>(
+                              (dua) => ListTile(
+                                title: Text(
+                                  dua['text'],
+                                  textDirection: TextDirection.rtl,
+                                  style: const TextStyle(fontSize: 15),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
-                );
-              },
-            ),
+                )
+        ],
+      ),
     );
   }
 }

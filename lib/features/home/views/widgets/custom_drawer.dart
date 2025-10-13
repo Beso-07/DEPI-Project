@@ -1,4 +1,5 @@
 import 'package:depiproject/core/constants/colors.dart';
+import 'package:depiproject/core/widgets/logout_dialog.dart';
 import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
 import 'package:depiproject/features/settings/views/custom_settings.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +88,15 @@ class CustomDrawer extends StatelessWidget {
             CustomDrawerItem(
               icon: Icons.logout,
               text: 'تسجيل الخروج',
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pop();
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return const LogoutDialog();
+                  },
+                );
+              },
             ),
           ],
         ),
