@@ -49,7 +49,7 @@ flutter:
   assets:
     - assets/images/
     - assets/json/
-
+    - assets/doaa.json
   fonts:
     - family: Lateef
       fonts:
