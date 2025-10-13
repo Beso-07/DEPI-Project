@@ -1,6 +1,7 @@
 
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/core/constants/colors.dart';
+import 'package:depiproject/core/widgets/main_app_bar.dart';
 import 'package:depiproject/features/ahadith/model_view/cubit/cubit/hadith_view_cubit.dart';
 import 'package:depiproject/features/ahadith/model_view/cubit/cubit/hadith_view_state.dart';
 import 'package:depiproject/features/ahadith/models/categories_model.dart';
