@@ -1,4 +1,3 @@
-
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/core/constants/colors.dart';
 import 'package:depiproject/core/widgets/main_app_bar.dart';
@@ -10,15 +9,14 @@ import 'package:depiproject/features/ahadith/view/ahadith_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class RawiNameView extends StatelessWidget {
   const RawiNameView({super.key});
 
   @override
   Widget build(BuildContext context) {
-     final height = MediaQuery.of(context).size.height;
+    final height = MediaQuery.of(context).size.height;
     final Width = MediaQuery.of(context).size.width;
-    
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: BlocProvider(
@@ -80,7 +78,7 @@ class RawiNameView extends StatelessWidget {
                             );
                           },
                           child: Container(
-                            height: height * 0.09,
+                            height: 90,
                             width: Width,
                             decoration: const BoxDecoration(
                                 color: AppColors.kPrayerTimeColor,
@@ -93,10 +91,11 @@ class RawiNameView extends StatelessWidget {
                                   children: [
                                     Image.asset(
                                       Imagespath.prophet,
+                                      width: 50,
                                       color: AppColors.kPrimaryColor,
                                     ),
-                                    SizedBox(
-                                      width: Width * 0.03,
+                                    const SizedBox(
+                                      width: 12,
                                     ),
                                     Column(
                                       crossAxisAlignment:
@@ -110,9 +109,9 @@ class RawiNameView extends StatelessWidget {
                                               fontSize: 20,
                                               fontFamily: "Lateef"),
                                         ),
-                                        const SizedBox(
-                                          height: 5,
-                                        ),
+                                        // const SizedBox(
+                                        //   height: 5,
+                                        // ),
                                         const Text(
                                           "عدد الاحاديث: 100",
                                           style: TextStyle(
@@ -141,7 +140,6 @@ class RawiNameView extends StatelessWidget {
           ],
         )),
       ),
-      
     );
   }
 }

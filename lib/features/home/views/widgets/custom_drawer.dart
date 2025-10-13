@@ -1,4 +1,5 @@
 import 'package:depiproject/core/constants/colors.dart';
+import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
 import 'package:depiproject/features/settings/views/custom_settings.dart';
 import 'package:flutter/material.dart';
 
@@ -53,6 +54,16 @@ class CustomDrawer extends StatelessWidget {
               onTap: () {},
             ),
             CustomDrawerItem(
+              icon: Icons.explore,
+              text: "القبلة",
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const QiblahView()),
+                );
+              },
+            ),
+            CustomDrawerItem(
               icon: Icons.bookmark_border,
               text: 'المحفوظات',
               onTap: () {},
@@ -68,7 +79,8 @@ class CustomDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CustomSettings()),
+                  MaterialPageRoute(
+                      builder: (context) => const CustomSettings()),
                 );
               },
             ),

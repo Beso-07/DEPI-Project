@@ -16,7 +16,6 @@ class AsmaulHusnaCubit extends Cubit<AsmaulHusnaState> {
       final data =
           (response as List).map((e) => AsmaulhusnaModel.fromJson(e)).toList();
 
-      await Future.delayed(const Duration(seconds: 2));
       emit(AsmaulHusnaSuccess(data));
     } catch (e) {
       emit(AsmaulHusnaError(e.toString()));

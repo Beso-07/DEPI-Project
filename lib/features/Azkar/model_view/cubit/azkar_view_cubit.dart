@@ -10,7 +10,6 @@ class AzkarCubit extends Cubit<AzkarState> {
 
   Future<void> getAzkar() async {
     emit(AzkarLoading());
-    await Future.delayed(const Duration(seconds: 5));
     try {
       final String response =
           await rootBundle.loadString('assets/json/azkar.json');

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class QuranPage extends StatefulWidget {
   final Surah surah;
-  
+
   const QuranPage({super.key, required this.surah});
 
   @override
@@ -40,10 +40,9 @@ class _QuranPageState extends State<QuranPage> {
       body: Column(
         children: [
           MainAppBar(title: widget.surah.name ?? 'سورة'),
-          
           Container(
             width: double.infinity,
-            padding:const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             margin: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.green.shade50,
@@ -71,7 +70,9 @@ class _QuranPageState extends State<QuranPage> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '${widget.surah.type} • ${widget.surah.totalVerses} آية',
+                  widget.surah.totalVerses! < 10
+                      ? '${widget.surah.totalVerses} آيات ${widget.surah.type} '
+                      : '${widget.surah.totalVerses} آيه ${widget.surah.type} ',
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.green.shade600,
@@ -80,9 +81,11 @@ class _QuranPageState extends State<QuranPage> {
               ],
             ),
           ),
-          
+
           // Navigation Controls
-          if (!isLoading && verses.isNotEmpty && (verses.length / 10).ceil() > 1)
+          if (!isLoading &&
+              verses.isNotEmpty &&
+              (verses.length / 10).ceil() > 1)
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
@@ -121,9 +124,9 @@ class _QuranPageState extends State<QuranPage> {
                 ],
               ),
             ),
-          
+
           const SizedBox(height: 8),
-          
+
           // Verses Section
           Expanded(
             child: isLoading
@@ -132,22 +135,25 @@ class _QuranPageState extends State<QuranPage> {
                     ? const Center(child: Text('لا توجد آيات متاحة'))
                     : PageView.builder(
                         controller: pageController,
-                        itemCount: (verses.length / 10).ceil(), // 10 verses per page
+                        itemCount:
+                            (verses.length / 10).ceil(), // 10 verses per page
                         itemBuilder: (context, pageIndex) {
                           int startIndex = pageIndex * 10;
-                          int endIndex = (startIndex + 10 > verses.length) 
-                              ? verses.length 
+                          int endIndex = (startIndex + 10 > verses.length)
+                              ? verses.length
                               : startIndex + 10;
-                          
-                          List<Verse> pageVerses = verses.sublist(startIndex, endIndex);
-                          
+
+                          List<Verse> pageVerses =
+                              verses.sublist(startIndex, endIndex);
+
                           return Container(
                             padding: const EdgeInsets.all(16),
                             child: Column(
                               children: [
                                 // Page Number
                                 Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 6),
                                   decoration: BoxDecoration(
                                     color: Colors.green.shade100,
                                     borderRadius: BorderRadius.circular(20),
@@ -161,22 +167,26 @@ class _QuranPageState extends State<QuranPage> {
                                   ),
                                 ),
                                 const SizedBox(height: 16),
-                                
+
                                 // Verses
                                 Expanded(
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: [
                                         // Add Basmala for first page (except At-Tawbah)
-                                        if (pageIndex == 0 && widget.surah.id != 9)
+                                        if (pageIndex == 0 &&
+                                            widget.surah.id != 9)
                                           Container(
                                             width: double.infinity,
-                                            margin: const EdgeInsets.only(bottom: 16),
+                                            margin: const EdgeInsets.only(
+                                                bottom: 16),
                                             padding: const EdgeInsets.all(16),
                                             decoration: BoxDecoration(
                                               color: Colors.green.shade50,
-                                              borderRadius: BorderRadius.circular(12),
-                                              border: Border.all(color: Colors.green.shade200),
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
+                                              border: Border.all(
+                                                  color: Colors.green.shade200),
                                             ),
                                             child: Text(
                                               'بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ',
@@ -190,16 +200,18 @@ class _QuranPageState extends State<QuranPage> {
                                               ),
                                             ),
                                           ),
-                                        
+
                                         // Verses
                                         ...pageVerses.map((verse) {
                                           return Container(
                                             width: double.infinity,
-                                            margin: const EdgeInsets.only(bottom: 16),
+                                            margin: const EdgeInsets.only(
+                                                bottom: 16),
                                             padding: const EdgeInsets.all(16),
                                             decoration: BoxDecoration(
                                               color: Colors.white,
-                                              borderRadius: BorderRadius.circular(12),
+                                              borderRadius:
+                                                  BorderRadius.circular(12),
                                               boxShadow: [
                                                 BoxShadow(
                                                   color: Colors.grey.shade200,
@@ -209,30 +221,40 @@ class _QuranPageState extends State<QuranPage> {
                                               ],
                                             ),
                                             child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
                                                 // Verse Number
                                                 Container(
-                                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 8,
+                                                      vertical: 4),
                                                   decoration: BoxDecoration(
-                                                    color: Colors.green.shade100,
-                                                    borderRadius: BorderRadius.circular(12),
+                                                    color:
+                                                        Colors.green.shade100,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12),
                                                   ),
                                                   child: Text(
                                                     '${verse.verse}',
                                                     style: TextStyle(
-                                                      color: Colors.green.shade800,
-                                                      fontWeight: FontWeight.bold,
+                                                      color:
+                                                          Colors.green.shade800,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                     ),
                                                   ),
                                                 ),
                                                 const SizedBox(height: 12),
-                                                
+
                                                 // Verse Text
                                                 Text(
                                                   verse.text ?? '',
                                                   textAlign: TextAlign.right,
-                                                  textDirection: TextDirection.rtl,
+                                                  textDirection:
+                                                      TextDirection.rtl,
                                                   style: const TextStyle(
                                                     fontFamily: 'Lateef',
                                                     fontSize: 24,

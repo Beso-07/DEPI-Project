@@ -17,6 +17,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
+  flutter_compass: ^0.8.1
   flutter_localizations:
     sdk: flutter
   flutter_slider_drawer: ^3.0.2
@@ -27,12 +28,12 @@ dependencies:
   hijri: ^3.0.0
   intl: ^0.20.0
   islamic_hijri_calendar: ^0.0.4
+  package_info_plus: ^8.0.0
   percent_indicator: ^4.2.5
   permission_handler: ^12.0.1
   shared_preferences: ^2.5.3
   sleek_circular_slider: ^2.0.1
   table_calendar: ^3.2.0
-  package_info_plus: ^8.0.0
 
 dev_dependencies:
   flutter_lints: ^3.0.0
@@ -41,7 +42,6 @@ dev_dependencies:
 
 dependency_overrides:
   intl: ^0.20.2
-
 
 flutter:
   uses-material-design: true
