@@ -65,7 +65,7 @@ class RawiAhadithView extends StatelessWidget {
                     height: height * 0.04,
                   ),
                   SizedBox(
-                    width: double.infinity,
+                    // width: double.infinity,
                     child: Row(
                       children: [
                         Text(

@@ -1,7 +1,17 @@
-class Zekr {
+import 'package:hive/hive.dart';
+
+part 'azkar_model.g.dart';
+
+@HiveType(typeId: 0)
+class Zekr extends HiveObject {
+  @HiveField(0)
   final String zekr;
+
+  @HiveField(1)
   final int count;
+
   Zekr({required this.zekr, required this.count});
+
   factory Zekr.fromJson(Map<String, dynamic> json) =>
       Zekr(zekr: json['zekr'], count: json['count']);
 }

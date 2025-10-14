@@ -1,5 +1,6 @@
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/core/constants/colors.dart';
+import 'package:depiproject/features/Archives/View/archive_view.dart';
 import 'package:depiproject/features/Auth/views/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +57,12 @@ class CustomDrawer extends StatelessWidget {
             CustomDrawerItem(
               icon: Icons.bookmark_border,
               text: 'المحفوظات',
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ArchiveView()),
+                );
+              },
             ),
             CustomDrawerItem(
               icon: Icons.notifications_on_sharp,
