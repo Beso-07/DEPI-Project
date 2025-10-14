@@ -14,8 +14,7 @@ class RawiNameView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
-    final Width = MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -79,7 +78,7 @@ class RawiNameView extends StatelessWidget {
                           },
                           child: Container(
                             height: 90,
-                            width: Width,
+                            width: width,
                             decoration: const BoxDecoration(
                                 color: AppColors.kPrayerTimeColor,
                                 borderRadius:

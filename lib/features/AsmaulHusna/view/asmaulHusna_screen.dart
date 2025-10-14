@@ -1,9 +1,9 @@
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/core/constants/colors.dart';
 import 'package:depiproject/core/widgets/main_app_bar.dart';
-import 'package:depiproject/features/AsmaulHusna/model_view/cubit/asmaulHusna_cubit.dart';
-import 'package:depiproject/features/AsmaulHusna/model_view/cubit/asmaulHusna_state.dart';
-import 'package:depiproject/features/AsmaulHusna/view/widget/showDoalog_widget.dart';
+import 'package:depiproject/features/AsmaulHusna/model_view/cubit/asmaulhusna_cubit.dart';
+import 'package:depiproject/features/AsmaulHusna/model_view/cubit/asmaulhusna_state.dart';
+import 'package:depiproject/features/AsmaulHusna/view/widget/show_dialog_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

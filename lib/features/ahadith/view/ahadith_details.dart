@@ -40,7 +40,7 @@ class RawiAhadithView extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               itemCount: list!.length,
               itemBuilder: (BuildContext context, int index) {
-                final Hadith = list![index];
+                final hadith = list![index];
 
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 16),
@@ -73,7 +73,7 @@ class RawiAhadithView extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      " حديث رقم ${Hadith.id}",
+                                      " حديث رقم ${hadith.id}",
                                       style: const TextStyle(
                                           color: Colors.black,
                                           fontWeight: FontWeight.w800),
@@ -89,7 +89,7 @@ class RawiAhadithView extends StatelessWidget {
                                     IconButton(
                                       onPressed: () {
                                         Clipboard.setData(ClipboardData(
-                                            text: Hadith.hadithContent));
+                                            text: hadith.hadithContent));
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           const SnackBar(
@@ -114,7 +114,7 @@ class RawiAhadithView extends StatelessWidget {
                             SizedBox(
                               width: double.infinity,
                               child: Text(
-                                Hadith.hadithContent,
+                                hadith.hadithContent,
                                 style: const TextStyle(
                                     color: AppColors.kPrimaryColor2,
                                     fontWeight: FontWeight.w900),
