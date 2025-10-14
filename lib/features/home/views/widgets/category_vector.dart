@@ -74,18 +74,18 @@ class CategoryVector extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                CategoryItem(
-  text: 'الأدعية',
-  img: Imagespath.doaa,
-  onTap: () {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const DoaaPage(),
-      ),
-    );
-  },
-),
-const VerticalDivider(color: Colors.grey),
+                  CategoryItem(
+                    text: 'الأدعية',
+                    img: Imagespath.doaa,
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const DoaaPage(),
+                        ),
+                      );
+                    },
+                  ),
+                  const VerticalDivider(color: Colors.grey),
                   CategoryItem(
                       text: 'احاديث',
                       img: Imagespath.hadith,
@@ -142,7 +142,7 @@ const VerticalDivider(color: Colors.grey),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return const CalenderView();
+                          return CalenderView();
                         }));
                       }),
                 ],

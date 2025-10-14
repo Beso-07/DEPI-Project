@@ -13,6 +13,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   device_preview: ^1.2.0
   dio: ^5.9.0
+  easy_date_timeline: ^2.0.9
   equatable: ^2.0.7
   flutter:
     sdk: flutter

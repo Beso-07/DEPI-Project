@@ -79,30 +79,35 @@ class RawiAhadithView extends StatelessWidget {
                                           fontWeight: FontWeight.w800),
                                     ),
                                     const Spacer(),
-                                    const Icon(
-                                      Icons.bookmark_border,
-                                      color: AppColors.kPrimaryColor2,
-                                    ),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    IconButton(
-                                      onPressed: () {
-                                        Clipboard.setData(ClipboardData(
-                                            text: hadith.hadithContent));
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text("تم نسخ الحديث ✅"),
-                                            backgroundColor:
-                                                AppColors.kPrimaryColor2,
+                                    Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.bookmark_border,
+                                          color: AppColors.kPrimaryColor2,
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        IconButton(
+                                          onPressed: () {
+                                            Clipboard.setData(ClipboardData(
+                                                text: hadith.hadithContent));
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              const SnackBar(
+                                                content:
+                                                    Text("تم نسخ الحديث ✅"),
+                                                backgroundColor:
+                                                    AppColors.kPrimaryColor2,
+                                              ),
+                                            );
+                                          },
+                                          icon: const Icon(
+                                            Icons.copy_all_rounded,
+                                            color: AppColors.kPrimaryColor2,
                                           ),
-                                        );
-                                      },
-                                      icon: const Icon(
-                                        Icons.copy_all_rounded,
-                                        color: AppColors.kPrimaryColor2,
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
