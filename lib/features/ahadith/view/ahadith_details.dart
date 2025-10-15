@@ -40,7 +40,7 @@ class RawiAhadithView extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               itemCount: list!.length,
               itemBuilder: (BuildContext context, int index) {
-                final Hadith = list![index];
+                final hadith = list![index];
 
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 16),
@@ -73,36 +73,41 @@ class RawiAhadithView extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        " حديث رقم ${Hadith.id}",
+                                        " حديث رقم ${hadith.id}",
                                         style: const TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.w800),
                                       ),
                                       const Spacer(),
-                                      const Icon(
-                                        Icons.bookmark_border,
-                                        color: AppColors.kPrimaryColor2,
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      IconButton(
-                                        onPressed: () {
-                                          Clipboard.setData(ClipboardData(
-                                              text: Hadith.hadithContent));
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            const SnackBar(
-                                              content: Text("تم نسخ الحديث ✅"),
-                                              backgroundColor:
-                                                  AppColors.kPrimaryColor2,
+                                      Row(
+                                        children: [
+                                          const Icon(
+                                            Icons.bookmark_border,
+                                            color: AppColors.kPrimaryColor2,
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          IconButton(
+                                            onPressed: () {
+                                              Clipboard.setData(ClipboardData(
+                                                  text: hadith.hadithContent));
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                  content:
+                                                      Text("تم نسخ الحديث ✅"),
+                                                  backgroundColor:
+                                                      AppColors.kPrimaryColor2,
+                                                ),
+                                              );
+                                            },
+                                            icon: const Icon(
+                                              Icons.copy_all_rounded,
+                                              color: AppColors.kPrimaryColor2,
                                             ),
-                                          );
-                                        },
-                                        icon: const Icon(
-                                          Icons.copy_all_rounded,
-                                          color: AppColors.kPrimaryColor2,
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -114,7 +119,7 @@ class RawiAhadithView extends StatelessWidget {
                               SizedBox(
                                 width: double.infinity,
                                 child: Text(
-                                  Hadith.hadithContent,
+                                  hadith.hadithContent,
                                   style: const TextStyle(
                                       color: AppColors.kPrimaryColor2,
                                       fontWeight: FontWeight.w900),

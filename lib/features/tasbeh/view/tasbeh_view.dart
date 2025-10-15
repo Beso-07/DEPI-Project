@@ -116,30 +116,33 @@ class TasbehView extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: height * 0.2,
+                  height: height * 0.23,
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
-                      border: Border.all(color: AppColors.kPrimaryColor2)),
-                  height: height * 0.04,
-                  width: Width * 0.5,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () => {
-                          // counter = 0,
-                          cubit.resetCount()
-                        },
-                        child: const Text(
-                          "اعادة ضبط ",
-                          style: TextStyle(
-                              color: AppColors.kPrimaryColor2,
-                              fontWeight: FontWeight.w900),
-                        ),
-                      )
-                    ],
+                IntrinsicWidth(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        border: Border.all(color: AppColors.kPrimaryColor2)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(9),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            onTap: () => {
+                              // counter = 0,
+                              cubit.resetCount()
+                            },
+                            child: const Text(
+                              "اعادة ضبط ",
+                              style: TextStyle(
+                                  color: AppColors.kPrimaryColor2,
+                                  fontWeight: FontWeight.w900),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ],

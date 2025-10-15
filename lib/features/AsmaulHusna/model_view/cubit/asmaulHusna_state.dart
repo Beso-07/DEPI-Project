@@ -1,5 +1,5 @@
 import 'package:depiproject/core/helpers/json_helper.dart';
-import 'package:depiproject/features/AsmaulHusna/model_view/cubit/asmaulHusna_cubit.dart';
+import 'package:depiproject/features/AsmaulHusna/model_view/cubit/asmaulhusna_cubit.dart';
 import 'package:depiproject/features/AsmaulHusna/models/AsmaulHusna_model.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
