@@ -1,5 +1,6 @@
 import 'package:depiproject/core/constants/colors.dart';
 import 'package:depiproject/core/widgets/logout_dialog.dart';
+import 'package:depiproject/features/qiblah/views/qiblah_home.dart';
 import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
 import 'package:depiproject/features/settings/views/custom_settings.dart';
 import 'package:flutter/material.dart';

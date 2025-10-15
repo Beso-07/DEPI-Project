@@ -6,8 +6,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  LocationService.getCurrentLocation();
-  runApp(DevicePreview(builder: (context) => const IslamicApp()));
+  await LocationService.getCurrentLocation();
+   runApp(DevicePreview(builder: (context) => const IslamicApp()));
 }
 
 class IslamicApp extends StatelessWidget {
