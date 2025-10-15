@@ -76,49 +76,50 @@ class RawiNameView extends StatelessWidget {
                               ),
                             );
                           },
-                          child: Container(
-                            height: 90,
-                            width: width,
-                            decoration: const BoxDecoration(
-                                color: AppColors.kPrayerTimeColor,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20))),
-                            child: Padding(
-                              padding: const EdgeInsets.all(6),
-                              child: Expanded(
-                                child: Row(
-                                  children: [
-                                    Image.asset(
-                                      Imagespath.prophet,
-                                      width: 50,
-                                      color: AppColors.kPrimaryColor,
-                                    ),
-                                    const SizedBox(
-                                      width: 12,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          categorie.title,
-                                          style: const TextStyle(
-                                              color: AppColors.kPrimaryColor,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20,
-                                              fontFamily: "Lateef"),
-                                        ),
-                                        // const SizedBox(
-                                        //   height: 5,
-                                        // ),
-                                        const Text(
-                                          "عدد الاحاديث: 100",
-                                          style: TextStyle(
-                                              color: AppColors.kPrimaryColor2),
-                                        )
-                                      ],
-                                    )
-                                  ],
+                          child: IntrinsicWidth(
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                  color: AppColors.kPrayerTimeColor,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(20))),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: Expanded(
+                                  child: Row(
+                                    children: [
+                                      Image.asset(
+                                        Imagespath.prophet,
+                                        width: 50,
+                                        color: AppColors.kPrimaryColor,
+                                      ),
+                                      const SizedBox(
+                                        width: 12,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            categorie.title,
+                                            style: const TextStyle(
+                                                color: AppColors.kPrimaryColor,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20,
+                                                fontFamily: "Lateef"),
+                                          ),
+                                          // const SizedBox(
+                                          //   height: 5,
+                                          // ),
+                                          const Text(
+                                            "عدد الاحاديث: 100",
+                                            style: TextStyle(
+                                                color:
+                                                    AppColors.kPrimaryColor2),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
