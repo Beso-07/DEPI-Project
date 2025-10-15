@@ -1,4 +1,3 @@
-import 'package:depiproject/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 class MainAppBar extends StatelessWidget {
@@ -31,9 +30,9 @@ class MainAppBar extends StatelessWidget {
           Text(
             title,
             style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: AppColors.kPrimaryColor),
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           IconButton(
             onPressed: () {},

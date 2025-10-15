@@ -33,7 +33,9 @@ class PrayTime extends StatelessWidget {
                   color: Colors.white,
                   fontWeight: FontWeight.w700)),
           SizedBox(height: MediaQuery.of(context).size.height * .02),
-          const GetNextPrayer(),
+          const GetNextPrayer(
+            color: Colors.white,
+          ),
         ],
       ),
     );

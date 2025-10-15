@@ -32,7 +32,7 @@ class HomeView extends StatelessWidget {
             onPressed: () async {
               ShowLocalNotification().shownotificaton('local', 'notify');
             },
-            child: Text('Show Notification'),
+            child: const Text('Show Notification'),
           ),
           SizedBox(
             height: height * .15,

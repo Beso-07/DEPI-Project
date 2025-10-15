@@ -1,4 +1,3 @@
-import 'package:depiproject/core/constants/colors.dart';
 import 'package:depiproject/core/widgets/logout_dialog.dart';
 import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
 import 'package:depiproject/features/settings/views/custom_settings.dart';
@@ -31,9 +30,7 @@ class CustomDrawer extends StatelessWidget {
                     ),
                     Text(
                       'example@gmail.com',
-                      style: TextStyle(
-                          color: AppColors.kPrimaryColor,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
                 )
@@ -121,22 +118,18 @@ class CustomDrawerItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 32),
+        padding: const EdgeInsets.only(bottom: 16),
         child: Row(
           children: [
             Icon(
               icon,
-              color: AppColors.kPrimaryColor,
             ),
             const SizedBox(
               width: 10,
             ),
             Text(
               text,
-              style: const TextStyle(
-                  color: AppColors.kPrimaryColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
             )
           ],
         ),

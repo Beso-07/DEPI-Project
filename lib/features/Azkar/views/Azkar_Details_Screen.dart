@@ -42,10 +42,10 @@ class AzkarDetailsScreen extends StatelessWidget {
                             Text(
                               "\"${zekr.zekr}\"",
                               style: const TextStyle(
-                                fontSize: 22,
-                                fontFamily: 'Lateef',
-                                fontWeight: FontWeight.bold,
-                              ),
+                                  fontSize: 22,
+                                  fontFamily: 'Lateef',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
                               textAlign: TextAlign.center,
                             ),
                             const Divider(),

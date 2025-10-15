@@ -22,13 +22,12 @@ class PrayerView extends StatelessWidget {
             const MainAppBar(
               title: 'مواقيت الصلاة',
             ),
+            SizedBox(height: height * .05),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const GetNextPrayer(
-                  color: AppColors.kPrimaryColor,
-                ),
+                const GetNextPrayer(),
                 SizedBox(height: height * .01),
                 const DayRow(),
                 const PrayersList(),

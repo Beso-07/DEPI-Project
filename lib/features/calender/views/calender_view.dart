@@ -64,7 +64,6 @@ class _CalenderViewState extends State<CalenderView> {
                         style: const TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.kPrimaryColor2,
                         ),
                       ),
                     );
