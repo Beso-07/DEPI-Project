@@ -15,9 +15,6 @@ class CustomSettings extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => SettingsCubit()),
-        BlocProvider(
-          create: (context) => ThemeCubit(),
-        )
       ],
       child: Scaffold(
         body: Column(
