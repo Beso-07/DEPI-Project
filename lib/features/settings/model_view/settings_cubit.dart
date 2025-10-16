@@ -77,7 +77,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   void resetSettings() {
     emit(SettingsLoaded(
       isDaylightSavingEnabled: true,
-      isDarkModeEnabled: true,
+      isDarkModeEnabled: false,
       selectedCountry: 'مصر',
       selectedLanguage: 'عربية',
     ));
