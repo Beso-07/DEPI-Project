@@ -40,7 +40,7 @@ class _QuranPageState extends State<QuranPage> {
       body: Column(
         children: [
           MainAppBar(title: widget.surah.name ?? 'سورة'),
-          
+
           if (!isLoading &&
               verses.isNotEmpty &&
               (verses.length / 10).ceil() > 1)
@@ -224,7 +224,8 @@ class _QuranPageState extends State<QuranPage> {
                                                       TextDirection.rtl,
                                                   style: const TextStyle(
                                                     fontFamily: 'Lateef',
-                                                    fontSize: 24,
+                                                    fontSize: 30,
+                                                    fontWeight: FontWeight.w600,
                                                     height: 1.8,
                                                     color: Colors.black87,
                                                   ),

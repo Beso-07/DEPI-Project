@@ -1,4 +1,3 @@
-import 'package:depiproject/core/constants/colors.dart';
 import 'package:depiproject/core/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:hijri/hijri_calendar.dart';
