@@ -15,6 +15,9 @@ class CustomSettings extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => SettingsCubit()),
+        BlocProvider(
+          create: (context) => ThemeCubit(),
+        )
       ],
       child: Scaffold(
         body: Column(
@@ -22,7 +25,7 @@ class CustomSettings extends StatelessWidget {
             const MainAppBar(title: "الاعدادات العامة"),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(4.0),
+                padding: const EdgeInsets.all(16.0),
                 child: BlocBuilder<SettingsCubit, SettingsState>(
                   builder: (context, state) {
                     if (state is SettingsLoading) {
@@ -68,17 +71,7 @@ class CustomSettings extends StatelessWidget {
                                   .toggleDaylightSaving(value);
                             },
                           ),
-                          CustomSettingsItem(
-                            title: " الوضع الليلى",
-                            hasSwitch: true,
-                            switchValue: state.isDarkModeEnabled,
-                            onSwitchChanged: (value) {
-                              themeCubit.toggleTheme();
-                              context
-                                  .read<SettingsCubit>()
-                                  .toggleThemeSaving(value);
-                            },
-                          ),
+                         
                         ],
                       );
                     }
@@ -152,3 +145,8 @@ class CustomSettings extends StatelessWidget {
     );
   }
 }
+
+
+
+
+    

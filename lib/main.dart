@@ -15,7 +15,7 @@ void main() async {
   await ShowLocalNotification().initNotification();
 
   runApp(BlocProvider(
-    create: (context) => ThemeCubit(),
+    create: (_) => ThemeCubit(),
     child: DevicePreview(builder: (context) => const IslamicApp()),
   ));
 }
@@ -25,24 +25,24 @@ class IslamicApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit, ThemeState>(
-      builder: (context, state) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: state.themeData,
-          locale: const Locale('ar'),
-          supportedLocales: const [
-            Locale('en'),
-            Locale('ar', 'SA'),
-          ],
-          localizationsDelegates: const [
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          home: const SplashView(),
-        );
-      },
+    return BlocBuilder<ThemeCubit, ThemeData>(
+      builder: (context, theme) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: theme,
+      locale: const Locale('ar'),
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ar', 'SA'),
+      ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      home: const SplashView(),
     );
   }
+  );
+}
 }
