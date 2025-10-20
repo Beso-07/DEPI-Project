@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 
-part 'azkar_model.g.dart';
+part  'azkar_model.g.dart';
 
 @HiveType(typeId: 0)
 class Zekr extends HiveObject {
