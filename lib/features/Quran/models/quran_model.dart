@@ -1,11 +1,31 @@
-class Surah {
+import 'package:hive/hive.dart';
+
+part 'quran_model.g.dart'; // 👈 ده السطر اللي بيولّد الملف التلقائي
+
+@HiveType(typeId: 2) // 👈 رقم مختلف عن الأذكار والأحاديث
+class Surah extends HiveObject {
+  @HiveField(0)
   int? id;
+
+  @HiveField(1)
   String? name;
+
+  @HiveField(2)
   String? transliteration;
+
+  @HiveField(3)
   String? type;
+
+  @HiveField(4)
   int? totalVerses;
+
+  @HiveField(5)
   int? pageStart;
+
+  @HiveField(6)
   int? pageEnd;
+
+  @HiveField(7)
   List<Verse>? verses;
 
   Surah({
@@ -36,9 +56,15 @@ class Surah {
   }
 }
 
-class Verse {
+@HiveType(typeId: 3)
+class Verse extends HiveObject {
+  @HiveField(0)
   int? chapter;
+
+  @HiveField(1)
   int? verse;
+
+  @HiveField(2)
   String? text;
 
   Verse({this.chapter, this.verse, this.text});

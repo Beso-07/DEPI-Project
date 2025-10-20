@@ -9,7 +9,11 @@ class AzkarLoading extends AzkarState {}
 class AzkarSuccess extends AzkarState {
   final AzkarModel azkar;
   final List<Zekr> savedAzkar;
-  AzkarSuccess({required this.azkar, required this.savedAzkar});
+
+  AzkarSuccess({
+    required this.azkar,
+    required this.savedAzkar,
+  });
 }
 
 class AzkarError extends AzkarState {
