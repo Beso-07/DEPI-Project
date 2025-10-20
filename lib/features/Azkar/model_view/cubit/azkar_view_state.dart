@@ -1,4 +1,4 @@
-import 'package:depiproject/features/Azkar/models/azkar_model.dart';
+import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
 
 abstract class AzkarState {}
 
@@ -8,7 +8,12 @@ class AzkarLoading extends AzkarState {}
 
 class AzkarSuccess extends AzkarState {
   final AzkarModel azkar;
-  AzkarSuccess(this.azkar);
+  final List<Zekr> savedAzkar;
+
+  AzkarSuccess({
+    required this.azkar,
+    required this.savedAzkar,
+  });
 }
 
 class AzkarError extends AzkarState {

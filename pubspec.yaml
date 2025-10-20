@@ -1,8 +1,7 @@
 name: depiproject
 description: "A new Flutter project."
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+publish_to: "none"
 
-# Version of your app
 version: 1.0.0+1
 
 environment:
@@ -18,33 +17,39 @@ dependencies:
   equatable: ^2.0.7
   flutter:
     sdk: flutter
-  flutter_bloc: ^9.1.1
+
   flutter_compass: ^0.8.1
   flutter_launcher_icons: ^0.14.4
   flutter_local_notifications: ^19.4.2
   flutter_localizations:
     sdk: flutter
+  flutter_qiblah: ^3.1.0+1
   flutter_slider_drawer: ^3.0.2
   font_awesome_flutter: ^10.9.0
   geocode: ^1.0.3
   geocoding: ^4.0.0
-  geolocator: ^14.0.2
+  geolocator: 13.0.4
   get: ^4.7.2
   hijri: ^3.0.0
   intl: ^0.20.0
   islamic_hijri_calendar: ^0.0.4
-  package_info_plus: ^8.0.0
   percent_indicator: ^4.2.5
   permission_handler: ^12.0.1
-  shared_preferences: ^2.5.3
   sleek_circular_slider: ^2.0.1
   table_calendar: ^3.2.0
   timezone: ^0.10.1
+
+  package_info_plus: ^8.0.0
+  hive_flutter: ^1.1.0
+  hive: ^2.2.3
+  flutter_bloc: ^9.1.1
 
 dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
+  build_runner: ^2.4.8
+  hive_generator: ^2.0.1
 
 dependency_overrides:
   intl: ^0.20.2

@@ -8,7 +8,8 @@ class HadithLoading extends HadithState {}
 
 class HadithSuccess extends HadithState {
   late final HadithModel hadith;
-  HadithSuccess(this.hadith);
+  final List<Hadith> savedHadith;
+  HadithSuccess(this.hadith, this.savedHadith);
 }
 
 class HadithError extends HadithState {
