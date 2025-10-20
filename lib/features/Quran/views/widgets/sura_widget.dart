@@ -1,5 +1,4 @@
 import 'package:depiproject/core/constants/assets.dart';
-import 'package:depiproject/core/constants/colors.dart';
 import 'package:depiproject/features/Quran/models/quran_model.dart';
 import 'package:depiproject/features/Quran/views/quran_page.dart';
 import 'package:flutter/material.dart';

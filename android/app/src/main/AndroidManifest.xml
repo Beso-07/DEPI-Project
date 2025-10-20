@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<<<<<<< HEAD
+    <uses-permission android:name="android.permission.INTERNET"/>
+=======
     <uses-permission android:name="android.permission.INTERNET" />
+>>>>>>> 55a588b6b6b407c047aed51e8d4de38bea9d064b
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-feature android:name="android.hardware.sensor.compass" android:required="false" />
@@ -8,7 +12,12 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
+<<<<<<< HEAD
+        android:label="depiproject"
+        android:label="depiproject"
+=======
         android:label="تقوى"
+>>>>>>> 55a588b6b6b407c047aed51e8d4de38bea9d064b
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
