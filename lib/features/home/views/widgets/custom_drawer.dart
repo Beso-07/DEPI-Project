@@ -1,7 +1,9 @@
 import 'package:depiproject/core/widgets/logout_dialog.dart';
 import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
+import 'package:depiproject/features/settings/model_view/cubit/theme_cubit.dart';
 import 'package:depiproject/features/settings/views/custom_settings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -10,6 +12,9 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+    final isDark = cubit.state.brightness == Brightness.dark;
+    final height = MediaQuery.of(context).size.height;
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.only(right: 16),
@@ -33,11 +38,20 @@ class CustomDrawer extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
-                )
+                ),
               ],
             ),
+            SizedBox(
+              height: height * 0.05,
+            ),
+            ElevatedButton.icon(
+              onPressed: cubit.toggleTheme,
+              icon: Icon(isDark ? Icons.wb_sunny : Icons.nightlight_round),
+              label:
+                  Text(isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'),
+            ),
             const SizedBox(
-              height: 80,
+              height: 40,
             ),
             CustomDrawerItem(
               icon: Icons.home,
