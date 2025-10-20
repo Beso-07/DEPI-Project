@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'features/splash/views/splash_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,10 +20,10 @@ void main() async {
 
   await LocationService.getCurrentLocation();
 
-  runApp(DevicePreview(builder: (context) => const IslamicApp()));
-  LocationService.getCurrentLocation();
+  // runApp(DevicePreview(builder: (context) => const IslamicApp()));
+  // LocationService.getCurrentLocation();
   // await initTimeZone();
-  // await ShowLocalNotification().initNotification();
+  //  await ShowLocalNotification().initNotification();
 
   runApp(BlocProvider(
     create: (_) => ThemeCubit(),
@@ -51,7 +50,7 @@ class IslamicApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        home: HomeView(),
+        home: const SplashView(),
       );
     });
   }

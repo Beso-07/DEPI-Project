@@ -28,12 +28,12 @@ class HomeView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: PrayTime(),
           ),
-          ElevatedButton(
-            onPressed: () async {
-              // ShowLocalNotification().shownotificaton('local', 'notify');
-            },
-            child: const Text('Show Notification'),
-          ),
+          // ElevatedButton(
+          //   onPressed: () async {
+          //     // ShowLocalNotification().shownotificaton('local', 'notify');
+          //   },
+          //   child: const Text('Show Notification'),
+          // ),
           SizedBox(
             height: height * .15,
           ),
