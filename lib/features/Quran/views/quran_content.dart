@@ -26,7 +26,6 @@ class _QuranContentState extends State<QuranContent> {
     return BlocProvider(
       create: (context) => QuranCubit()..loadQuranData(),
       child: Scaffold(
-        backgroundColor: Colors.white,
         body: Column(
           children: [
             const MainAppBar(title: 'القران الكريم'),
@@ -106,8 +105,6 @@ class _QuranContentState extends State<QuranContent> {
                   return const SizedBox.shrink();
                 },
               ),
-
-            
 
             Expanded(
               child: BlocBuilder<QuranCubit, QuranState>(

@@ -77,7 +77,7 @@ class AzkarCategoriesView extends StatelessWidget {
                               leading: Icon(categorie.icon, color: Colors.grey),
                               title: Text(categorie.title,
                                   style: const TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                       color: Colors.grey)),
                               trailing:

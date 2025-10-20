@@ -1,10 +1,11 @@
-import 'package:depiproject/core/constants/colors.dart';
 import 'package:depiproject/core/widgets/logout_dialog.dart';
 import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
+import 'package:depiproject/features/settings/model_view/cubit/theme_cubit.dart';
 import 'package:depiproject/features/settings/views/custom_settings.dart';
 import 'package:depiproject/features/Archives/View/archive_view.dart';
 import 'package:depiproject/features/Auth/views/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({
@@ -13,6 +14,9 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+    final isDark = cubit.state.brightness == Brightness.dark;
+    final height = MediaQuery.of(context).size.height;
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.only(right: 16),
@@ -33,16 +37,23 @@ class CustomDrawer extends StatelessWidget {
                     ),
                     Text(
                       'example@gmail.com',
-                      style: TextStyle(
-                          color: AppColors.kPrimaryColor,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     )
                   ],
-                )
+                ),
               ],
             ),
+            SizedBox(
+              height: height * 0.05,
+            ),
+            ElevatedButton.icon(
+              onPressed: cubit.toggleTheme,
+              icon: Icon(isDark ? Icons.wb_sunny : Icons.nightlight_round),
+              label:
+                  Text(isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'),
+            ),
             const SizedBox(
-              height: 80,
+              height: 40,
             ),
             CustomDrawerItem(
               icon: Icons.home,
@@ -128,22 +139,18 @@ class CustomDrawerItem extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 32),
+        padding: const EdgeInsets.only(bottom: 16),
         child: Row(
           children: [
             Icon(
               icon,
-              color: AppColors.kPrimaryColor,
             ),
             const SizedBox(
               width: 10,
             ),
             Text(
               text,
-              style: const TextStyle(
-                  color: AppColors.kPrimaryColor,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
             )
           ],
         ),

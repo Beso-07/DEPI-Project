@@ -1,4 +1,5 @@
 import 'package:depiproject/core/widgets/main_app_bar.dart';
+import 'package:depiproject/features/settings/model_view/cubit/theme_cubit.dart';
 import 'package:depiproject/features/settings/model_view/settings_cubit.dart';
 import 'package:depiproject/features/settings/model_view/settings_state.dart';
 import 'package:depiproject/features/settings/views/widgets/custom_settings_item.dart';
@@ -10,8 +11,14 @@ class CustomSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SettingsCubit(),
+    final themeCubit = context.read<ThemeCubit>();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => SettingsCubit()),
+        BlocProvider(
+          create: (context) => ThemeCubit(),
+        )
+      ],
       child: Scaffold(
         body: Column(
           children: [
@@ -24,11 +31,11 @@ class CustomSettings extends StatelessWidget {
                     if (state is SettingsLoading) {
                       return const Center(child: CircularProgressIndicator());
                     }
-                    
+
                     if (state is SettingsError) {
                       return Center(child: Text(state.message));
                     }
-                    
+
                     if (state is SettingsLoaded) {
                       return Column(
                         children: [
@@ -59,13 +66,16 @@ class CustomSettings extends StatelessWidget {
                             hasSwitch: true,
                             switchValue: state.isDaylightSavingEnabled,
                             onSwitchChanged: (value) {
-                              context.read<SettingsCubit>().toggleDaylightSaving(value);
+                              context
+                                  .read<SettingsCubit>()
+                                  .toggleDaylightSaving(value);
                             },
                           ),
+                         
                         ],
                       );
                     }
-                    
+
                     return const SizedBox();
                   },
                 ),
@@ -136,3 +146,7 @@ class CustomSettings extends StatelessWidget {
   }
 }
 
+
+
+
+    

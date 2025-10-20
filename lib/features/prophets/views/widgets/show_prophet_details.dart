@@ -31,7 +31,6 @@ class ShowProphetDetails extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w900,
-                  color: AppColors.kPrimaryColor2,
                 ),
               ),
               const SizedBox(height: 20),
@@ -42,7 +41,6 @@ class ShowProphetDetails extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.kPrimaryColor,
                   ),
                 ),
               const SizedBox(height: 15),
@@ -50,9 +48,8 @@ class ShowProphetDetails extends StatelessWidget {
                 Text(
                   details!,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
-                    color: Colors.grey[800],
                     height: 1.5,
                   ),
                 ),

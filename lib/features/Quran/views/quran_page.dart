@@ -43,74 +43,7 @@ class _QuranPageState extends State<QuranPage> {
         body: Column(
           children: [
             MainAppBar(title: widget.surah.name ?? 'سورة'),
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(16),
-              margin: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.green.shade50,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.green.shade200),
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      BlocBuilder<QuranCubit, QuranState>(
-                        builder: (context, state) {
-                          final cubit = context.watch<QuranCubit>();
 
-                          final isSaved = cubit.isSaved(widget.surah);
-                          return IconButton(
-                            icon: Icon(
-                              isSaved ? Icons.bookmark : Icons.bookmark_border,
-                              color: isSaved ? Colors.green : Colors.grey,
-                            ),
-                            onPressed: () async {
-                              await cubit.toggleSave(widget.surah);
-                              setState(() {});
-                            },
-                          );
-                        },
-                      ),
-                      const SizedBox(width: 10),
-                      Center(
-                        child: Text(
-                          widget.surah.name ?? '',
-                          style: TextStyle(
-                            fontFamily: 'Lateef',
-                            fontSize: 28,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.green.shade800,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    widget.surah.transliteration ?? '',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.green.shade600,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    widget.surah.totalVerses! < 10
-                        ? '${widget.surah.totalVerses} آيات ${widget.surah.type} '
-                        : '${widget.surah.totalVerses} آيه ${widget.surah.type} ',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.green.shade600,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // Navigation Controls
             if (!isLoading &&
                 verses.isNotEmpty &&
                 (verses.length / 10).ceil() > 1)
@@ -133,6 +66,32 @@ class _QuranPageState extends State<QuranPage> {
                         foregroundColor: Colors.green.shade800,
                       ),
                       child: const Text('السابقة'),
+                    ),
+                    Text(
+                      widget.surah.totalVerses! < 10
+                          ? '${widget.surah.totalVerses} آيات ${widget.surah.type} '
+                          : '${widget.surah.totalVerses} آيه ${widget.surah.type} ',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.green.shade600,
+                      ),
+                    ),
+                    BlocBuilder<QuranCubit, QuranState>(
+                      builder: (context, state) {
+                        final cubit = context.watch<QuranCubit>();
+
+                        final isSaved = cubit.isSaved(widget.surah);
+                        return IconButton(
+                          icon: Icon(
+                            isSaved ? Icons.bookmark : Icons.bookmark_border,
+                            color: isSaved ? Colors.green : Colors.grey,
+                          ),
+                          onPressed: () async {
+                            await cubit.toggleSave(widget.surah);
+                            setState(() {});
+                          },
+                        );
+                      },
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -287,7 +246,9 @@ class _QuranPageState extends State<QuranPage> {
                                                         TextDirection.rtl,
                                                     style: const TextStyle(
                                                       fontFamily: 'Lateef',
-                                                      fontSize: 24,
+                                                      fontSize: 30,
+                                                      fontWeight:
+                                                          FontWeight.w600,
                                                       height: 1.8,
                                                       color: Colors.black87,
                                                     ),

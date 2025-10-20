@@ -4,7 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:depiproject/core/helpers/date_helper.dart';
 
 class GetNextPrayer extends StatelessWidget {
-  const GetNextPrayer({super.key, this.color});
+  const GetNextPrayer({
+    super.key,
+    this.color,
+  });
   final Color? color;
 
   @override
@@ -19,8 +22,8 @@ class GetNextPrayer extends StatelessWidget {
               text,
               style: TextStyle(
                 fontSize: 12,
-                color: color ?? Colors.white,
-                fontWeight: FontWeight.w700,
+                color: color,
+                fontWeight: FontWeight.bold,
               ),
             );
           } else {

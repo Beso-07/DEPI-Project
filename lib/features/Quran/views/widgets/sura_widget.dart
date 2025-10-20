@@ -34,10 +34,10 @@ class SuraWidget extends StatelessWidget {
         Text(
           suraName,
           style: const TextStyle(
-            fontFamily: 'Lateef',
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
+              fontFamily: 'Lateef',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
         )
       ]),
     );

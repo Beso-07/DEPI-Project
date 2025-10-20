@@ -39,7 +39,7 @@ class CategoryItem extends StatelessWidget {
                 style: const TextStyle(
                   color: AppColors.kPrimaryColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: 12,
                 ),
               )
             ],

@@ -12,7 +12,6 @@ class ProphetsView extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProphetsCubit()..fetchProphets(),
       child: const Scaffold(
-        backgroundColor: Colors.white,
         body: Column(
           children: [
             MainAppBar(title: 'الأنبياء'),

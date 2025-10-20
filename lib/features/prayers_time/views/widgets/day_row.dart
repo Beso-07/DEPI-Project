@@ -18,7 +18,6 @@ class DayRow extends StatelessWidget {
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 20,
-            color: AppColors.kPrimaryColor,
           ),
         ),
         const SizedBox(height: 8),
@@ -48,7 +47,8 @@ class DateBox extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 12),
+        style: const TextStyle(
+            fontWeight: FontWeight.w500, fontSize: 12, color: Colors.black),
       ),
     );
   }

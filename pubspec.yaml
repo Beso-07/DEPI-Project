@@ -9,14 +9,18 @@ environment:
 
 dependencies:
   adhan: ^2.0.0+1
+  adhan_dart: ^1.1.2
   cupertino_icons: ^1.0.8
   device_preview: ^1.2.0
   dio: ^5.9.0
+  easy_date_timeline: ^2.0.9
   equatable: ^2.0.7
   flutter:
     sdk: flutter
 
   flutter_compass: ^0.8.1
+  flutter_launcher_icons: ^0.14.4
+  flutter_local_notifications: ^19.4.2
   flutter_localizations:
     sdk: flutter
   flutter_qiblah: ^3.1.0+1
@@ -24,7 +28,8 @@ dependencies:
   font_awesome_flutter: ^10.9.0
   geocode: ^1.0.3
   geocoding: ^4.0.0
-  geolocator: ^13.0.4
+  geolocator: 13.0.4
+  get: ^4.7.2
   hijri: ^3.0.0
   intl: ^0.20.0
   islamic_hijri_calendar: ^0.0.4
@@ -32,6 +37,7 @@ dependencies:
   permission_handler: ^12.0.1
   sleek_circular_slider: ^2.0.1
   table_calendar: ^3.2.0
+  timezone: ^0.10.1
 
   package_info_plus: ^8.0.0
   hive_flutter: ^1.1.0
@@ -59,3 +65,9 @@ flutter:
     - family: Lateef
       fonts:
         - asset: assets/fonts/Lateef-Regular.ttf
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21

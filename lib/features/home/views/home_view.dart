@@ -1,4 +1,5 @@
 import 'package:depiproject/core/constants/colors.dart';
+import 'package:depiproject/core/helpers/notification_helper.dart';
 import 'package:depiproject/features/home/views/widgets/category_vector.dart';
 import 'package:depiproject/features/home/views/widgets/custom_drawer.dart';
 import 'package:depiproject/features/home/views/widgets/home_app_bar.dart';
@@ -27,6 +28,12 @@ class HomeView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: PrayTime(),
           ),
+          ElevatedButton(
+            onPressed: () async {
+              // ShowLocalNotification().shownotificaton('local', 'notify');
+            },
+            child: const Text('Show Notification'),
+          ),
           SizedBox(
             height: height * .15,
           ),
@@ -36,5 +43,3 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-
-

@@ -6,7 +6,6 @@ class SettingsCubit extends Cubit<SettingsState> {
     _loadSettings();
   }
 
-  
   final List<String> availableCountries = [
     'مصر',
     'السعودية',
@@ -14,27 +13,23 @@ class SettingsCubit extends Cubit<SettingsState> {
     'الكويت',
     'قطر',
     'البحرين',
-    
   ];
 
-  
   final List<String> availableLanguages = [
     'عربية',
     'English',
     'Français',
   ];
 
-  
   void _loadSettings() {
-    
     emit(SettingsLoaded(
       isDaylightSavingEnabled: true,
+      isDarkModeEnabled: false,
       selectedCountry: 'تلقائي',
       selectedLanguage: 'عربية',
     ));
   }
 
- 
   void toggleDaylightSaving(bool value) {
     if (state is SettingsLoaded) {
       final currentState = state as SettingsLoaded;
@@ -43,7 +38,14 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
-  
+  void toggleThemeSaving(bool value) {
+    if (state is SettingsLoaded) {
+      final currentState = state as SettingsLoaded;
+      emit(currentState.copyWith(isDarkModeEnabled: value));
+      _saveSettings();
+    }
+  }
+
   void changeCountry(String country) {
     if (state is SettingsLoaded) {
       final currentState = state as SettingsLoaded;
@@ -52,7 +54,6 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
-  
   void changeLanguage(String language) {
     if (state is SettingsLoaded) {
       final currentState = state as SettingsLoaded;
@@ -61,23 +62,22 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
-  
   void _saveSettings() {
-    
     if (state is SettingsLoaded) {
       final currentState = state as SettingsLoaded;
-      
+
       print('Saving settings:');
       print('Daylight Saving: ${currentState.isDaylightSavingEnabled}');
+      print('Dark Mode: ${currentState.isDarkModeEnabled}');
       print('Country: ${currentState.selectedCountry}');
       print('Language: ${currentState.selectedLanguage}');
     }
   }
 
-  
   void resetSettings() {
     emit(SettingsLoaded(
       isDaylightSavingEnabled: true,
+      isDarkModeEnabled: false,
       selectedCountry: 'مصر',
       selectedLanguage: 'عربية',
     ));
