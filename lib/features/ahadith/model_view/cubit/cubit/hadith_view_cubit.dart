@@ -9,7 +9,6 @@ class HadithCubit extends Cubit<HadithState> {
 
   Future<void> getHadith() async {
     emit(HadithLoading());
-
     try {
       final String response =
           await rootBundle.loadString('assets/json/hadith.json');

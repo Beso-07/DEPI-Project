@@ -50,7 +50,7 @@ class _QiblahViewState extends State<QiblahView> {
           Transform.rotate(
             angle: ((_direction ?? 0) * (math.pi / 180) * -1),
             child: Image.asset(
-              Imagespath.compasss,
+              Imagespath.compass,
               width: 250,
             ),
           ),

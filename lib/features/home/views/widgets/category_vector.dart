@@ -6,13 +6,10 @@ import 'package:depiproject/features/ahadith/view/rawi_name_view.dart';
 import 'package:depiproject/features/calender/views/calender_view.dart';
 import 'package:depiproject/features/home/views/widgets/category_item.dart';
 import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
-import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
-import 'package:depiproject/features/tasbeh/model_view/cubit/tasabeh_cubit.dart'
-    show TasabehCubit;
-import 'package:depiproject/features/tasbeh/view/tasbeh.dart' show Tasbeh;
-
+import 'package:depiproject/features/doaa/views/adyaaa.dart';
+import 'package:depiproject/features/prophets/views/prophets_view.dart';
+import 'package:depiproject/features/tasbeh/view/tasbeh_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoryVector extends StatelessWidget {
   const CategoryVector({
@@ -77,9 +74,18 @@ class CategoryVector extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  CategoryItem(
-                      text: 'الأدعية', img: Imagespath.doaa, onTap: () {}),
-                  const VerticalDivider(color: Colors.grey),
+                CategoryItem(
+  text: 'الأدعية',
+  img: Imagespath.doaa,
+  onTap: () {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const DoaaPage(),
+      ),
+    );
+  },
+),
+const VerticalDivider(color: Colors.grey),
                   CategoryItem(
                       text: 'احاديث',
                       img: Imagespath.hadith,
@@ -92,8 +98,8 @@ class CategoryVector extends StatelessWidget {
                       }),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: "أسماء الله الحسنى",
-                      img: Imagespath.asmaulHusna,
+                      text: "أسماء الله الحسني",
+                      img: Imagespath.prophet,
                       onTap: () {
                         Navigator.push(
                           context,
@@ -115,22 +121,18 @@ class CategoryVector extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (_) => BlocProvider(
-                              create: (_) => TasabehCubit(),
-                              child: Tasbeh(),
-                            ),
-                          ),
+                          MaterialPageRoute(builder: (context) => TasbehView()),
                         );
                       }),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'القبلة',
-                      img: Imagespath.qibla,
+                      text: 'الأنبياء',
+                      img: Imagespath.prophet,
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => QiblahView()),
+                          MaterialPageRoute(
+                              builder: (context) => const ProphetsView()),
                         );
                       }),
                   const VerticalDivider(color: Colors.grey),

@@ -35,10 +35,11 @@ class CategoryItem extends StatelessWidget {
               ),
               Text(
                 text,
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: AppColors.kPrimaryColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: 10,
+                  fontSize: 16,
                 ),
               )
             ],
