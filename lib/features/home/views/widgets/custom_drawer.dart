@@ -1,6 +1,7 @@
 import 'package:depiproject/core/widgets/logout_dialog.dart';
 import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
 import 'package:depiproject/features/settings/model_view/cubit/theme_cubit.dart';
+import 'package:depiproject/features/Archives/View/archive_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -76,7 +77,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
             CustomDrawerItem(
               icon: Icons.bookmark_border,
               text: 'المحفوظات',
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ArchiveView()),
+                );
+              },
             ),
             CustomDrawerItem(
               icon: Icons.notifications_on_sharp,

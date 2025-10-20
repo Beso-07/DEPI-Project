@@ -30,7 +30,7 @@ class HomeView extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () async {
-              ShowLocalNotification().shownotificaton('local', 'notify');
+              // ShowLocalNotification().shownotificaton('local', 'notify');
             },
             child: const Text('Show Notification'),
           ),

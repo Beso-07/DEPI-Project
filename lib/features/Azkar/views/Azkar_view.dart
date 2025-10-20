@@ -1,5 +1,6 @@
+import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/core/widgets/main_app_bar.dart';
-import 'package:depiproject/features/Azkar/models/azkar_model.dart';
+import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
 import 'package:depiproject/features/Azkar/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,18 +17,6 @@ class AzkarCategoriesView extends StatelessWidget {
     return BlocProvider(
       create: (_) => AzkarCubit()..getAzkar(),
       child: Scaffold(
-        // appBar: AppBar(
-        //   actions: [
-        //     IconButton(onPressed: () {}, icon: const Icon(Icons.settings)),
-        //   ],
-        //   title: const Text("الأذكار",
-        //       style: TextStyle(
-        //           fontWeight: FontWeight.bold,
-        //           fontSize: 36,
-        //           fontFamily: 'Lateef',
-        //           color: Colors.green)),
-        //   centerTitle: true,
-        // ),
         body: Column(
           children: [
             const MainAppBar(title: 'الأزكار'),
