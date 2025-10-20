@@ -1,7 +1,7 @@
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/core/constants/onboarding_data.dart';
-import 'package:depiproject/features/Auth/views/login_screen.dart';
 import 'package:depiproject/features/Auth/widgets/custom_bitton.dart';
+import 'package:depiproject/features/home/views/home_view.dart';
 import 'package:depiproject/features/onboarding/widgets/onboarding_item.dart';
 import 'package:flutter/material.dart';
 
@@ -61,7 +61,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   } else {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                      MaterialPageRoute(builder: (context) => const HomeView()),
                     );
                   }
                 });

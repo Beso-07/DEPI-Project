@@ -1,55 +1,53 @@
 import 'package:depiproject/core/widgets/logout_dialog.dart';
 import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
 import 'package:depiproject/features/settings/model_view/cubit/theme_cubit.dart';
-import 'package:depiproject/features/settings/views/custom_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CustomDrawer extends StatelessWidget {
+class CustomDrawer extends StatefulWidget {
   const CustomDrawer({
     super.key,
   });
 
   @override
+  State<CustomDrawer> createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
+  @override
   Widget build(BuildContext context) {
     final cubit = context.read<ThemeCubit>();
     final isDark = cubit.state.brightness == Brightness.dark;
-    final height = MediaQuery.of(context).size.height;
     return Drawer(
       child: Padding(
         padding: const EdgeInsets.only(right: 16),
         child: ListView(
           children: [
-            const Row(
-              children: [
-                Icon(Icons.account_circle, color: Colors.green, size: 30),
-                SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'يمني سيد',
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    Text(
-                      'example@gmail.com',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )
-                  ],
-                ),
-              ],
-            ),
-            SizedBox(
-              height: height * 0.05,
-            ),
-            ElevatedButton.icon(
-              onPressed: cubit.toggleTheme,
-              icon: Icon(isDark ? Icons.wb_sunny : Icons.nightlight_round),
-              label:
-                  Text(isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'),
-            ),
+            // const Row(
+            //   children: [
+            //     Icon(Icons.account_circle, color: Colors.green, size: 30),
+            //     SizedBox(
+            //       width: 10,
+            //     ),
+            //     Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         Text(
+            //           'يمني سيد',
+            //           style: TextStyle(fontSize: 18),
+            //         ),
+            //         Text(
+            //           'example@gmail.com',
+            //           style: TextStyle(fontWeight: FontWeight.bold),
+            //         )
+            //       ],
+            //     ),
+            //   ],
+            // ),
+            // SizedBox(
+            //   height: height * 0.05,
+            // ),
+
             const SizedBox(
               height: 40,
             ),
@@ -60,11 +58,11 @@ class CustomDrawer extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-            CustomDrawerItem(
-              icon: Icons.account_circle,
-              text: 'الحساب الشخصي',
-              onTap: () {},
-            ),
+            // CustomDrawerItem(
+            //   icon: Icons.account_circle,
+            //   text: 'الحساب الشخصي',
+            //   onTap: () {},
+            // ),
             CustomDrawerItem(
               icon: Icons.explore,
               text: "القبلة",
@@ -85,17 +83,17 @@ class CustomDrawer extends StatelessWidget {
               text: 'الاشعارات',
               onTap: () {},
             ),
-            CustomDrawerItem(
-              icon: Icons.settings,
-              text: 'الاعدادات',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const CustomSettings()),
-                );
-              },
-            ),
+            // CustomDrawerItem(
+            //   icon: Icons.settings,
+            //   text: 'الاعدادات',
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //           builder: (context) => const CustomSettings()),
+            //     );
+            //   },
+            // ),
             CustomDrawerItem(
               icon: Icons.logout,
               text: 'تسجيل الخروج',
@@ -108,6 +106,17 @@ class CustomDrawer extends StatelessWidget {
                   },
                 );
               },
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  cubit.toggleTheme;
+                  setState(() {});
+                },
+                icon: Icon(isDark ? Icons.wb_sunny : Icons.nightlight_round),
+                label: Text(isDark ? 'الوضع العادي' : 'الوضع الليلي'),
+              ),
             ),
           ],
         ),
