@@ -77,7 +77,6 @@ class _DoaaPageState extends State<DoaaPage> {
                                 item['category'],
                                 textDirection: TextDirection.rtl,
                                 style: const TextStyle(
-                                  overflow: TextOverflow.clip,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
                                 ),

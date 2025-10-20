@@ -1,12 +1,11 @@
 import 'package:depiproject/core/constants/assets.dart';
-import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/features/Archives/View/quranSaved_view.dart';
-
 import 'package:depiproject/features/Archives/View/saved_doaa_screen.dart';
 import 'package:depiproject/features/Archives/model_view/cubit/archive_cubit.dart';
 import 'package:depiproject/features/Archives/model_view/cubit/archive_state.dart';
 import 'package:depiproject/features/Azkar/views/azkar_Details_Screen.dart';
 import 'package:depiproject/features/ahadith/view/ahadith_details.dart';
+import 'package:depiproject/features/Archives/View/widget/build_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:depiproject/features/Archives/View/widget/build_card.dart';
@@ -31,23 +30,25 @@ class ArchiveView extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: BlocBuilder<ArchiveCubit, ArchiveState>(
-          builder: (context, state) {
-            if (state is ArchiveLoading) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (state is ArchiveLoaded) {
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "ستجد كل ما حفظته هنا",
-                      style: TextStyle(color: Colors.black54, fontSize: 25),
-                    ),
-                    const SizedBox(height: 25),
-                    Expanded(
-                      child: GridView.count(
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "ستجد كل ما حفظته هنا",
+                style: TextStyle(color: Colors.black54, fontSize: 25),
+              ),
+              const SizedBox(height: 25),
+              Expanded(
+                child: BlocBuilder<ArchiveCubit, ArchiveState>(
+                  builder: (context, state) {
+                    if (state is ArchiveLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else if (state is ArchiveLoaded) {
+                      return GridView.count(
                         crossAxisCount: 2,
                         mainAxisSpacing: 13,
                         crossAxisSpacing: 13,
@@ -69,11 +70,13 @@ class ArchiveView extends StatelessWidget {
                             icon: Imagespath.quran,
                             ontap: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SavedSurahsScreen(
-                                            list: state.quran,
-                                          )));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SavedSurahsScreen(
+                                    list: state.quran,
+                                  ),
+                                ),
+                              );
                             },
                           ),
                           buildCard(
@@ -107,15 +110,17 @@ class ArchiveView extends StatelessWidget {
                             },
                           ),
                         ],
-                      ),
-                    ),
-                  ],
+                      );
+                    } else {
+                      return const Center(
+                        child: Text('حدث خطأ أثناء تحميل المحفوظات'),
+                      );
+                    }
+                  },
                 ),
-              );
-            } else {
-              return const Center(child: Text('حدث خطأ أثناء تحميل المحفوظات'));
-            }
-          },
+              ),
+            ],
+          ),
         ),
       ),
     );
