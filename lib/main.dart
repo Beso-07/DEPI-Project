@@ -17,7 +17,6 @@ void main() async {
 
   await Hive.initFlutter();
   await HiveHelper.init();
-
   await LocationService.getCurrentLocation();
 
   // runApp(DevicePreview(builder: (context) => const IslamicApp()));

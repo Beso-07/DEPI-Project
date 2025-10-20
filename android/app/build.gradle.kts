@@ -36,11 +36,9 @@ android {
 }
 
 dependencies {
-    // ✅ لإصلاح مشكلة flutter_local_notifications
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 
 
-    // ✅ مكتبة Kotlin القياسية (بصيغة Kotlin DSL)
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22")
 }
 
