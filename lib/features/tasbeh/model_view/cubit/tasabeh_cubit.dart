@@ -1,5 +1,4 @@
-import 'package:bloc/bloc.dart';
-import 'package:depiproject/features/tasbeh/view/tasbeh.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 part 'tasabeh_state.dart';
 
 class TasabehCubit extends Cubit<TasabehState> {

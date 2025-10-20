@@ -28,16 +28,15 @@ class SuraWidget extends StatelessWidget {
         Image.asset(
           Imagespath.sura,
           height: 100,
-          width: 100,
+          width: 110,
         ),
-        // Image.asset(
-        //   Imagespath.sura,
-        //   height: 90,
-        //   width: 90,
-        // ),
         Text(
           suraName,
-          style: const TextStyle(fontFamily: 'Lateef', fontSize: 26),
+          style: const TextStyle(
+            fontFamily: 'Lateef',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
         )
       ]),
     );

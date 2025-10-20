@@ -1,8 +1,6 @@
 import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import 'package:depiproject/features/ahadith/models/hadith_model.dart';
-
 class HiveHelper {
   static const archivesBox = "archivesBox";
   static const azkarKey = "azkarKey";

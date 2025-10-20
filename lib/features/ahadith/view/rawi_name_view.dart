@@ -78,7 +78,7 @@ class RawiNameView extends StatelessWidget {
                             );
                           },
                           child: Container(
-                            height: height * 0.09,
+                            height: 90,
                             width: Width,
                             decoration: const BoxDecoration(
                                 color: AppColors.kPrayerTimeColor,
@@ -90,11 +90,12 @@ class RawiNameView extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Image.asset(
-                                      Imagespath.story,
+                                      Imagespath.prophet,
+                                      width: 50,
                                       color: AppColors.kPrimaryColor,
                                     ),
-                                    SizedBox(
-                                      width: Width * 0.03,
+                                    const SizedBox(
+                                      width: 12,
                                     ),
                                     Column(
                                       crossAxisAlignment:
@@ -108,9 +109,9 @@ class RawiNameView extends StatelessWidget {
                                               fontSize: 20,
                                               fontFamily: "Lateef"),
                                         ),
-                                        const SizedBox(
-                                          height: 5,
-                                        ),
+                                        // const SizedBox(
+                                        //   height: 5,
+                                        // ),
                                         const Text(
                                           "عدد الاحاديث: 100",
                                           style: TextStyle(

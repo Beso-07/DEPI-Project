@@ -1,7 +1,8 @@
-import 'package:depiproject/core/helpers/hive_helper.dart';
-import 'package:depiproject/core/helpers/json_helper.dart';
+import 'dart:convert';
+
 import 'package:depiproject/features/Azkar/model_view/cubit/azkar_view_state.dart';
-import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
+import 'package:depiproject/features/Azkar/models/azkar_model.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AzkarCubit extends Cubit<AzkarState> {
@@ -10,12 +11,11 @@ class AzkarCubit extends Cubit<AzkarState> {
   Future<void> getAzkar() async {
     emit(AzkarLoading());
     try {
-      final response = await JsonHelper.getJson(path: "assets/json/azkar.json");
-      final azkar = AzkarModel.fromJson(response);
-
-      await HiveHelper.getMyNotes();
-
-      emit(AzkarSuccess(azkar: azkar, savedAzkar: HiveHelper.azkar));
+      final String response =
+          await rootBundle.loadString('assets/json/azkar.json');
+      final data = jsonDecode(response);
+      final azkar = AzkarModel.fromJson(data);
+      emit(AzkarSuccess(azkar));
     } catch (e) {
       emit(AzkarError(e.toString()));
     }

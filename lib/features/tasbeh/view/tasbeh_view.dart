@@ -4,8 +4,8 @@ import 'package:depiproject/features/tasbeh/model_view/cubit/tasabeh_cubit.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Tasbeh extends StatelessWidget {
-  Tasbeh({super.key});
+class TasbehView extends StatelessWidget {
+  TasbehView({super.key});
 
   final List<String> azkarList = [
     'اَسْتَغْفِرُ اللَّهَ',
@@ -21,11 +21,12 @@ class Tasbeh extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final Width = MediaQuery.of(context).size.width;
-    final cubit = context.read<TasabehCubit>();
-    return Scaffold(body: BlocBuilder<TasabehCubit, TasabehState>(
-      builder: (context, state) {
-        return Container(
-          child: Padding(
+    return BlocProvider(
+      create: (context) => TasabehCubit(),
+      child: Scaffold(body: BlocBuilder<TasabehCubit, TasabehState>(
+        builder: (context, state) {
+          final cubit = context.read<TasabehCubit>();
+          return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,62 +35,62 @@ class Tasbeh extends StatelessWidget {
                 SizedBox(
                   height: height * 0.05,
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      """استخدم العداد لتتبع تسبيحاتك وذكر الله فى اى وقت """,
-                      style: TextStyle(
-                          fontFamily: "lateef", fontWeight: FontWeight.w600),
-                    ),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    """استخدم العداد لتتبع تسبيحاتك وذكر الله فى اى وقت """,
+                    textAlign: TextAlign.center,
+                    maxLines: 3,
+                    style: TextStyle(
+                        fontSize: 22,
+                        fontFamily: "lateef",
+                        fontWeight: FontWeight.w600),
+                  ),
                 ),
                 SizedBox(
-                  height: height * 0.2,
+                  height: height * 0.05,
                 ),
                 Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          cubit.currentZeker,
-                          style: const TextStyle(
-                              fontFamily: "lateef", fontSize: 50),
-                        ),
-                        SizedBox(
-                          width: Width * 0.02,
-                        ),
-                        PopupMenuButton<String>(
-                          icon: const Icon(
-                            Icons.arrow_drop_down,
-                            size: 35,
-                            color: AppColors.kPrimaryColor2,
-                          ),
-                          onSelected: (value) {
-                            // cubit.currentZeker = value;
-                            // cubit.counter = 0;
-                            cubit.showZeker(
-                              value,
-                            );
-                            cubit.resetCount();
-                          },
-                          itemBuilder: (context) {
-                            return azkarList.map((zikr) {
-                              return PopupMenuItem<String>(
-                                value: zikr,
-                                child: Text(
-                                  zikr,
-                                  style: const TextStyle(
-                                    fontFamily: "lateef",
-                                    fontSize: 22,
-                                  ),
-                                ),
-                              );
-                            }).toList();
-                          },
-                        ),
-                      ],
+                    Text(
+                      cubit.currentZeker,
+                      textAlign: TextAlign.center,
+                      softWrap: true,
+                      maxLines: 3,
+                      style:
+                          const TextStyle(fontFamily: "lateef", fontSize: 32),
+                    ),
+                    SizedBox(
+                      width: Width * 0.02,
+                    ),
+                    PopupMenuButton<String>(
+                      icon: const Icon(
+                        Icons.arrow_drop_down,
+                        size: 35,
+                        color: AppColors.kPrimaryColor2,
+                      ),
+                      onSelected: (value) {
+                        // cubit.currentZeker = value;
+                        // cubit.counter = 0;
+                        cubit.showZeker(
+                          value,
+                        );
+                        cubit.resetCount();
+                      },
+                      itemBuilder: (context) {
+                        return azkarList.map((zikr) {
+                          return PopupMenuItem<String>(
+                            value: zikr,
+                            child: Text(
+                              zikr,
+                              style: const TextStyle(
+                                fontFamily: "lateef",
+                                fontSize: 22,
+                              ),
+                            ),
+                          );
+                        }).toList();
+                      },
                     ),
                     SizedBox(
                       height: height * 0.05,
@@ -143,9 +144,9 @@ class Tasbeh extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-        );
-      },
-    ));
+          );
+        },
+      )),
+    );
   }
 }

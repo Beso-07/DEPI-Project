@@ -9,7 +9,7 @@ appBarWidget({required String text, required void Function() onPress}) {
         style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontFamily: 'Lateef',
-            fontSize: 45,
+            fontSize: 18,
             color: Colors.green)),
     centerTitle: true,
   );
