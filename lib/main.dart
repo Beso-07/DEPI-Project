@@ -2,7 +2,6 @@ import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/core/services/location_service.dart';
 import 'package:depiproject/features/splash/views/splash_view.dart';
 import 'package:depiproject/features/Archives/View/archive_view.dart';
-import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
 import 'package:depiproject/features/home/views/home_view.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +14,6 @@ void main() async {
 
   await Hive.initFlutter();
   await HiveHelper.init();
-
-  if (!Hive.isAdapterRegistered(0)) {
-    Hive.registerAdapter(ZekrAdapter());
-  }
 
   await LocationService.getCurrentLocation();
 

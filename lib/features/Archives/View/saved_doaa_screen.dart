@@ -4,28 +4,25 @@ import 'package:depiproject/core/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class DoaaPage extends StatefulWidget {
-  const DoaaPage({super.key});
+class SavedDoaaScreen extends StatefulWidget {
+  const SavedDoaaScreen({super.key});
 
   @override
-  State<DoaaPage> createState() => _DoaaPageState();
+  State<SavedDoaaScreen> createState() => _DoaaPageState();
 }
 
-class _DoaaPageState extends State<DoaaPage> {
+class _DoaaPageState extends State<SavedDoaaScreen> {
   List<dynamic> _doaaList = [];
 
   @override
   void initState() {
     super.initState();
     loadDoaa();
+    setState(() {});
   }
 
   Future<void> loadDoaa() async {
-    final String response = await rootBundle.loadString('assets/doaa.json');
-    final data = await json.decode(response);
-    setState(() {
-      _doaaList = data;
-    });
+    _doaaList = HiveHelper.doaa;
   }
 
   bool isSaved(Map<String, dynamic> dua) {
@@ -52,7 +49,7 @@ class _DoaaPageState extends State<DoaaPage> {
     return Scaffold(
       body: Column(
         children: [
-          const MainAppBar(title: 'الأدعية'),
+          const MainAppBar(title: ' الأدعية المحفوظه'),
           SizedBox(
             height: height * .03,
           ),
@@ -77,7 +74,6 @@ class _DoaaPageState extends State<DoaaPage> {
                                 item['category'],
                                 textDirection: TextDirection.rtl,
                                 style: const TextStyle(
-                                  overflow: TextOverflow.clip,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 16,
                                 ),
