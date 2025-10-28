@@ -1,0 +1,22 @@
+[33mfcf6fdd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mYoussef[m[33m, [m[1;31morigin/mohamdSamir[m[33m, [m[1;31morigin/Youssef[m[33m)[m HEAD@{0}: pull --tags origin main: Fast-forward
+[33m69bd926[m HEAD@{1}: commit: editing the theme
+[33m98240f9[m HEAD@{2}: pull --tags origin main: Fast-forward
+[33m4b14faf[m HEAD@{3}: commit: edit the overflow in settings
+[33m1322dc3[m HEAD@{4}: commit: change the name and icon for the project
+[33m5e8c944[m HEAD@{5}: pull --tags origin main: Fast-forward
+[33m1b607f3[m HEAD@{6}: commit (merge): adding the theme to the project and make my tasks responsive
+[33mb942e8c[m HEAD@{7}: commit: edit the size of container of hadith
+[33mbdf8147[m HEAD@{8}: pull origin main: Fast-forward
+[33m778a885[m HEAD@{9}: reset: moving to HEAD
+[33m778a885[m HEAD@{10}: pull origin main: Fast-forward
+[33m94fb753[m HEAD@{11}: reset: moving to HEAD
+[33m94fb753[m HEAD@{12}: commit: new change in feature of tasbeh
+[33m30200c2[m HEAD@{13}: commit: add the feature of tasbeh and logic of logout page
+[33mca7cc85[m HEAD@{14}: pull --tags origin main: Fast-forward
+[33m2683fe1[m HEAD@{15}: commit: add json to the featur of hadith
+[33m1d6a5c7[m HEAD@{16}: reset: moving to origin/main
+[33m5c3336a[m HEAD@{17}: commit: add the feature of hadith ui
+[33m828d083[m[33m ([m[1;32mmain[m[33m)[m HEAD@{18}: reset: moving to origin/main
+[33m272961a[m HEAD@{19}: checkout: moving from Youssef to Youssef
+[33m272961a[m HEAD@{20}: checkout: moving from main to Youssef
+[33m828d083[m[33m ([m[1;32mmain[m[33m)[m HEAD@{21}: clone: from https://github.com/Beso-07/DEPI-Project.git
