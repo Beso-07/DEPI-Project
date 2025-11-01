@@ -88,7 +88,7 @@ class AzkarCategoriesView extends StatelessWidget {
                                   MaterialPageRoute(
                                     builder: (_) => AzkarDetailsScreen(
                                       title: categorie.title,
-                                      list: categorie.list as List<Zekr>,
+                                      list: categorie.list,
                                     ),
                                   ),
                                 );

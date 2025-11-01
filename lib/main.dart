@@ -12,13 +12,12 @@ import 'package:hive_flutter/adapters.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
+  LocationService.getCurrentLocation();
   await HiveHelper.init();
 
   // runApp(DevicePreview(builder: (context) => const IslamicApp()));
-  // LocationService.getCurrentLocation();
   // await initTimeZone();
   //  await ShowLocalNotification().initNotification();
-
 
   runApp(
     BlocProvider(
@@ -35,21 +34,22 @@ class IslamicApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit, ThemeData>(builder: (context, theme) {
-      return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: theme,
-        locale: const Locale('ar'),
-        supportedLocales: const [
-          Locale('en'),
-          Locale('ar', 'SA'),
+    return BlocBuilder<ThemeCubit, ThemeData>(
+      builder: (context, theme) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: theme,
+          locale: const Locale('ar'),
+          supportedLocales: const [
+            Locale('en'),
+            Locale('ar', 'SA'),
           ],
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          home: HomeView(),
+          home: const HomeView(),
         );
       },
     );

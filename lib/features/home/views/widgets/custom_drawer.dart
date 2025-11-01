@@ -65,16 +65,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
             //   onTap: () {},
             // ),
             CustomDrawerItem(
-              icon: Icons.explore,
-              text: "القبلة",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const QiblahView()),
-                );
-              },
-            ),
-            CustomDrawerItem(
               icon: Icons.bookmark_border,
               text: 'المحفوظات',
               onTap: () {
