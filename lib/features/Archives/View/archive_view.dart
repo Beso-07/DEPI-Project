@@ -8,7 +8,6 @@ import 'package:depiproject/features/ahadith/view/ahadith_details.dart';
 import 'package:depiproject/features/Archives/View/widget/build_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:depiproject/features/Archives/View/widget/build_card.dart';
 
 class ArchiveView extends StatelessWidget {
   const ArchiveView({super.key});
@@ -24,8 +23,7 @@ class ArchiveView extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontFamily: 'Lateef',
-              fontSize: 45,
-              color: Colors.green,
+              fontSize: 26,
             ),
           ),
           centerTitle: true,
@@ -37,7 +35,7 @@ class ArchiveView extends StatelessWidget {
             children: [
               const Text(
                 "ستجد كل ما حفظته هنا",
-                style: TextStyle(color: Colors.black54, fontSize: 25),
+                style: TextStyle(color: Colors.black54, fontSize: 14),
               ),
               const SizedBox(height: 25),
               Expanded(

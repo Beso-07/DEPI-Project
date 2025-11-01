@@ -1,7 +1,7 @@
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
 import 'package:depiproject/features/ahadith/models/hadith_model.dart';
 import 'package:depiproject/features/Quran/models/quran_model.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class HiveHelper {
   static const archivesBox = "archivesBox";
@@ -17,8 +17,6 @@ class HiveHelper {
   static late Box box;
 
   static Future<void> init() async {
-    await Hive.initFlutter();
-
     if (!Hive.isAdapterRegistered(0)) {
       Hive.registerAdapter(ZekrAdapter());
     }
@@ -80,18 +78,17 @@ class HiveHelper {
       items.add(item);
     }
 
-    // حفظ النسخة الجديدة مباشرة في Hive
     await box.put(key, List.from(items));
-    await getMyNotes(); // لتحديث الـ cache في الذاكرة
+    await getMyNotes();
   }
 
   static Future<void> getMyNotes() async {
-    box.get(azkarKey, defaultValue: <Zekr>[]);
-    box.get(ahadithKey, defaultValue: <Hadith>[]);
-    box.get(quranKey, defaultValue: <Surah>[]);
+    azkar = List<Zekr>.from(box.get(azkarKey, defaultValue: <Zekr>[]));
+    ahadith = List<Hadith>.from(box.get(ahadithKey, defaultValue: <Hadith>[]));
+    quran = List<Surah>.from(box.get(quranKey, defaultValue: <Surah>[]));
 
-    doaa = List<Map<String, dynamic>>.from(
-      box.get(doaaKey, defaultValue: <Map<String, dynamic>>[]),
-    );
+    doaa = (box.get(doaaKey, defaultValue: <Map<dynamic, dynamic>>[]) as List)
+        .map((e) => Map<String, dynamic>.from(e))
+        .toList();
   }
 }

@@ -27,7 +27,7 @@ class AzkarDetailsScreen extends StatelessWidget {
           children: [
             MainAppBar(title: title),
             list.isEmpty
-                ? const Center(child: Text("لا يوجد أذكار"))
+                ? const Center(child: Text("لا توجد أذكار محفوظة"))
                 : Expanded(
                     child: ListView.builder(
                       padding: const EdgeInsets.all(12),
