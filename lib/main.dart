@@ -23,7 +23,7 @@ void main() async {
 
   runApp(DevicePreview(builder: (context) => const IslamicApp()));
   LocationService.getCurrentLocation();
-  // await initTimeZone();
+  await initTimeZone();
   // await ShowLocalNotification().initNotification();
 
   runApp(BlocProvider(
@@ -51,7 +51,7 @@ class IslamicApp extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        home: HomeView(),
+        home: const SplashView(),
       );
     });
   }
