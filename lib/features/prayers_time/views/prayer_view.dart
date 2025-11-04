@@ -1,4 +1,3 @@
-import 'package:depiproject/core/constants/colors.dart';
 import 'package:depiproject/core/widgets/get_next_prayer.dart';
 import 'package:depiproject/features/prayers_time/views_model/prayer_cubit/prayer_cubit.dart';
 import 'package:depiproject/features/prayers_time/views/widgets/day_row.dart';

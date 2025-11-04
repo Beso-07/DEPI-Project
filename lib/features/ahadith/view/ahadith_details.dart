@@ -31,7 +31,7 @@ class RawiAhadithView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "رواه$title",
+                  "رواه $title",
                   style: const TextStyle(
                       color: Colors.black, fontWeight: FontWeight.w900),
                 ),

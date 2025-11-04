@@ -59,17 +59,11 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 Navigator.pop(context);
               },
             ),
-
-            CustomDrawerItem(
-              icon: Icons.explore,
-              text: "القبلة",
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const QiblahView()),
-                );
-              },
-            ),
+            // CustomDrawerItem(
+            //   icon: Icons.account_circle,
+            //   text: 'الحساب الشخصي',
+            //   onTap: () {},
+            // ),
             CustomDrawerItem(
               icon: Icons.bookmark_border,
               text: 'المحفوظات',
@@ -85,7 +79,17 @@ class _CustomDrawerState extends State<CustomDrawer> {
               text: 'الاشعارات',
               onTap: () {},
             ),
-
+            // CustomDrawerItem(
+            //   icon: Icons.settings,
+            //   text: 'الاعدادات',
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //           builder: (context) => const CustomSettings()),
+            //     );
+            //   },
+            // ),
             CustomDrawerItem(
               icon: Icons.logout,
               text: 'تسجيل الخروج',
@@ -102,10 +106,12 @@ class _CustomDrawerState extends State<CustomDrawer> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton.icon(
-                onPressed: cubit.toggleTheme,
+                onPressed: () {
+                  cubit.toggleTheme;
+                  setState(() {});
+                },
                 icon: Icon(isDark ? Icons.wb_sunny : Icons.nightlight_round),
-                label: Text(
-                    isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'),
+                label: Text(isDark ? 'الوضع العادي' : 'الوضع الليلي'),
               ),
             ),
           ],

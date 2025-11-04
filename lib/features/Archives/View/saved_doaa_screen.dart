@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/core/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class SavedDoaaScreen extends StatefulWidget {
   const SavedDoaaScreen({super.key});
@@ -54,7 +52,12 @@ class _DoaaPageState extends State<SavedDoaaScreen> {
             height: height * .03,
           ),
           _doaaList.isEmpty
-              ? const Center(child: CircularProgressIndicator())
+              ? const Center(
+                  child: Text(
+                    "لا توجد أدعية محفوظة بعد",
+                    style: TextStyle(fontSize: 22, color: Colors.black54),
+                  ),
+                )
               : Expanded(
                   child: ListView.builder(
                     padding: const EdgeInsets.all(12),

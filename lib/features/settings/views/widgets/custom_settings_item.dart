@@ -42,7 +42,7 @@ class CustomSettingsItem extends StatelessWidget {
             ? Switch(
                 value: switchValue,
                 onChanged: onSwitchChanged,
-                activeColor: Colors.green,
+                activeThumbColor: Colors.green,
               )
             : Row(
                 mainAxisSize: MainAxisSize.min,
