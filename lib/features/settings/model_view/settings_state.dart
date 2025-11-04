@@ -19,12 +19,13 @@ class SettingsLoaded extends SettingsState {
 
   SettingsLoaded copyWith({
     bool? isDaylightSavingEnabled,
-    bool? isDarkModeEnabled,  
+    bool? isDarkModeEnabled,
     String? selectedCountry,
     String? selectedLanguage,
   }) {
     return SettingsLoaded(
-      isDaylightSavingEnabled: isDaylightSavingEnabled ?? this.isDaylightSavingEnabled,
+      isDaylightSavingEnabled:
+          isDaylightSavingEnabled ?? this.isDaylightSavingEnabled,
       isDarkModeEnabled: isDarkModeEnabled ?? this.isDarkModeEnabled,
       selectedCountry: selectedCountry ?? this.selectedCountry,
       selectedLanguage: selectedLanguage ?? this.selectedLanguage,
@@ -34,6 +35,6 @@ class SettingsLoaded extends SettingsState {
 
 class SettingsError extends SettingsState {
   final String message;
-  
+
   SettingsError(this.message);
 }

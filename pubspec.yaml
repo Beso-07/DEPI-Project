@@ -13,6 +13,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   device_preview: ^1.2.0
   dio: ^5.9.0
+  just_audio: ^0.9.36
+  audio_session: ^0.1.16
   easy_date_timeline: ^2.0.9
   equatable: ^2.0.7
   flutter:
@@ -43,6 +45,7 @@ dependencies:
   package_info_plus: ^8.0.0
   flutter_bloc: ^9.1.1
   share_plus: ^12.0.1
+  audioplayers: ^6.5.1
 
 dev_dependencies:
   flutter_lints: ^3.0.0

@@ -1,5 +1,6 @@
 import 'package:depiproject/core/widgets/logout_dialog.dart';
 import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
+import 'package:depiproject/features/radio/radioView.dart';
 import 'package:depiproject/features/settings/model_view/cubit/theme_cubit.dart';
 import 'package:depiproject/features/Archives/View/archive_view.dart';
 import 'package:flutter/material.dart';
@@ -79,6 +80,16 @@ class _CustomDrawerState extends State<CustomDrawer> {
               text: 'الاشعارات',
               onTap: () {},
             ),
+            CustomDrawerItem(
+              icon: Icons.radio,
+              text: 'الراديو ',
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const RadioScreen()),
+                );
+              },
+            ),
             // CustomDrawerItem(
             //   icon: Icons.settings,
             //   text: 'الاعدادات',
@@ -107,7 +118,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton.icon(
                 onPressed: () {
-                  cubit.toggleTheme;
+                  cubit.toggleTheme();
                   setState(() {});
                 },
                 icon: Icon(isDark ? Icons.wb_sunny : Icons.nightlight_round),
