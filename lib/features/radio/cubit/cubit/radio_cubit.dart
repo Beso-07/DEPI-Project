@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:audioplayers/audioplayers.dart';
-
+import 'package:just_audio/just_audio.dart';
 import 'radio_state.dart';
 
 class RadioCubit extends Cubit<RadioState> {
