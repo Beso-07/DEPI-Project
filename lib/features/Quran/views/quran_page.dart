@@ -3,6 +3,7 @@ import 'package:depiproject/features/Quran/models/quran_model.dart';
 import 'package:depiproject/features/Quran/model_view/cubit/quran_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:share_plus/share_plus.dart';
 
 class QuranPage extends StatefulWidget {
   final Surah surah;
@@ -239,18 +240,34 @@ class _QuranPageState extends State<QuranPage> {
                                                   const SizedBox(height: 12),
 
                                                   // Verse Text
-                                                  Text(
-                                                    verse.text ?? '',
-                                                    textAlign: TextAlign.right,
-                                                    textDirection:
-                                                        TextDirection.rtl,
-                                                    style: const TextStyle(
-                                                      fontFamily: 'Lateef',
-                                                      fontSize: 30,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      height: 1.8,
-                                                      color: Colors.black87,
+                                                  ListTile(
+                                                    title: Text(
+                                                      verse.text ?? '',
+                                                      textAlign:
+                                                          TextAlign.right,
+                                                      textDirection:
+                                                          TextDirection.rtl,
+                                                      style: const TextStyle(
+                                                        fontFamily: 'Lateef',
+                                                        fontSize: 30,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 1.8,
+                                                        color: Colors.black87,
+                                                      ),
+                                                    ),
+                                                    trailing: IconButton(
+                                                      icon: const Icon(
+                                                          Icons.share,
+                                                          color:
+                                                              Colors.blueGrey),
+                                                      onPressed: () async {
+                                                        await Share.share(
+                                                          verse.text ?? '',
+                                                          subject:
+                                                              'ايه من تطبيق تقوي 📿',
+                                                        );
+                                                      },
                                                     ),
                                                   ),
                                                 ],
