@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:depiproject/core/constants/colors.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:share_plus/share_plus.dart';
 
 class AzkarDetailsScreen extends StatelessWidget {
   final String title;
@@ -66,6 +67,15 @@ class AzkarDetailsScreen extends StatelessWidget {
                                       ),
                                     ),
                                     const Spacer(),
+                                    IconButton(
+                                      onPressed: () async {
+                                        await Share.share(zekr.zekr,
+                                            subject: 'ذكر من التطبيق تقوي📿');
+                                      },
+                                      icon: const Icon(Icons.share,
+                                          color: Colors.blueGrey),
+                                    ),
+                                    const SizedBox(width: 7),
                                     BlocBuilder<AzkarCubit, AzkarState>(
                                       builder: (context, state) {
                                         final cubit =

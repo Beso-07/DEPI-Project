@@ -6,6 +6,7 @@ import 'package:depiproject/features/ahadith/models/hadith_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:share_plus/share_plus.dart';
 
 class RawiAhadithView extends StatelessWidget {
   final String? title;
@@ -87,6 +88,17 @@ class RawiAhadithView extends StatelessWidget {
                                         const Spacer(),
                                         Row(
                                           children: [
+                                            IconButton(
+                                              onPressed: () async {
+                                                await Share.share(
+                                                    hadith.hadithContent,
+                                                    subject:
+                                                        ' حديث من التطبيق تقوي 📿');
+                                              },
+                                              icon: const Icon(Icons.share,
+                                                  color: Colors.blueGrey),
+                                            ),
+                                            const SizedBox(width: 7),
                                             BlocBuilder<HadithCubit,
                                                 HadithState>(
                                               builder: (context, state) {

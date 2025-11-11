@@ -3,6 +3,7 @@ import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/core/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
 
 class DoaaPage extends StatefulWidget {
   const DoaaPage({super.key});
@@ -49,13 +50,12 @@ class _DoaaPageState extends State<DoaaPage> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Column(
         children: [
           const MainAppBar(title: 'الأدعية'),
-          SizedBox(
-            height: height * .03,
-          ),
+          SizedBox(height: height * .03),
           _doaaList.isEmpty
               ? const Center(child: CircularProgressIndicator())
               : Expanded(
@@ -64,24 +64,27 @@ class _DoaaPageState extends State<DoaaPage> {
                     itemCount: _doaaList.length,
                     itemBuilder: (context, index) {
                       var item = _doaaList[index];
+
                       return Card(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16)),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
                         margin: const EdgeInsets.symmetric(vertical: 6),
                         child: ExpansionTile(
                           leading:
                               const Icon(Icons.menu_book, color: Colors.green),
                           title: Row(
                             children: [
-                              Text(
-                                item['category'],
-                                textDirection: TextDirection.rtl,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
+                              Expanded(
+                                child: Text(
+                                  item['category'],
+                                  textDirection: TextDirection.rtl,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
-                              const SizedBox(width: 10),
                               IconButton(
                                 icon: Icon(
                                   isSaved(item)
@@ -92,28 +95,37 @@ class _DoaaPageState extends State<DoaaPage> {
                                       : Colors.grey,
                                 ),
                                 onPressed: () async {
-                                  item['category'] = item['category'];
                                   await _toggleSave(item);
                                 },
                               ),
                             ],
                           ),
                           children: [
-                            ...item['array'].map<Widget>(
-                              (dua) => ListTile(
+                            ...item['array'].map<Widget>((dua) {
+                              return ListTile(
                                 title: Text(
                                   dua['text'],
                                   textDirection: TextDirection.rtl,
                                   style: const TextStyle(fontSize: 15),
                                 ),
-                              ),
-                            ),
+                                trailing: IconButton(
+                                  icon: const Icon(Icons.share,
+                                      color: Colors.blueGrey),
+                                  onPressed: () async {
+                                    await Share.share(
+                                      dua['text'],
+                                      subject: 'دعاء من تطبيق تقوي 📿',
+                                    );
+                                  },
+                                ),
+                              );
+                            }).toList(),
                           ],
                         ),
                       );
                     },
                   ),
-                )
+                ),
         ],
       ),
     );
