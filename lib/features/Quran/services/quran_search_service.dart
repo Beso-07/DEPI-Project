@@ -3,7 +3,6 @@ import '../models/surah.dart';
 import 'quran_data_service.dart';
 import 'surah_index_service.dart';
 
-/// Represents a search result containing verse information and its location
 class SearchResult {
   final Verse verse;
   final Surah surah;
@@ -18,13 +17,11 @@ class SearchResult {
   });
 }
 
-/// Service for searching through Quran text
 class QuranSearchService {
   static List<Verse>? _cachedVerses;
   static List<Surah>? _cachedSurahs;
   static List<SurahPageInfo>? _cachedSurahIndex;
   
-  /// Initialize the search service by loading data
   static Future<void> initialize() async {
     if (_cachedVerses == null || _cachedSurahs == null) {
       _cachedVerses = await QuranDataService.loadVerses();
@@ -33,7 +30,6 @@ class QuranSearchService {
     }
   }
   
-  /// Search for verses containing the specified text
   static Future<List<SearchResult>> searchVerses(String query) async {
     if (query.trim().isEmpty) {
       return [];
@@ -48,7 +44,6 @@ class QuranSearchService {
       final normalizedVerseText = _normalizeArabicText(verse.text);
       
       if (normalizedVerseText.contains(normalizedQuery)) {
-        // Find the surah for this verse
         final surah = _cachedSurahs!.firstWhere(
           (s) => s.id == verse.chapter,
           orElse: () => Surah(
@@ -60,10 +55,8 @@ class QuranSearchService {
           ),
         );
         
-        // Find the page number for this verse
         final pageNumber = _findPageForVerse(verse);
         
-        // Create highlighted text
         final highlightedText = _highlightSearchTerm(verse.text, query);
         
         results.add(SearchResult(
@@ -78,7 +71,6 @@ class QuranSearchService {
     return results;
   }
   
-  /// Search by surah name
   static Future<List<SearchResult>> searchBySurahName(String query) async {
     if (query.trim().isEmpty) {
       return [];
@@ -93,7 +85,6 @@ class QuranSearchService {
       final normalizedSurahName = _normalizeArabicText(surah.name);
       
       if (normalizedSurahName.contains(normalizedQuery)) {
-        // Get first verse of this surah
         final firstVerse = _cachedVerses!.firstWhere(
           (v) => v.chapter == surah.id && v.verse == 1,
           orElse: () => _cachedVerses!.firstWhere((v) => v.chapter == surah.id),
@@ -113,19 +104,15 @@ class QuranSearchService {
     return results;
   }
   
-  /// Find the page number where a specific verse is located
   static int _findPageForVerse(Verse verse) {
-    // For Al-Fatiha
     if (verse.chapter == 1) {
       return 0;
     }
     
-    // For first 5 verses of Al-Baqarah
     if (verse.chapter == 2 && verse.verse <= 5) {
       return 1;
     }
     
-    // For other verses, find the surah's starting page
     final surahInfo = _cachedSurahIndex?.firstWhere(
       (info) => info.surah.id == verse.chapter,
       orElse: () => SurahPageInfo(
@@ -134,52 +121,41 @@ class QuranSearchService {
       ),
     );
     
-    // Better estimation based on verse distribution
     final basePageNumber = surahInfo?.startPage ?? 2;
     
-    // For Al-Baqarah remaining verses (after verse 5)
     if (verse.chapter == 2 && verse.verse > 5) {
       final remainingVerses = verse.verse - 5;
-      final estimatedOffset = remainingVerses ~/ 12; // Roughly 12 verses per page for Baqarah
+      final estimatedOffset = remainingVerses ~/ 12; 
       return basePageNumber + estimatedOffset;
     }
     
-    // For other surahs, estimate based on verse density
-    final estimatedOffset = (verse.verse - 1) ~/ 15; // Roughly 15 verses per page
-    final maxOffset = 10; // Don't go too far from surah start
+    final estimatedOffset = (verse.verse - 1) ~/ 15; 
+    final maxOffset = 10; 
     
     return basePageNumber + (estimatedOffset > maxOffset ? maxOffset : estimatedOffset);
   }
   
-  /// Normalize Arabic text for better search matching
   static String _normalizeArabicText(String text) {
     return text
-        // Normalize different forms of Alif
         .replaceAll('أ', 'ا')
         .replaceAll('إ', 'ا')
         .replaceAll('آ', 'ا')
         .replaceAll('ٱ', 'ا')
-        // Normalize Ta Marbuta and Ya
         .replaceAll('ة', 'ه')
         .replaceAll('ى', 'ي')
-        // Remove all diacritics (harakat)
         .replaceAll(RegExp(r'[ًٌٍَُِّْٰٕٓٔ]'), '')
-        // Remove extra spaces
         .replaceAll(RegExp(r'\s+'), ' ')
         .toLowerCase()
         .trim();
   }
   
-  /// Highlight search term in text
   static String _highlightSearchTerm(String text, String searchTerm) {
     if (searchTerm.trim().isEmpty) return text;
     
-    // Simple highlighting - in a real app you might use a more sophisticated approach
     final RegExp regex = RegExp(searchTerm.trim(), caseSensitive: false);
     return text.replaceAll(regex, '**$searchTerm**');
   }
   
-  /// Clear cached data
   static void clearCache() {
     _cachedVerses = null;
     _cachedSurahs = null;

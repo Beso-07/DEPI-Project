@@ -227,7 +227,6 @@ class QuranPaginationService {
     );
   }
   
-  /// Builds an inline basmalah
   static TextSpan _buildInlineBasmalah(double fontSize, String fontFamily, Color textColor) {
     return TextSpan(
       text: QuranDataService.basmalah,
@@ -241,7 +240,6 @@ class QuranPaginationService {
     );
   }
   
-  /// Builds a decorative header box for surah names
   static Widget buildSurahHeader(String surahName, double fontSize, String fontFamily, Color textColor) {
     return Container(
       width: double.infinity,
@@ -277,7 +275,6 @@ class QuranPaginationService {
       ),
       child: Column(
         children: [
-          // Decorative line above
           Container(
             height: 2,
             width: 60,
@@ -313,7 +310,6 @@ class QuranPaginationService {
             textDirection: TextDirection.rtl,
           ),
           const SizedBox(height: 8),
-          // Decorative line below
           Container(
             height: 2,
             width: 60,

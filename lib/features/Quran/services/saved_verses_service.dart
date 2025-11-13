@@ -7,14 +7,12 @@ class SavedVersesService {
   static const String _boxName = 'saved_verses';
   static Box<SavedVerse>? _box;
 
-  // Initialize Hive
   static Future<void> init() async {
     await Hive.initFlutter();
     Hive.registerAdapter(SavedVerseAdapter());
     _box = await Hive.openBox<SavedVerse>(_boxName);
   }
 
-  // Get the box instance
   static Box<SavedVerse> get _savedVersesBox {
     if (_box == null || !_box!.isOpen) {
       throw Exception('Hive box is not initialized. Call init() first.');
@@ -22,7 +20,6 @@ class SavedVersesService {
     return _box!;
   }
 
-  // Save a verse
   static Future<void> saveVerse({
     required String verseText,
     required String surahName,
@@ -39,35 +36,29 @@ class SavedVersesService {
       savedAt: DateTime.now(),
     );
 
-    // Use surah and verse number as key to avoid duplicates
     final key = '${surahNumber}_$verseNumber';
     await _savedVersesBox.put(key, savedVerse);
   }
 
-  // Remove a saved verse
   static Future<void> removeSavedVerse(int surahNumber, int verseNumber) async {
     final key = '${surahNumber}_$verseNumber';
     await _savedVersesBox.delete(key);
   }
 
-  // Check if a verse is saved
   static bool isVerseSaved(int surahNumber, int verseNumber) {
     final key = '${surahNumber}_$verseNumber';
     return _savedVersesBox.containsKey(key);
   }
 
-  // Get all saved verses
   static List<SavedVerse> getAllSavedVerses() {
     return _savedVersesBox.values.toList()
-      ..sort((a, b) => b.savedAt.compareTo(a.savedAt)); // Most recent first
+      ..sort((a, b) => b.savedAt.compareTo(a.savedAt)); 
   }
 
-  // Clear all saved verses
   static Future<void> clearAllSavedVerses() async {
     await _savedVersesBox.clear();
   }
 
-  // Share a verse
   static Future<void> shareVerse({
     required String verseText,
     required String surahName,
@@ -106,7 +97,6 @@ ${verse.text}
     );
   }
 
-  // Save verse using Verse model and current page
   static Future<void> saveVerseFromModel(Verse verse, int currentPage) async {
     await saveVerse(
       verseText: verse.text,

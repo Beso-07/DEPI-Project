@@ -78,28 +78,9 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFFFFFFF8), // Off-white background
-      appBar: AppBar(
-        title: const Text(
-          'فهرس السور',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        backgroundColor: const Color(0xFF2F4F4F),
-        elevation: 2,
-        centerTitle: true,
-        leading: IconButton(
-          icon: const Icon(Icons.menu_book, color: Colors.white),
-          onPressed: () {
-            // Navigate to first page of Quran
-            widget.onSurahSelected(0);
-          },
-        ),
-      ),
-      body: _buildBody(),
+    return Container(
+      color: const Color(0xFFFFFFF8), // Off-white background
+      child: _buildBody(),
     );
   }
 
@@ -153,63 +134,9 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
 
     return Column(
       children: [
-        // Header with statistics
-        Container(
-          margin: const EdgeInsets.all(16),
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                const Color(0xFF2F4F4F).withValues(alpha: 0.1),
-                const Color(0xFF8B4513).withValues(alpha: 0.1),
-              ],
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-            ),
-            borderRadius: BorderRadius.circular(15),
-            border: Border.all(
-              color: const Color(0xFF8B4513).withValues(alpha: 0.3),
-              width: 1,
-            ),
-          ),
-          child: Column(
-            children: [
-              Text(
-                'القرآن الكريم',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: const Color(0xFF2F4F4F),
-                  fontFamily: GoogleFonts.amiri().fontFamily,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                '${_surahsInfo.length} سورة • 602 صفحة',
-                style: const TextStyle(
-                  fontSize: 16,
-                  color: Color(0xFF666666),
-                ),
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 12),
-              const Text(
-                'اضغط على اسم السورة للانتقال إليها',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Color(0xFF888888),
-                  fontStyle: FontStyle.italic,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
-        ),
-        
         // Search bar
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.all(16),
           child: TextField(
             controller: _searchController,
             textDirection: TextDirection.rtl,
@@ -245,8 +172,6 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
             ),
           ),
         ),
-        
-        const SizedBox(height: 16),
         
         // Grid of surahs
         Expanded(

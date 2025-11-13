@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:depiproject/core/constants/colors.dart';
 import '../services/quran_pagination_service.dart';
 import '../services/saved_verses_service.dart';
 import '../services/app_preferences_service.dart';
@@ -9,16 +10,7 @@ import 'surah_index_page.dart';
 import 'quran_search_page.dart';
 import 'saved_verses_page.dart';
 
-/// Main widget that displays the Quran in a page-by-page format
-/// Mimics the appearance of a traditional printed mushaf
-/// 
-/// Features:
-/// - Index page with all surahs in grid layout
-/// - Exactly 602 pages (traditional mushaf count)
-/// - Arabic reading direction: starts from left, left arrow goes to next page
-/// - Right-to-left page navigation
-/// - Special layout: Al-Fatiha on page 1, first 5 verses of Al-Baqarah on page 2
-/// - Continuous text flow: verses continue on the same line, not new lines
+
 class QuranViewer extends StatefulWidget {
   final double fontSize;
   final Color backgroundColor;
@@ -28,8 +20,8 @@ class QuranViewer extends StatefulWidget {
   const QuranViewer({
     super.key,
     this.fontSize = 24.0,
-    this.backgroundColor = const Color(0xFFFFFFF8), // Off-white background
-    this.textColor = const Color(0xFF2F4F4F), // Dark slate gray
+    this.backgroundColor = AppColors.kPrimaryColor3, 
+    this.textColor = AppColors.kPrimaryColor4, 
     this.padding = const EdgeInsets.all(20.0),
   });
 
@@ -43,7 +35,7 @@ class _QuranViewerState extends State<QuranViewer> {
   bool _isLoading = true;
   String? _errorMessage;
   int _currentPageIndex = 0;
-  bool _showIndex = true; // Start with index page
+  bool _showIndex = true; 
   
   @override
   void initState() {
@@ -52,14 +44,13 @@ class _QuranViewerState extends State<QuranViewer> {
     _loadLastPagePosition();
   }
   
-  /// Load the last saved page position
+ 
   void _loadLastPagePosition() async {
     try {
       final lastPageIndex = await AppPreferencesService.getLastPageIndex();
       final showIndexOnStartup = await AppPreferencesService.getShowIndexOnStartup();
       final isFirstRun = await AppPreferencesService.isFirstRun();
       
-      // If it's the first run or user prefers to show index, start with index
       if (isFirstRun || showIndexOnStartup) {
         if (mounted) {
           setState(() {
@@ -68,7 +59,6 @@ class _QuranViewerState extends State<QuranViewer> {
           });
         }
       } else {
-        // Otherwise, go directly to the last page
         if (mounted) {
           setState(() {
             _showIndex = false;
@@ -77,7 +67,6 @@ class _QuranViewerState extends State<QuranViewer> {
         }
       }
     } catch (e) {
-      // If there's an error, start with the index page
       if (mounted) {
         setState(() {
           _showIndex = true;
@@ -87,17 +76,14 @@ class _QuranViewerState extends State<QuranViewer> {
     }
   }
 
-  /// Save the current page position to preferences
   void _saveCurrentPagePosition(int pageIndex) {
     try {
       AppPreferencesService.saveLastPageIndex(pageIndex);
     } catch (e) {
-      // Silently fail if unable to save - not critical for app functionality
       debugPrint('Failed to save page position: $e');
     }
   }
 
-  /// Loads and paginates the Quran content
   Future<void> _loadQuranPages() async {
     try {
       setState(() {
@@ -105,8 +91,6 @@ class _QuranViewerState extends State<QuranViewer> {
         _errorMessage = null;
       });
 
-      // We'll calculate pages after the first frame is rendered
-      // to get accurate screen dimensions
       WidgetsBinding.instance.addPostFrameCallback((_) async {
         await _calculatePages();
       });
@@ -118,28 +102,26 @@ class _QuranViewerState extends State<QuranViewer> {
     }
   }
 
-  /// Calculates pages based on screen dimensions
+  
   Future<void> _calculatePages() async {
     try {
       final screenSize = MediaQuery.of(context).size;
       final appBarHeight = AppBar().preferredSize.height;
       final statusBarHeight = MediaQuery.of(context).padding.top;
       
-      // Calculate available space for content
       final availableHeight = screenSize.height - 
           appBarHeight - 
           statusBarHeight - 
           widget.padding.vertical -
-          120; // Extra space for page indicator and controls
+          120; 
       
       final availableWidth = screenSize.width - widget.padding.horizontal;
 
-      // Create pages using pagination service
       final pages = await QuranPaginationService.createPages(
         availableHeight: availableHeight,
         availableWidth: availableWidth,
         fontSize: widget.fontSize,
-        fontFamily: 'Amiri', // We'll set this up with Google Fonts
+        fontFamily: 'Amiri', 
         padding: widget.padding,
       );
 
@@ -155,29 +137,24 @@ class _QuranViewerState extends State<QuranViewer> {
     }
   }
 
-  /// Navigates to the next page
   void _nextPage() {
     if (_currentPageIndex < _pages.length - 1) {
       _pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-      // Page position will be saved automatically in onPageChanged
     }
   }
 
-  /// Navigates to the previous page
   void _previousPage() {
     if (_currentPageIndex > 0) {
       _pageController.previousPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-      // Page position will be saved automatically in onPageChanged
     }
   }
 
-  /// Goes to a specific page
   void _goToPage(int pageIndex) {
     if (pageIndex >= 0 && pageIndex < _pages.length) {
       _pageController.animateToPage(
@@ -185,22 +162,18 @@ class _QuranViewerState extends State<QuranViewer> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
-      // Page position will be saved automatically in onPageChanged
     }
   }
 
-  /// Navigates to a specific page from the index
   void _navigateToPage(int pageNumber) {
     setState(() {
       _showIndex = false;
       _currentPageIndex = pageNumber;
     });
     
-    // Save the new page position
     _saveCurrentPagePosition(pageNumber);
     
     if (_pages.isNotEmpty && pageNumber >= 0 && pageNumber < _pages.length) {
-      // Use WidgetsBinding to ensure the page controller is ready
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (_pageController.hasClients) {
           _pageController.animateToPage(
@@ -213,20 +186,18 @@ class _QuranViewerState extends State<QuranViewer> {
     }
   }
 
-  /// Shows the index page
   void _showIndexPage() {
     setState(() {
       _showIndex = true;
     });
   }
 
-  /// Shows the search page
   void _showSearchPage() {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => QuranSearchPage(
           onResultSelected: (pageNumber) {
-            Navigator.of(context).pop(); // Close search page
+            Navigator.of(context).pop(); 
             _navigateToPage(pageNumber);
           },
         ),
@@ -234,7 +205,6 @@ class _QuranViewerState extends State<QuranViewer> {
     );
   }
 
-  /// Shows the saved verses page
   void _showSavedVersesPage() async {
     final result = await Navigator.of(context).push<int>(
       MaterialPageRoute(
@@ -242,9 +212,8 @@ class _QuranViewerState extends State<QuranViewer> {
       ),
     );
     
-    // If a page number was returned, navigate to it
     if (result != null) {
-      _navigateToPage(result - 1); // Convert from 1-based to 0-based index
+      _navigateToPage(result - 1); 
     }
   }
 
@@ -256,20 +225,29 @@ class _QuranViewerState extends State<QuranViewer> {
       backgroundColor: widget.backgroundColor,
       appBar: AppBar(
         title: Text(
-          _showIndex ? 'فهرس السور' : 'القرآن الكريم', // "Index of Surahs" or "The Holy Quran"
+          _showIndex ? 'فهرس السور' : 'القرآن الكريم', 
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
           ),
         ),
-        backgroundColor: const Color(0xFF2F4F4F),
+        backgroundColor: AppColors.kPrimaryColor,
         elevation: 2,
         centerTitle: true,
-        leading: _showIndex ? null : IconButton(
-          icon: const Icon(Icons.list, color: Colors.white),
-          onPressed: _showIndexPage,
-          tooltip: 'فهرس السور',
-        ),
+        leading: _showIndex 
+            ? IconButton(
+                icon: const Icon(Icons.menu_book, color: Colors.white),
+                onPressed: () {
+                  // Navigate to last read page or first page
+                  _navigateToPage(_currentPageIndex);
+                },
+                tooltip: 'عرض القرآن',
+              )
+            : IconButton(
+                icon: const Icon(Icons.list, color: Colors.white),
+                onPressed: _showIndexPage,
+                tooltip: 'فهرس السور',
+              ),
         actions: [
           if (!_showIndex && !_isLoading && _pages.isNotEmpty)
             IconButton(
@@ -282,6 +260,14 @@ class _QuranViewerState extends State<QuranViewer> {
             onPressed: _showSavedVersesPage,
             tooltip: 'الآيات المحفوظة',
           ),
+          if (_showIndex)
+            IconButton(
+              icon: const Icon(Icons.close, color: Colors.white),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              tooltip: 'إغلاق',
+            ),
         ],
       ),
       body: _buildBody(),
@@ -289,11 +275,8 @@ class _QuranViewerState extends State<QuranViewer> {
     );
   }
 
-  /// Builds the main body content
   Widget _buildBody() {
-    // Show index page
     if (_showIndex) {
-      // Calculate the same dimensions used for pagination
       final screenSize = MediaQuery.of(context).size;
       final appBarHeight = AppBar().preferredSize.height;
       final statusBarHeight = MediaQuery.of(context).padding.top;
@@ -302,7 +285,7 @@ class _QuranViewerState extends State<QuranViewer> {
           appBarHeight - 
           statusBarHeight - 
           widget.padding.vertical -
-          120; // Extra space for page indicator and controls
+          120; 
       
       final availableWidth = screenSize.width - widget.padding.horizontal;
       
@@ -313,21 +296,20 @@ class _QuranViewerState extends State<QuranViewer> {
       );
     }
     
-    // Show Quran pages
     if (_isLoading) {
       return const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF2F4F4F)),
+              valueColor: AlwaysStoppedAnimation<Color>(AppColors.kPrimaryColor),
             ),
             SizedBox(height: 16),
             Text(
-              'جاري تحميل القرآن الكريم (602 صفحة)...', // "Loading the Holy Quran (602 pages)..."
+              'جاري تحميل القرآن الكريم (602 صفحة)...', 
               style: TextStyle(
                 fontSize: 16,
-                color: Color(0xFF2F4F4F),
+                color: AppColors.kPrimaryColor,
               ),
             ),
           ],
@@ -354,7 +336,7 @@ class _QuranViewerState extends State<QuranViewer> {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: _loadQuranPages,
-              child: const Text('إعادة المحاولة'), // "Try Again"
+              child: const Text('إعادة المحاولة'), 
             ),
           ],
         ),
@@ -364,7 +346,7 @@ class _QuranViewerState extends State<QuranViewer> {
     if (_pages.isEmpty) {
       return const Center(
         child: Text(
-          'لا توجد صفحات للعرض', // "No pages to display"
+          'لا توجد صفحات للعرض', 
           style: TextStyle(fontSize: 18),
         ),
       );
@@ -377,7 +359,7 @@ class _QuranViewerState extends State<QuranViewer> {
           child: PageView.builder(
             controller: _pageController,
             itemCount: _pages.length,
-            reverse: true, // Start from right and move left (Arabic reading direction)
+            reverse: true, 
             onPageChanged: (index) {
               setState(() {
                 _currentPageIndex = index;
@@ -393,7 +375,7 @@ class _QuranViewerState extends State<QuranViewer> {
     );
   }
 
-  /// Builds the content for a single page
+ 
   Widget _buildPageContent(QuranPage page) {
     return Container(
       margin: widget.padding,
@@ -415,12 +397,11 @@ class _QuranViewerState extends State<QuranViewer> {
     );
   }
 
-  /// Builds interactive page content with save and share options
+  
   Widget _buildInteractivePageContent(QuranPage page) {
     final List<Widget> children = [];
     
-    // Build all verses with interactive features and integrated surah headers
-    // Basmalah is now handled within _buildInteractiveVerses after surah names
+  
     children.add(_buildInteractiveVerses(page.verses));
     
     return Column(
@@ -429,38 +410,37 @@ class _QuranViewerState extends State<QuranViewer> {
     );
   }
 
-  /// Builds verses with interaction capabilities (save, share)
+
   Widget _buildInteractiveVerses(List<Verse> verses) {
     if (verses.isEmpty) return const SizedBox.shrink();
     
     List<Widget> children = [];
     int? currentSurahNumber;
     
-    // Create a continuous flow of verses using RichText for each surah section
+    
     List<Verse> currentSurahVerses = [];
     
     for (int i = 0; i < verses.length; i++) {
       final verse = verses[i];
       
-      // Check if this is the start of a new surah
+    
       if (verse.surahNumber != currentSurahNumber) {
-        // If we have accumulated verses from previous surah, add them as continuous text
+       
         if (currentSurahVerses.isNotEmpty) {
           children.add(_buildContinuousVersesText(currentSurahVerses));
         }
         
-        // Add spacing before new surah (except for the very first)
+       
         if (currentSurahNumber != null) {
           children.add(const SizedBox(height: 24));
         }
         
-        // Add surah header only if this is truly the first verse of a new surah
-        // Check if this verse is actually verse number 1 of the surah
+       
         if (verse.verseNumber == 1 && verse.surahName != null) {
           children.add(_buildSurahNameBox(verse.surahName!));
           children.add(const SizedBox(height: 16));
           
-          // Add basmalah after surah name (except for Surah At-Tawbah - number 9)
+        
           if (verse.surahNumber != 9) {
             children.add(_buildBasmalah());
             children.add(const SizedBox(height: 16));
@@ -470,12 +450,12 @@ class _QuranViewerState extends State<QuranViewer> {
         currentSurahNumber = verse.surahNumber;
         currentSurahVerses = [verse];
       } else {
-        // Add verse to current surah group
+    
         currentSurahVerses.add(verse);
       }
     }
     
-    // Add any remaining verses as continuous text
+   
     if (currentSurahVerses.isNotEmpty) {
       children.add(_buildContinuousVersesText(currentSurahVerses));
     }
@@ -486,7 +466,6 @@ class _QuranViewerState extends State<QuranViewer> {
     );
   }
 
-  /// Builds continuous text for verses using RichText to make them flow naturally
   Widget _buildContinuousVersesText(List<Verse> verses) {
     List<InlineSpan> textSpans = [];
     
@@ -517,7 +496,7 @@ class _QuranViewerState extends State<QuranViewer> {
           style: TextStyle(
             fontSize: widget.fontSize * 0.75,
             fontFamily: GoogleFonts.amiri().fontFamily ?? 'Amiri',
-            color: const Color(0xFF8B4513),
+            color: AppColors.kPrimaryColor2,
             fontWeight: FontWeight.w600,
             height: 1.8,
           ),
@@ -534,7 +513,6 @@ class _QuranViewerState extends State<QuranViewer> {
     );
   }
 
-  /// Builds a decorative box with surah name
   Widget _buildSurahNameBox(String surahName) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
@@ -542,14 +520,14 @@ class _QuranViewerState extends State<QuranViewer> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            const Color(0xFF2F4F4F).withValues(alpha: 0.1),
-            const Color(0xFF2F4F4F).withValues(alpha: 0.05),
-            const Color(0xFF2F4F4F).withValues(alpha: 0.1),
+            AppColors.kPrimaryColor.withValues(alpha: 0.1),
+            AppColors.kPrimaryColor.withValues(alpha: 0.05),
+            AppColors.kPrimaryColor.withValues(alpha: 0.1),
           ],
         ),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: const Color(0xFF2F4F4F).withValues(alpha: 0.3),
+          color: AppColors.kPrimaryColor.withValues(alpha: 0.3),
           width: 1,
         ),
       ),
@@ -559,7 +537,7 @@ class _QuranViewerState extends State<QuranViewer> {
           fontSize: widget.fontSize * 1.2,
           fontFamily: GoogleFonts.amiri().fontFamily ?? 'Amiri',
           fontWeight: FontWeight.bold,
-          color: const Color(0xFF2F4F4F),
+          color: AppColors.kPrimaryColor,
           letterSpacing: 1.0,
         ),
         textAlign: TextAlign.center,
@@ -577,14 +555,14 @@ class _QuranViewerState extends State<QuranViewer> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            const Color(0xFFDAA520).withValues(alpha: 0.1),
-            const Color(0xFFDAA520).withValues(alpha: 0.05),
-            const Color(0xFFDAA520).withValues(alpha: 0.1),
+            AppColors.kPrimaryColor2.withValues(alpha: 0.15),
+            AppColors.kPrimaryColor2.withValues(alpha: 0.08),
+            AppColors.kPrimaryColor2.withValues(alpha: 0.15),
           ],
         ),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: const Color(0xFFDAA520).withValues(alpha: 0.3),
+          color: AppColors.kPrimaryColor2.withValues(alpha: 0.3),
           width: 1,
         ),
       ),
@@ -594,7 +572,7 @@ class _QuranViewerState extends State<QuranViewer> {
           fontSize: widget.fontSize * 1.1,
           fontFamily: GoogleFonts.amiri().fontFamily ?? 'Amiri',
           fontWeight: FontWeight.w600,
-          color: const Color(0xFF8B4513),
+          color: AppColors.kPrimaryColor,
           letterSpacing: 2.0,
           height: 1.8,
           shadows: [
@@ -624,7 +602,6 @@ class _QuranViewerState extends State<QuranViewer> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Verse preview
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -658,11 +635,9 @@ class _QuranViewerState extends State<QuranViewer> {
             ),
             const SizedBox(height: 16),
             
-            // Action buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // Save/Unsave button
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: () async {
@@ -726,7 +701,7 @@ class _QuranViewerState extends State<QuranViewer> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: const Color(0xFF2F4F4F),
+        color: AppColors.kPrimaryColor,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.1),
@@ -739,7 +714,6 @@ class _QuranViewerState extends State<QuranViewer> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // Next page button (left arrow for Arabic reading direction)
             IconButton(
               onPressed: _currentPageIndex < _pages.length - 1 ? _nextPage : null,
               icon: const Icon(Icons.chevron_left, color: Colors.white),
@@ -812,7 +786,7 @@ class _QuranViewerState extends State<QuranViewer> {
               child: Container(
                 decoration: BoxDecoration(
                   color: index == _currentPageIndex 
-                      ? const Color(0xFF2F4F4F) 
+                      ? AppColors.kPrimaryColor 
                       : Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(8),
                 ),

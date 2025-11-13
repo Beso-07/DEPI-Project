@@ -89,8 +89,6 @@ class QuranDataService {
     }
   }
 
-  /// [surahNumber] - The surah number (1-114)
-  /// Returns a list of verses for the specified surah
   static Future<List<Verse>> getVersesForSurah(int surahNumber) async {
     final verses = await loadVerses();
     return verses.where((verse) => verse.chapter == surahNumber).toList();

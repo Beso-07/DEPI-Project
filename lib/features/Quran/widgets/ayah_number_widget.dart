@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// A decorative circular widget that displays ayah numbers
-/// Designed to look like traditional Quran ayah number markings
+
 class AyahNumberWidget extends StatelessWidget {
   final int ayahNumber;
   final double size;
@@ -13,9 +12,9 @@ class AyahNumberWidget extends StatelessWidget {
     super.key,
     required this.ayahNumber,
     this.size = 24.0,
-    this.backgroundColor = const Color(0xFFF5F5DC), // Beige color like traditional mushaf
-    this.textColor = const Color(0xFF2F4F4F), // Dark slate gray
-    this.borderColor = const Color(0xFF8B4513), // Saddle brown
+    this.backgroundColor = const Color(0xFFF5F5DC),  
+    this.textColor = const Color(0xFF2F4F4F), 
+    this.borderColor = const Color(0xFF8B4513), 
   });
 
   @override
@@ -30,7 +29,6 @@ class AyahNumberWidget extends StatelessWidget {
           color: borderColor,
           width: 1.5,
         ),
-        // Add subtle shadow for depth
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.1),
@@ -43,10 +41,10 @@ class AyahNumberWidget extends StatelessWidget {
         child: Text(
           '$ayahNumber',
           style: TextStyle(
-            fontSize: size * 0.5, // Font size relative to circle size
+            fontSize: size * 0.5, 
             fontWeight: FontWeight.bold,
             color: textColor,
-            // Use a font that displays Arabic-Indic numerals well
+           
             fontFamily: 'Roboto',
           ),
           textAlign: TextAlign.center,
@@ -56,8 +54,7 @@ class AyahNumberWidget extends StatelessWidget {
   }
 }
 
-/// A widget span version of AyahNumberWidget for use within RichText
-/// This allows embedding the ayah number directly in the text flow
+
 class AyahNumberSpan extends WidgetSpan {
   AyahNumberSpan({
     required int ayahNumber,
@@ -80,32 +77,27 @@ class AyahNumberSpan extends WidgetSpan {
         );
 }
 
-/// Utility class for creating ayah number widgets with different styles
 class AyahNumberStyles {
-  /// Default style for regular text
   static AyahNumberSpan regular(int ayahNumber) => AyahNumberSpan(
         ayahNumber: ayahNumber,
         size: 20.0,
       );
 
-  /// Smaller style for compact layouts
   static AyahNumberSpan small(int ayahNumber) => AyahNumberSpan(
         ayahNumber: ayahNumber,
         size: 16.0,
       );
 
-  /// Larger style for emphasis
   static AyahNumberSpan large(int ayahNumber) => AyahNumberSpan(
         ayahNumber: ayahNumber,
         size: 28.0,
       );
 
-  /// Style with golden colors for special occasions
   static AyahNumberSpan golden(int ayahNumber) => AyahNumberSpan(
         ayahNumber: ayahNumber,
         size: 22.0,
-        backgroundColor: const Color(0xFFFFFDD0), // Cream color
-        borderColor: const Color(0xFFDAA520), // Golden rod
-        textColor: const Color(0xFF8B4513), // Saddle brown
+        backgroundColor: const Color(0xFFFFFDD0), 
+        borderColor: const Color(0xFFDAA520), 
+        textColor: const Color(0xFF8B4513), 
       );
 }

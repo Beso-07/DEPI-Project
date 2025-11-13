@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../services/quran_search_service.dart';
 
-/// Search page for finding verses and surahs in the Quran
 class QuranSearchPage extends StatefulWidget {
   final Function(int pageNumber) onResultSelected;
   
@@ -23,15 +22,13 @@ class _QuranSearchPageState extends State<QuranSearchPage> {
   List<SearchResult> _searchResults = [];
   bool _isSearching = false;
   String _lastQuery = '';
-  int _selectedSearchType = 0; // 0 = verses, 1 = surah names
+  int _selectedSearchType = 0;
   
   @override
   void initState() {
     super.initState();
-    // Initialize search service in background
     QuranSearchService.initialize();
     
-    // Auto-focus search field
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _searchFocusNode.requestFocus();
     });
@@ -53,7 +50,7 @@ class _QuranSearchPageState extends State<QuranSearchPage> {
       return;
     }
     
-    if (query == _lastQuery) return; // Avoid duplicate searches
+    if (query == _lastQuery) return; 
     
     setState(() {
       _isSearching = true;
@@ -64,10 +61,10 @@ class _QuranSearchPageState extends State<QuranSearchPage> {
       List<SearchResult> results;
       
       if (_selectedSearchType == 0) {
-        // Search in verses
+        
         results = await QuranSearchService.searchVerses(query);
       } else {
-        // Search in surah names
+        
         results = await QuranSearchService.searchBySurahName(query);
       }
       
@@ -110,7 +107,6 @@ class _QuranSearchPageState extends State<QuranSearchPage> {
       ),
       body: Column(
         children: [
-          // Search header
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -125,7 +121,6 @@ class _QuranSearchPageState extends State<QuranSearchPage> {
             ),
             child: Column(
               children: [
-                // Search input
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -179,7 +174,6 @@ class _QuranSearchPageState extends State<QuranSearchPage> {
                       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     ),
                     onChanged: (value) {
-                      // Debounce search
                       Future.delayed(const Duration(milliseconds: 500), () {
                         if (_searchController.text == value) {
                           _performSearch(value);
@@ -192,7 +186,6 @@ class _QuranSearchPageState extends State<QuranSearchPage> {
                 
                 const SizedBox(height: 12),
                 
-                // Search type toggle
                 Container(
                   decoration: BoxDecoration(
                     color: Colors.white.withValues(alpha: 0.1),
@@ -269,7 +262,6 @@ class _QuranSearchPageState extends State<QuranSearchPage> {
             ),
           ),
           
-          // Search results
           Expanded(
             child: _buildSearchResults(),
           ),
