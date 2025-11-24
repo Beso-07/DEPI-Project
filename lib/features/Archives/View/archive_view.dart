@@ -1,5 +1,5 @@
 import 'package:depiproject/core/constants/assets.dart';
-import 'package:depiproject/features/Archives/View/quranSaved_view.dart';
+import 'package:depiproject/features/Archives/View/saved_verses_view.dart';
 import 'package:depiproject/features/Archives/View/saved_doaa_screen.dart';
 import 'package:depiproject/features/Archives/model_view/cubit/archive_cubit.dart';
 import 'package:depiproject/features/Archives/model_view/cubit/archive_state.dart';
@@ -64,14 +64,14 @@ class ArchiveView extends StatelessWidget {
                             },
                           ),
                           buildCard(
-                            title: "سور",
+                            title: "آيات قرآنية",
                             icon: Imagespath.quran,
                             ontap: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => SavedSurahsScreen(
-                                    list: state.quran,
+                                  builder: (context) => SavedVersesScreen(
+                                    verses: state.quranVerses,
                                   ),
                                 ),
                               );

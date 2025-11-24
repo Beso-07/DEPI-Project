@@ -1,7 +1,6 @@
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/features/AsmaulHusna/view/asmaulhusna_screen.dart';
 import 'package:depiproject/features/Azkar/views/azkar_view.dart';
-import 'package:depiproject/features/Quran/views/quran_content.dart';
 import 'package:depiproject/features/ahadith/view/rawi_name_view.dart';
 import 'package:depiproject/features/calender/views/calender_view.dart';
 import 'package:depiproject/features/home/views/widgets/category_item.dart';
@@ -9,6 +8,7 @@ import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
 import 'package:depiproject/features/doaa/views/adyaaa.dart';
 import 'package:depiproject/features/prophets/views/prophets_view.dart';
 import 'package:depiproject/features/tasbeh/view/tasbeh_view.dart';
+import 'package:depiproject/features/Quran/widgets/quran_viewer.dart';
 import 'package:flutter/material.dart';
 
 class CategoryVector extends StatelessWidget {
@@ -40,7 +40,7 @@ class CategoryVector extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const QuranContent()),
+                              builder: (context) => const QuranViewer()),
                         );
                       }),
                   const VerticalDivider(color: Colors.grey),

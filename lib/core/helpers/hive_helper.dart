@@ -1,18 +1,15 @@
 import 'package:depiproject/features/Azkar/models/Azkar_model.dart';
 import 'package:depiproject/features/ahadith/models/hadith_model.dart';
-import 'package:depiproject/features/Quran/models/quran_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HiveHelper {
   static const archivesBox = "archivesBox";
   static const azkarKey = "azkarKey";
   static const ahadithKey = "ahadithKey";
-  static const quranKey = "quranKey";
   static const doaaKey = "doaaKey";
 
   static List<Zekr> azkar = [];
   static List<Hadith> ahadith = [];
-  static List<Surah> quran = [];
   static List<Map<String, dynamic>> doaa = [];
   static late Box box;
 
@@ -24,15 +21,22 @@ class HiveHelper {
     if (!Hive.isAdapterRegistered(1)) {
       Hive.registerAdapter(HadithAdapter());
     }
-    if (!Hive.isAdapterRegistered(2)) {
-      Hive.registerAdapter(SurahAdapter());
-    }
-    if (!Hive.isAdapterRegistered(3)) {
-      Hive.registerAdapter(VerseAdapter());
-    }
 
-    box = await Hive.openBox(archivesBox);
-    await getMyNotes();
+    try {
+      box = await Hive.openBox(archivesBox);
+      
+      // Remove old quran data that causes typeId error
+      if (box.containsKey('quranKey')) {
+        await box.delete('quranKey');
+      }
+      
+      await getMyNotes();
+    } catch (e) {
+      // If error occurs (like unknown typeId), delete and recreate the box
+      await Hive.deleteBoxFromDisk(archivesBox);
+      box = await Hive.openBox(archivesBox);
+      await getMyNotes();
+    }
   }
 
   static bool isSaved({
@@ -45,8 +49,6 @@ class HiveHelper {
         return e.zekr == item.zekr && e.count == item.count;
       } else if (key == ahadithKey) {
         return e.id == item.id && e.hadithContent == item.hadithContent;
-      } else if (key == quranKey) {
-        return e.id == item.id && e.name == item.name;
       } else if (key == doaaKey) {
         return e['text'] == item['text'] && e['category'] == item['category'];
       } else {
@@ -66,8 +68,6 @@ class HiveHelper {
           return e.zekr == item.zekr && e.count == item.count;
         } else if (key == ahadithKey) {
           return e.id == item.id && e.hadithContent == item.hadithContent;
-        } else if (key == quranKey) {
-          return e.id == item.id && e.name == item.name;
         } else if (key == doaaKey) {
           return e['text'] == item['text'] && e['category'] == item['category'];
         } else {
@@ -85,7 +85,6 @@ class HiveHelper {
   static Future<void> getMyNotes() async {
     azkar = List<Zekr>.from(box.get(azkarKey, defaultValue: <Zekr>[]));
     ahadith = List<Hadith>.from(box.get(ahadithKey, defaultValue: <Hadith>[]));
-    quran = List<Surah>.from(box.get(quranKey, defaultValue: <Surah>[]));
 
     doaa = (box.get(doaaKey, defaultValue: <Map<dynamic, dynamic>>[]) as List)
         .map((e) => Map<String, dynamic>.from(e))
