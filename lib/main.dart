@@ -1,10 +1,8 @@
 import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/core/services/location_service.dart';
 import 'package:depiproject/features/settings/model_view/cubit/theme_cubit.dart';
-import 'package:depiproject/features/home/views/home_view.dart';
 import 'package:depiproject/features/Quran/services/saved_verses_service.dart';
 import 'package:depiproject/features/splash/views/splash_view.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,16 +16,10 @@ void main() async {
   await HiveHelper.init();
   await SavedVersesService.init();
 
-  // runApp(DevicePreview(builder: (context) => const IslamicApp()));
-  // await initTimeZone();
-  //  await ShowLocalNotification().initNotification();
-
   runApp(
     BlocProvider(
       create: (_) => ThemeCubit(),
-      child: DevicePreview(
-        builder: (context) => const IslamicApp(),
-      ),
+      child: const IslamicApp(),
     ),
   );
 }

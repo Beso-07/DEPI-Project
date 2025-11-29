@@ -1,16 +1,42 @@
-# depiproject
+# Taqwa App
 
-A new Flutter project.
+**Taqwa** is a Flutter mobile application that provides a clean, modern, and user-friendly Islamic experience.  
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## **Features**
+Display with icons:  
+- **Quran**  
+- **Supplications (Dua)**  
+- **Hadith**  
+- **Azkar**  
+- **Islamic Calendar**  
+- **Prayer Times**  
+- **Digital Tasbeeh**  
+- **Prophets Stories**  
+- **Names of Allah**  
+- **Islamic Radio**  
+- **Saved Items** (Quran, Dua, Hadith, Azkar)  
 
-A few resources to get you started if this is your first Flutter project:
+Additional features:  
+- Intuitive and smooth user interface  
+- Light and dark theme support  
+- Search and filter functionalities  
+- SnackBars and Dialogs for user interactions  
+- Favorites management  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## **Technologies & Tools**
+- **Language:** Dart  
+- **Framework:** Flutter  
+- **State Management:** Provider / Bloc (as applicable)  
+- **Storage:** SharedPreferences / SQLite  
+- **Design:** Figma for UI/UX  
+
+---
+
+## **Figma Design**
+View the app design and prototype here:  
+[DEPI App Figma Design](https://www.figma.com/design/Tk2SD80sCdwijykF4v4QJp/Taqwa-App?node-id=0-1&t=BQd91W9Wer9PJptU-1)  
+
