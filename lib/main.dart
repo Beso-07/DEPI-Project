@@ -14,6 +14,7 @@ void main() async {
   await Hive.initFlutter();
   LocationService.getCurrentLocation();
   await HiveHelper.init();
+  await HiveHelper.initSettings();
   await SavedVersesService.init();
 
   runApp(

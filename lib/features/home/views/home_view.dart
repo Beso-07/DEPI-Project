@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:depiproject/core/constants/colors.dart';
 import 'package:depiproject/features/home/views/widgets/category_vector.dart';
 import 'package:depiproject/features/home/views/widgets/custom_drawer.dart';
@@ -5,9 +7,14 @@ import 'package:depiproject/features/home/views/widgets/home_app_bar.dart';
 import 'package:depiproject/features/home/views/widgets/pray_time.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -27,12 +34,6 @@ class HomeView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: PrayTime(),
           ),
-          // ElevatedButton(
-          //   onPressed: () async {
-          //     // ShowLocalNotification().shownotificaton('local', 'notify');
-          //   },
-          //   child: const Text('Show Notification'),
-          // ),
           SizedBox(
             height: height * .15,
           ),
@@ -42,3 +43,40 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+// CustomMaterialIndicator(
+        //   onRefresh: () async {
+        //     await Future.delayed(const Duration(seconds: 1));
+        //     setState(() {});
+        //   },
+        //   backgroundColor: Colors.white,
+        //   indicatorBuilder: (context, controller) {
+        //     return Padding(
+        //       padding: const EdgeInsets.all(6.0),
+        //       child: CircularProgressIndicator(
+        //         color: Colors.redAccent,
+        //         value: controller.state.isLoading
+        //             ? null
+        //             : math.min(controller.value, 1.0),
+        //       ),
+        //     );
+        //   },
+        //   child: ListView(
+        //     children: [
+        //       const Padding(
+        //         padding: EdgeInsets.only(left: 16, right: 16, top: 24),
+        //         child: HomeAppBar(),
+        //       ),
+        //       SizedBox(
+        //         height: MediaQuery.of(context).size.height * .01,
+        //       ),
+        //       const Padding(
+        //         padding: EdgeInsets.symmetric(horizontal: 16),
+        //         child: PrayTime(),
+        //       ),
+        //       SizedBox(
+        //         height: height * .15,
+        //       ),
+        //        const CategoryVector()
+        //     ],
+        //   ),
+        // ));

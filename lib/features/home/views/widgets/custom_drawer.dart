@@ -1,3 +1,4 @@
+import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/core/widgets/logout_dialog.dart';
 import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
 import 'package:depiproject/features/radio/radioView.dart';
@@ -91,29 +92,38 @@ class _CustomDrawerState extends State<CustomDrawer> {
               },
             ),
             // CustomDrawerItem(
-            //   icon: Icons.settings,
-            //   text: 'الاعدادات',
+            //   icon: Icons.explore,
+            //   text: 'القبلة',
             //   onTap: () {
             //     Navigator.push(
             //       context,
-            //       MaterialPageRoute(
-            //           builder: (context) => const CustomSettings()),
+            //       MaterialPageRoute(builder: (context) => const QiblahView()),
             //     );
             //   },
             // ),
-            CustomDrawerItem(
-              icon: Icons.logout,
-              text: 'تسجيل الخروج',
-              onTap: () {
-                Navigator.of(context).pop();
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return const LogoutDialog();
-                  },
-                );
+
+            // CustomDrawerItem(
+            //   icon: Icons.logout,
+            //   text: 'تسجيل الخروج',
+            //   onTap: () {
+            //     Navigator.of(context).pop();
+            //     showDialog(
+            //       context: context,
+            //       builder: (context) {
+            //         return const LogoutDialog();
+            //       },
+            //     );
+            //   },
+            // ),
+            SummerTimeToggle(
+              title: "التوقيت الصيفي",
+              initialValue: HiveHelper.isSummerTime,
+              onChanged: (value) async {
+                await HiveHelper.setSummerTime(value);
+                setState(() {});
               },
             ),
+
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton.icon(
@@ -163,6 +173,72 @@ class CustomDrawerItem extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class SummerTimeToggle extends StatefulWidget {
+  final String title;
+  final bool initialValue;
+  final ValueChanged<bool> onChanged;
+
+  const SummerTimeToggle({
+    super.key,
+    required this.title,
+    required this.initialValue,
+    required this.onChanged,
+  });
+
+  @override
+  State<SummerTimeToggle> createState() => _SummerTimeToggleState();
+}
+
+class _SummerTimeToggleState extends State<SummerTimeToggle> {
+  late bool isOn;
+
+  @override
+  void initState() {
+    super.initState();
+    isOn = widget.initialValue;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16, left: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Row(
+            children: [
+              const Icon(
+                Icons.wb_sunny,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                widget.title,
+                style: const TextStyle(
+                  fontSize: 18,
+                  color: Colors.black87,
+                ),
+              ),
+            ],
+          ),
+          Switch(
+            value: isOn,
+            onChanged: (value) {
+              setState(() => isOn = value);
+              widget.onChanged(value);
+            },
+            activeColor: Colors.white,
+            activeTrackColor: const Color(0xff3d7f3a),
+            inactiveThumbColor: Colors.white,
+            inactiveTrackColor: Colors.grey.shade300,
+          ),
+        ],
       ),
     );
   }

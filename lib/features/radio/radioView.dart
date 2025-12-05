@@ -24,6 +24,7 @@ class RadioScreen extends StatelessWidget {
             final cubit = context.read<RadioCubit>();
 
             return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
                   child: ListView.builder(

@@ -7,6 +7,24 @@ class HiveHelper {
   static const azkarKey = "azkarKey";
   static const ahadithKey = "ahadithKey";
   static const doaaKey = "doaaKey";
+  static const settingKey = "settingKey";
+
+static late Box settingsBox;
+static bool isSummerTime = false;
+
+static Future<void> initSettings() async {
+  settingsBox = await Hive.openBox(settingKey);
+
+  isSummerTime = settingsBox.get('summer_time', defaultValue: false);
+}
+
+static Future<void> setSummerTime(bool value) async {
+  isSummerTime = value;
+  await settingsBox.put('summer_time', value);
+}
+
+
+
 
   static List<Zekr> azkar = [];
   static List<Hadith> ahadith = [];

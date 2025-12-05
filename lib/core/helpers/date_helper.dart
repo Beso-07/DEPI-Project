@@ -1,3 +1,4 @@
+import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/features/prayers_time/models/prayer_time_model.dart';
 import 'package:intl/intl.dart';
 import 'package:hijri/hijri_calendar.dart';
@@ -38,7 +39,9 @@ class DateHelper {
   }
 
   static String getNextPrayer(PrayerTimeModel model) {
-    final now = DateTime.now();
+    final now = DateTime.now().add(
+      Duration(hours: HiveHelper.isSummerTime ? 0 : 1),
+    );
 
     DateTime parseTime(String time) {
       final parts = time.split(' ');
