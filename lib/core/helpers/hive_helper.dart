@@ -8,22 +8,27 @@ class HiveHelper {
   static const ahadithKey = "ahadithKey";
   static const doaaKey = "doaaKey";
   static const settingKey = "settingKey";
+  static const onboardingKey = "onboardingKey";
 
-static late Box settingsBox;
-static bool isSummerTime = false;
+  static late Box settingsBox;
+  static bool isSummerTime = false;
+  static bool isOnboardingSeen = false;
 
-static Future<void> initSettings() async {
-  settingsBox = await Hive.openBox(settingKey);
+  static Future<void> initSettings() async {
+    settingsBox = await Hive.openBox(settingKey);
 
-  isSummerTime = settingsBox.get('summer_time', defaultValue: false);
+    isSummerTime = settingsBox.get('summer_time', defaultValue: false);
+    isOnboardingSeen = settingsBox.get(onboardingKey, defaultValue: false);
+  }
+
+  static Future<void> setSummerTime(bool value) async {
+    isSummerTime = value;
+    await settingsBox.put('summer_time', value);
+  }
+  static Future<void> setOnboardingSeen(bool value) async {
+  isOnboardingSeen = value;
+  await settingsBox.put(onboardingKey, value);
 }
-
-static Future<void> setSummerTime(bool value) async {
-  isSummerTime = value;
-  await settingsBox.put('summer_time', value);
-}
-
-
 
 
   static List<Zekr> azkar = [];
@@ -42,12 +47,12 @@ static Future<void> setSummerTime(bool value) async {
 
     try {
       box = await Hive.openBox(archivesBox);
-      
+
       // Remove old quran data that causes typeId error
       if (box.containsKey('quranKey')) {
         await box.delete('quranKey');
       }
-      
+
       await getMyNotes();
     } catch (e) {
       // If error occurs (like unknown typeId), delete and recreate the box

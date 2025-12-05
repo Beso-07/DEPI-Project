@@ -1,5 +1,6 @@
 import 'package:depiproject/core/constants/assets.dart';
 import 'package:depiproject/core/constants/onboarding_data.dart';
+import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/features/Auth/widgets/custom_bitton.dart';
 import 'package:depiproject/features/home/views/home_view.dart';
 import 'package:depiproject/features/onboarding/widgets/onboarding_item.dart';
@@ -59,6 +60,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   if (index < onBoardingData.length - 1) {
                     index++;
                   } else {
+                    HiveHelper.setOnboardingSeen(true);
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => const HomeView()),
