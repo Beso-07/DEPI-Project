@@ -83,7 +83,8 @@ class RawiAhadithView extends StatelessWidget {
                                           " حديث رقم ${hadith.id}",
                                           style: const TextStyle(
                                               color: Colors.black,
-                                              fontWeight: FontWeight.w800),
+                                              fontWeight: FontWeight.w800,
+                                              ),
                                         ),
                                         const Spacer(),
                                         Row(
