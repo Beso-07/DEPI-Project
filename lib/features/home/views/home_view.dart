@@ -43,40 +43,29 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
-// CustomMaterialIndicator(
-        //   onRefresh: () async {
-        //     await Future.delayed(const Duration(seconds: 1));
-        //     setState(() {});
-        //   },
-        //   backgroundColor: Colors.white,
-        //   indicatorBuilder: (context, controller) {
-        //     return Padding(
-        //       padding: const EdgeInsets.all(6.0),
-        //       child: CircularProgressIndicator(
-        //         color: Colors.redAccent,
-        //         value: controller.state.isLoading
-        //             ? null
-        //             : math.min(controller.value, 1.0),
-        //       ),
-        //     );
-        //   },
-        //   child: ListView(
-        //     children: [
-        //       const Padding(
-        //         padding: EdgeInsets.only(left: 16, right: 16, top: 24),
-        //         child: HomeAppBar(),
-        //       ),
-        //       SizedBox(
-        //         height: MediaQuery.of(context).size.height * .01,
-        //       ),
-        //       const Padding(
-        //         padding: EdgeInsets.symmetric(horizontal: 16),
-        //         child: PrayTime(),
-        //       ),
-        //       SizedBox(
-        //         height: height * .15,
-        //       ),
-        //        const CategoryVector()
-        //     ],
-        //   ),
-        // ));
+
+// RefreshIndicator(
+//           onRefresh: () async {
+//             await Future.delayed(const Duration(seconds: 1), () {
+//               setState(() {});
+//             });
+//           },
+//           child: ListView(
+//               physics: const AlwaysScrollableScrollPhysics(),
+//               children: [
+//                 const Padding(
+//                   padding: EdgeInsets.only(left: 16, right: 16, top: 24),
+//                   child: HomeAppBar(),
+//                 ),
+//                 SizedBox(
+//                   height: MediaQuery.of(context).size.height * .01,
+//                 ),
+//                 const Padding(
+//                   padding: EdgeInsets.symmetric(horizontal: 16),
+//                   child: PrayTime(),
+//                 ),
+//                 SizedBox(
+//                   height: height * .15,
+//                 ),
+//               ]),
+//         )

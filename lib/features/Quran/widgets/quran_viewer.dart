@@ -10,7 +10,6 @@ import 'surah_index_page.dart';
 import 'quran_search_page.dart';
 import 'saved_verses_page.dart';
 
-
 class QuranViewer extends StatefulWidget {
   final double fontSize;
   final Color backgroundColor;
@@ -20,8 +19,8 @@ class QuranViewer extends StatefulWidget {
   const QuranViewer({
     super.key,
     this.fontSize = 24.0,
-    this.backgroundColor = AppColors.kPrimaryColor3, 
-    this.textColor = AppColors.kPrimaryColor4, 
+    this.backgroundColor = AppColors.kPrimaryColor3,
+    this.textColor = AppColors.kPrimaryColor4,
     this.padding = const EdgeInsets.all(20.0),
   });
 
@@ -35,22 +34,22 @@ class _QuranViewerState extends State<QuranViewer> {
   bool _isLoading = true;
   String? _errorMessage;
   int _currentPageIndex = 0;
-  bool _showIndex = true; 
-  
+  bool _showIndex = true;
+
   @override
   void initState() {
     super.initState();
     _loadQuranPages();
     _loadLastPagePosition();
   }
-  
- 
+
   void _loadLastPagePosition() async {
     try {
       final lastPageIndex = await AppPreferencesService.getLastPageIndex();
-      final showIndexOnStartup = await AppPreferencesService.getShowIndexOnStartup();
+      final showIndexOnStartup =
+          await AppPreferencesService.getShowIndexOnStartup();
       final isFirstRun = await AppPreferencesService.isFirstRun();
-      
+
       if (isFirstRun || showIndexOnStartup) {
         if (mounted) {
           setState(() {
@@ -102,26 +101,25 @@ class _QuranViewerState extends State<QuranViewer> {
     }
   }
 
-  
   Future<void> _calculatePages() async {
     try {
       final screenSize = MediaQuery.of(context).size;
       final appBarHeight = AppBar().preferredSize.height;
       final statusBarHeight = MediaQuery.of(context).padding.top;
-      
-      final availableHeight = screenSize.height - 
-          appBarHeight - 
-          statusBarHeight - 
+
+      final availableHeight = screenSize.height -
+          appBarHeight -
+          statusBarHeight -
           widget.padding.vertical -
-          120; 
-      
+          120;
+
       final availableWidth = screenSize.width - widget.padding.horizontal;
 
       final pages = await QuranPaginationService.createPages(
         availableHeight: availableHeight,
         availableWidth: availableWidth,
         fontSize: widget.fontSize,
-        fontFamily: 'Amiri', 
+        fontFamily: 'Amiri',
         padding: widget.padding,
       );
 
@@ -170,9 +168,9 @@ class _QuranViewerState extends State<QuranViewer> {
       _showIndex = false;
       _currentPageIndex = pageNumber;
     });
-    
+
     _saveCurrentPagePosition(pageNumber);
-    
+
     if (_pages.isNotEmpty && pageNumber >= 0 && pageNumber < _pages.length) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (_pageController.hasClients) {
@@ -197,7 +195,7 @@ class _QuranViewerState extends State<QuranViewer> {
       MaterialPageRoute(
         builder: (context) => QuranSearchPage(
           onResultSelected: (pageNumber) {
-            Navigator.of(context).pop(); 
+            Navigator.of(context).pop();
             _navigateToPage(pageNumber);
           },
         ),
@@ -211,13 +209,11 @@ class _QuranViewerState extends State<QuranViewer> {
         builder: (context) => const SavedVersesPage(),
       ),
     );
-    
+
     if (result != null) {
-      _navigateToPage(result - 1); 
+      _navigateToPage(result - 1);
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -225,7 +221,7 @@ class _QuranViewerState extends State<QuranViewer> {
       backgroundColor: widget.backgroundColor,
       appBar: AppBar(
         title: Text(
-          _showIndex ? 'فهرس السور' : 'القرآن الكريم', 
+          _showIndex ? 'فهرس السور' : 'القرآن الكريم',
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -234,7 +230,7 @@ class _QuranViewerState extends State<QuranViewer> {
         backgroundColor: AppColors.kPrimaryColor,
         elevation: 2,
         centerTitle: true,
-        leading: _showIndex 
+        leading: _showIndex
             ? IconButton(
                 icon: const Icon(Icons.menu_book, color: Colors.white),
                 onPressed: () {
@@ -280,33 +276,34 @@ class _QuranViewerState extends State<QuranViewer> {
       final screenSize = MediaQuery.of(context).size;
       final appBarHeight = AppBar().preferredSize.height;
       final statusBarHeight = MediaQuery.of(context).padding.top;
-      
-      final availableHeight = screenSize.height - 
-          appBarHeight - 
-          statusBarHeight - 
+
+      final availableHeight = screenSize.height -
+          appBarHeight -
+          statusBarHeight -
           widget.padding.vertical -
-          120; 
-      
+          120;
+
       final availableWidth = screenSize.width - widget.padding.horizontal;
-      
+
       return SurahIndexPage(
         onSurahSelected: _navigateToPage,
         availableHeight: availableHeight,
         availableWidth: availableWidth,
       );
     }
-    
+
     if (_isLoading) {
       return const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(AppColors.kPrimaryColor),
+              valueColor:
+                  AlwaysStoppedAnimation<Color>(AppColors.kPrimaryColor),
             ),
             SizedBox(height: 16),
             Text(
-              'جاري تحميل القرآن الكريم (602 صفحة)...', 
+              'جاري تحميل القرآن الكريم (602 صفحة)...',
               style: TextStyle(
                 fontSize: 16,
                 color: AppColors.kPrimaryColor,
@@ -336,7 +333,7 @@ class _QuranViewerState extends State<QuranViewer> {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: _loadQuranPages,
-              child: const Text('إعادة المحاولة'), 
+              child: const Text('إعادة المحاولة'),
             ),
           ],
         ),
@@ -346,7 +343,7 @@ class _QuranViewerState extends State<QuranViewer> {
     if (_pages.isEmpty) {
       return const Center(
         child: Text(
-          'لا توجد صفحات للعرض', 
+          'لا توجد صفحات للعرض',
           style: TextStyle(fontSize: 18),
         ),
       );
@@ -359,7 +356,7 @@ class _QuranViewerState extends State<QuranViewer> {
           child: PageView.builder(
             controller: _pageController,
             itemCount: _pages.length,
-            reverse: true, 
+            reverse: true,
             onPageChanged: (index) {
               setState(() {
                 _currentPageIndex = index;
@@ -375,7 +372,6 @@ class _QuranViewerState extends State<QuranViewer> {
     );
   }
 
- 
   Widget _buildPageContent(QuranPage page) {
     return Container(
       margin: widget.padding,
@@ -397,69 +393,58 @@ class _QuranViewerState extends State<QuranViewer> {
     );
   }
 
-  
   Widget _buildInteractivePageContent(QuranPage page) {
     final List<Widget> children = [];
-    
-  
+
     children.add(_buildInteractiveVerses(page.verses));
-    
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: children,
     );
   }
 
-
   Widget _buildInteractiveVerses(List<Verse> verses) {
     if (verses.isEmpty) return const SizedBox.shrink();
-    
+
     List<Widget> children = [];
     int? currentSurahNumber;
-    
-    
+
     List<Verse> currentSurahVerses = [];
-    
+
     for (int i = 0; i < verses.length; i++) {
       final verse = verses[i];
-      
-    
+
       if (verse.surahNumber != currentSurahNumber) {
-       
         if (currentSurahVerses.isNotEmpty) {
           children.add(_buildContinuousVersesText(currentSurahVerses));
         }
-        
-       
+
         if (currentSurahNumber != null) {
           children.add(const SizedBox(height: 24));
         }
-        
-       
+
         if (verse.verseNumber == 1 && verse.surahName != null) {
           children.add(_buildSurahNameBox(verse.surahName!));
           children.add(const SizedBox(height: 16));
-          
-        
+
           if (verse.surahNumber != 9) {
             children.add(_buildBasmalah());
             children.add(const SizedBox(height: 16));
           }
         }
-        
+
         currentSurahNumber = verse.surahNumber;
         currentSurahVerses = [verse];
       } else {
-    
         currentSurahVerses.add(verse);
       }
     }
-    
-   
+
     if (currentSurahVerses.isNotEmpty) {
       children.add(_buildContinuousVersesText(currentSurahVerses));
     }
-    
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: children,
@@ -468,11 +453,12 @@ class _QuranViewerState extends State<QuranViewer> {
 
   Widget _buildContinuousVersesText(List<Verse> verses) {
     List<InlineSpan> textSpans = [];
-    
+
     for (int i = 0; i < verses.length; i++) {
       final verse = verses[i];
-      final isVerseSaved = SavedVersesService.isVerseSaved(verse.surahNumber, verse.verseNumber);
-      
+      final isVerseSaved =
+          SavedVersesService.isVerseSaved(verse.surahNumber, verse.verseNumber);
+
       // Add verse text
       textSpans.add(
         TextSpan(
@@ -482,13 +468,14 @@ class _QuranViewerState extends State<QuranViewer> {
             fontFamily: GoogleFonts.amiri().fontFamily ?? 'Amiri',
             color: widget.textColor,
             height: 1.8,
-            backgroundColor: isVerseSaved ? Colors.amber.withValues(alpha: 0.15) : null,
+            backgroundColor:
+                isVerseSaved ? Colors.amber.withValues(alpha: 0.15) : null,
           ),
           recognizer: LongPressGestureRecognizer()
             ..onLongPress = () => _showVerseMenu(verse),
         ),
       );
-      
+
       // Add verse number
       textSpans.add(
         TextSpan(
@@ -503,7 +490,7 @@ class _QuranViewerState extends State<QuranViewer> {
         ),
       );
     }
-    
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: RichText(
@@ -589,12 +576,11 @@ class _QuranViewerState extends State<QuranViewer> {
     );
   }
 
-
-
   /// Shows verse menu with save and share options
   void _showVerseMenu(Verse verse) {
-    final isVerseSaved = SavedVersesService.isVerseSaved(verse.surahNumber, verse.verseNumber);
-    
+    final isVerseSaved =
+        SavedVersesService.isVerseSaved(verse.surahNumber, verse.verseNumber);
+
     showModalBottomSheet(
       context: context,
       builder: (context) => Container(
@@ -634,7 +620,6 @@ class _QuranViewerState extends State<QuranViewer> {
               ),
             ),
             const SizedBox(height: 16),
-            
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -651,12 +636,14 @@ class _QuranViewerState extends State<QuranViewer> {
                           setState(() {});
                           if (mounted) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('تم حذف الآية من المحفوظات')),
+                              const SnackBar(
+                                  content: Text('تم حذف الآية من المحفوظات')),
                             );
                           }
                         }
                       } else {
-                        await SavedVersesService.saveVerseFromModel(verse, _currentPageIndex + 1);
+                        await SavedVersesService.saveVerseFromModel(
+                            verse, _currentPageIndex + 1);
                         if (mounted) {
                           setState(() {});
                           if (mounted) {
@@ -667,12 +654,14 @@ class _QuranViewerState extends State<QuranViewer> {
                         }
                       }
                     },
-                    icon: Icon(isVerseSaved ? Icons.bookmark_remove : Icons.bookmark_add),
+                    icon: Icon(isVerseSaved
+                        ? Icons.bookmark_remove
+                        : Icons.bookmark_add),
                     label: Text(isVerseSaved ? 'إلغاء الحفظ' : 'حفظ'),
                   ),
                 ),
                 const SizedBox(width: 8),
-                
+
                 // Share button
                 Expanded(
                   child: ElevatedButton.icon(
@@ -715,11 +704,12 @@ class _QuranViewerState extends State<QuranViewer> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-              onPressed: _currentPageIndex < _pages.length - 1 ? _nextPage : null,
+              onPressed:
+                  _currentPageIndex < _pages.length - 1 ? _nextPage : null,
               icon: const Icon(Icons.chevron_left, color: Colors.white),
               iconSize: 32,
             ),
-            
+
             // Page indicator
             Expanded(
               child: GestureDetector(
@@ -739,16 +729,18 @@ class _QuranViewerState extends State<QuranViewer> {
                       ),
                       const SizedBox(height: 4),
                       LinearProgressIndicator(
-                        value: (_currentPageIndex + 1) / 602, // Fixed to 602 pages
+                        value:
+                            (_currentPageIndex + 1) / 602, // Fixed to 602 pages
                         backgroundColor: Colors.white.withValues(alpha: 0.3),
-                        valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+                        valueColor:
+                            const AlwaysStoppedAnimation<Color>(Colors.white),
                       ),
                     ],
                   ),
                 ),
               ),
             ),
-            
+
             // Previous page button (right arrow for Arabic reading direction)
             IconButton(
               onPressed: _currentPageIndex > 0 ? _previousPage : null,
@@ -785,8 +777,8 @@ class _QuranViewerState extends State<QuranViewer> {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: index == _currentPageIndex 
-                      ? AppColors.kPrimaryColor 
+                  color: index == _currentPageIndex
+                      ? AppColors.kPrimaryColor
                       : Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -794,8 +786,8 @@ class _QuranViewerState extends State<QuranViewer> {
                   child: Text(
                     '${index + 1}',
                     style: TextStyle(
-                      color: index == _currentPageIndex 
-                          ? Colors.white 
+                      color: index == _currentPageIndex
+                          ? Colors.white
                           : Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
@@ -814,8 +806,6 @@ class _QuranViewerState extends State<QuranViewer> {
       ),
     );
   }
-
-
 
   @override
   void dispose() {

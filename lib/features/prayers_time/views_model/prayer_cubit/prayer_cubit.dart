@@ -1,4 +1,5 @@
 import 'package:adhan/adhan.dart';
+import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/core/services/location_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,7 +47,8 @@ class PrayerCubit extends Cubit<PrayerState> {
   }
 
   String formatTime(DateTime dateTime) {
-    int hour = dateTime.hour + 1;
+    int summerTime = HiveHelper.isSummerTime ? 1 : 0;
+    int hour = dateTime.hour + summerTime;
     int minute = dateTime.minute;
 
     String period = hour >= 12 ? 'م' : 'ص';

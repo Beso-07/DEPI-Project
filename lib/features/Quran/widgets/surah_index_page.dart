@@ -1,3 +1,4 @@
+import 'package:depiproject/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/surah_index_service.dart';
@@ -8,7 +9,7 @@ class SurahIndexPage extends StatefulWidget {
   final Function(int pageNumber) onSurahSelected;
   final double? availableHeight;
   final double? availableWidth;
-  
+
   const SurahIndexPage({
     super.key,
     required this.onSurahSelected,
@@ -48,8 +49,8 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
       } else {
         _filteredSurahs = _surahsInfo.where((surahInfo) {
           return surahInfo.surah.name.contains(query) ||
-                 surahInfo.surah.transliteration.toLowerCase().contains(query) ||
-                 surahInfo.surah.id.toString().contains(query);
+              surahInfo.surah.transliteration.toLowerCase().contains(query) ||
+              surahInfo.surah.id.toString().contains(query);
         }).toList();
       }
     });
@@ -62,7 +63,7 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
         availableHeight: widget.availableHeight,
         availableWidth: widget.availableWidth,
       );
-      
+
       setState(() {
         _surahsInfo = surahsInfo;
         _filteredSurahs = surahsInfo; // Initialize filtered list
@@ -149,7 +150,7 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide(
-                  color: const Color(0xFF8B4513).withValues(alpha: 0.3),
+                  color: const Color(0xff136600).withValues(alpha: 0.3),
                 ),
               ),
               enabledBorder: OutlineInputBorder(
@@ -172,7 +173,7 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
             ),
           ),
         ),
-        
+
         // Grid of surahs
         Expanded(
           child: Padding(
@@ -180,7 +181,8 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 0.9, // Changed to make cards taller for better visibility
+                childAspectRatio:
+                    0.9, // Changed to make cards taller for better visibility
                 crossAxisSpacing: 8,
                 mainAxisSpacing: 8,
               ),
@@ -198,8 +200,9 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
 
   Widget _buildSurahCard(SurahPageInfo surahInfo) {
     final surah = surahInfo.surah;
-    final pageNumber = surahInfo.startPage + 1; // Convert to 1-based for display
-    
+    final pageNumber =
+        surahInfo.startPage + 1; // Convert to 1-based for display
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -210,17 +213,18 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
         borderRadius: BorderRadius.circular(16),
         child: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.white,
-                const Color(0xFF8B4513).withValues(alpha: 0.08),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
+            // gradient: LinearGradient(
+            //   colors: [
+            //     Colors.white,
+            //     const Color(0xFFE3EDE1),
+            //   ],
+            //   begin: Alignment.topCenter,
+            //   end: Alignment.bottomCenter,
+            // ),
+            color: Colors.white,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-              color: const Color(0xFF8B4513).withValues(alpha: 0.3),
+              color: const Color(0xff136600).withValues(alpha: 0.3),
               width: 1.5,
             ),
             boxShadow: [
@@ -234,7 +238,7 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 // Surah number circle
                 Container(
@@ -242,14 +246,12 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
                   height: 50,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    gradient: LinearGradient(
-                      colors: [
-                        const Color(0xFF2F4F4F),
-                        const Color(0xFF8B4513),
-                      ],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
+                    // gradient: const LinearGradient(
+                    //   colors: [Colors.green, Colors.blue],
+                    //   begin: Alignment.topLeft,
+                    //   end: Alignment.bottomRight,
+                    // ),
+                    color: AppColors.kPrimaryColor2,
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withValues(alpha: 0.25),
@@ -269,31 +271,44 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
                     ),
                   ),
                 ),
-                
+
                 const SizedBox(height: 12),
-                
+
                 // Surah name
-                Text(
-                  surah.name,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: const Color(0xFF2F4F4F),
-                    fontFamily: GoogleFonts.amiri().fontFamily,
-                    height: 1.3,
-                  ),
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      surah.name,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: const Color(0xFF2F4F4F),
+                        fontFamily: GoogleFonts.amiri().fontFamily,
+                        height: 1.3,
+                      ),
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      " - ${surah.type}",
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
                 ),
-                
+
                 const SizedBox(height: 8),
-                
                 // Page number badge
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF8B4513).withValues(alpha: 0.15),
+                    color: AppColors.kPrimaryColor2,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
                       color: const Color(0xFF8B4513).withValues(alpha: 0.3),
@@ -301,51 +316,51 @@ class _SurahIndexPageState extends State<SurahIndexPage> {
                     ),
                   ),
                   child: Text(
-                    'صفحة $pageNumber',
+                    '$pageNumber صفحة',
                     style: const TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: Color(0xFF8B4513),
+                      color: Colors.white,
                     ),
                   ),
                 ),
-                
-                const SizedBox(height: 6),
-                
+
+                // const SizedBox(height: 8),
                 // Verses count and type
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                      decoration: BoxDecoration(
-                        color: surah.isMeccan 
-                            ? const Color(0xFF8B4513).withValues(alpha: 0.15)
-                            : const Color(0xFF2F4F4F).withValues(alpha: 0.15),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        surah.type,
-                        style: TextStyle(
-                          fontSize: 11,
-                          color: surah.isMeccan 
-                              ? const Color(0xFF8B4513)
-                              : const Color(0xFF2F4F4F),
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      '${surah.totalVerses} آية',
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Color(0xFF666666),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     Container(
+                //       padding: const EdgeInsets.symmetric(
+                //           horizontal: 8, vertical: 2),
+                //       decoration: BoxDecoration(
+                //         color: surah.isMeccan
+                //             ? const Color(0xFF8B4513).withValues(alpha: 0.15)
+                //             : const Color(0xFF2F4F4F).withValues(alpha: 0.15),
+                //         borderRadius: BorderRadius.circular(8),
+                //       ),
+                //       child: Text(
+                //         surah.type,
+                //         style: TextStyle(
+                //           fontSize: 11,
+                //           color: surah.isMeccan
+                //               ? const Color(0xFF8B4513)
+                //               : const Color(0xFF2F4F4F),
+                //           fontWeight: FontWeight.w600,
+                //         ),
+                //       ),
+                //     ),
+                //     const SizedBox(width: 8),
+                //     Text(
+                //       '${surah.totalVerses} آية',
+                //       style: const TextStyle(
+                //         fontSize: 12,
+                //         color: Color(0xFF666666),
+                //         fontWeight: FontWeight.w500,
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ],
             ),
           ),

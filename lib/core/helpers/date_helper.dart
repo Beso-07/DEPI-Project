@@ -40,7 +40,7 @@ class DateHelper {
 
   static String getNextPrayer(PrayerTimeModel model) {
     final now = DateTime.now().add(
-      Duration(hours: HiveHelper.isSummerTime ? 0 : 1),
+      Duration(hours: HiveHelper.isSummerTime ? 1 : 0),
     );
 
     DateTime parseTime(String time) {

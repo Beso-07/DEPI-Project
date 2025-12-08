@@ -22,7 +22,8 @@ class _DoaaPageState extends State<DoaaPage> {
   }
 
   Future<void> loadDoaa() async {
-    final String response = await rootBundle.loadString('assets/doaa.json');
+    final String response =
+        await rootBundle.loadString('assets/json/doaa.json');
     final data = await json.decode(response);
     setState(() {
       _doaaList = data;
