@@ -70,7 +70,7 @@ class AzkarDetailsScreen extends StatelessWidget {
                                     IconButton(
                                       onPressed: () async {
                                         await Share.share(zekr.zekr,
-                                            subject: 'ذكر من التطبيق 📿');
+                                            subject: 'ذكر من التطبيق تقوي📿');
                                       },
                                       icon: const Icon(Icons.share,
                                           color: Colors.blueGrey),
