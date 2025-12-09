@@ -6,10 +6,12 @@ import 'package:depiproject/features/calender/views/calender_view.dart';
 import 'package:depiproject/features/home/views/widgets/category_item.dart';
 import 'package:depiproject/features/prayers_time/views/prayer_view.dart';
 import 'package:depiproject/features/doaa/views/adyaaa.dart';
-import 'package:depiproject/features/prophets/views/prophets_view.dart';
+import 'package:depiproject/features/prophets/views/prophets_screen.dart';
+import 'package:depiproject/features/prophets/views_model/prophets_cubit/prophets_cubit.dart';
 import 'package:depiproject/features/tasbeh/view/tasbeh_view.dart';
 import 'package:depiproject/features/Quran/widgets/quran_viewer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoryVector extends StatelessWidget {
   const CategoryVector({
@@ -126,13 +128,16 @@ class CategoryVector extends StatelessWidget {
                       }),
                   const VerticalDivider(color: Colors.grey),
                   CategoryItem(
-                      text: 'الأنبياء',
+                      text: 'قصص الأنبياء',
                       img: Imagespath.prophet,
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ProphetsView()),
+                              builder: (context) => BlocProvider(
+                                    create: (context) => ProphetsCubit(),
+                                    child: const ProphetsScreen(),
+                                  )),
                         );
                       }),
                   const VerticalDivider(color: Colors.grey),

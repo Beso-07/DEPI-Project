@@ -45,7 +45,7 @@ class IslamicApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          home: const SplashView(),
+          home: const SplashView()
         );
       },
     );
