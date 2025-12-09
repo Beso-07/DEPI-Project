@@ -175,7 +175,7 @@ class _SavedVersesPageState extends State<SavedVersesPage> {
                               textDirection: TextDirection.rtl,
                             ),
                             const SizedBox(height: 12),
-                            
+
                             // Surah info
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -198,7 +198,7 @@ class _SavedVersesPageState extends State<SavedVersesPage> {
                               ],
                             ),
                             const SizedBox(height: 8),
-                            
+
                             // Save date
                             Text(
                               'تم الحفظ: ${_formatDate(verse.savedAt)}',
@@ -209,15 +209,19 @@ class _SavedVersesPageState extends State<SavedVersesPage> {
                               textAlign: TextAlign.left,
                             ),
                             const SizedBox(height: 12),
-                            
+
                             // Action buttons
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 TextButton.icon(
-                                  onPressed: () => _navigateToPage(verse.pageNumber),
-                                  icon: const Icon(Icons.book, size: 18),
-                                  label: const Text('انتقال للصفحة'),
+                                  onPressed: () =>
+                                      _navigateToPage(verse.pageNumber),
+                                  icon: const Icon(Icons.book, size: 12),
+                                  label: const Text(
+                                    'انتقال للصفحة',
+                                    style: TextStyle(fontSize: 12),
+                                  ),
                                 ),
                                 TextButton.icon(
                                   onPressed: () => _shareVerse(verse),

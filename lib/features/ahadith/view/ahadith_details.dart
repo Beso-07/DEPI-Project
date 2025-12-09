@@ -11,11 +11,13 @@ import 'package:share_plus/share_plus.dart';
 class RawiAhadithView extends StatelessWidget {
   final String? title;
   final List<Hadith>? list;
+  final List<HadithModel>? hadiths;
 
   const RawiAhadithView({
     super.key,
     this.title,
     this.list,
+    this.hadiths,
   });
 
   @override
@@ -28,16 +30,16 @@ class RawiAhadithView extends StatelessWidget {
         body: Column(
           children: [
             const MainAppBar(title: 'أحاديث'),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "رواه $title",
-                  style: const TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w900),
-                ),
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     Text(
+            //       "رواه $title",
+            //       style: const TextStyle(
+            //           color: Colors.black, fontWeight: FontWeight.w900),
+            //     ),
+            //   ],
+            // ),
             SizedBox(
               height: height * 0.02,
             ),

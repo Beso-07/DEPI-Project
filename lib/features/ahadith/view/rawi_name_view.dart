@@ -14,7 +14,6 @@ class RawiNameView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
 
     return Directionality(
       textDirection: TextDirection.rtl,

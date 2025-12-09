@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:depiproject/core/constants/colors.dart';
 import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/core/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -70,58 +71,71 @@ class _DoaaPageState extends State<DoaaPage> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
+                        color: AppColors.kPrimaryColor2.withOpacity(.6),
                         margin: const EdgeInsets.symmetric(vertical: 6),
-                        child: ExpansionTile(
-                          leading:
-                              const Icon(Icons.menu_book, color: Colors.green),
-                          title: Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  item['category'],
-                                  textDirection: TextDirection.rtl,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                        child: Theme(
+                          data: Theme.of(context).copyWith(
+                            dividerColor: Colors.transparent,
+                          ),
+                          child: ExpansionTile(
+                            leading: const Icon(Icons.menu_book,
+                                color: Colors.white),
+                            title: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    item['category'],
+                                    textDirection: TextDirection.rtl,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              IconButton(
-                                icon: Icon(
-                                  isSaved(item)
-                                      ? Icons.bookmark
-                                      : Icons.bookmark_border,
-                                  color: isSaved(item)
-                                      ? Colors.green
-                                      : Colors.grey,
-                                ),
-                                onPressed: () async {
-                                  await _toggleSave(item);
-                                },
-                              ),
-                            ],
-                          ),
-                          children: [
-                            ...item['array'].map<Widget>((dua) {
-                              return ListTile(
-                                title: Text(
-                                  dua['text'],
-                                  textDirection: TextDirection.rtl,
-                                  style: const TextStyle(fontSize: 15),
-                                ),
-                                trailing: IconButton(
-                                  icon: const Icon(Icons.share,
-                                      color: Colors.blueGrey),
+                                IconButton(
+                                  icon: Icon(
+                                    isSaved(item)
+                                        ? Icons.bookmark
+                                        : Icons.bookmark_border,
+                                    color: isSaved(item)
+                                        ? Colors.green
+                                        : Colors.grey,
+                                  ),
                                   onPressed: () async {
-                                    await Share.share(
-                                      dua['text'],
-                                      subject: 'دعاء من تطبيق تقوي 📿',
-                                    );
+                                    await _toggleSave(item);
                                   },
                                 ),
-                              );
-                            }).toList(),
-                          ],
+                              ],
+                            ),
+                            iconColor: Colors.black,
+                            collapsedIconColor: Colors.white,
+                            children: [
+                              ...item['array'].map<Widget>((dua) {
+                                return ListTile(
+                                  title: Text(
+                                    dua['text'],
+                                    textDirection: TextDirection.rtl,
+                                    style: const TextStyle(
+                                        fontSize: 15, color: Colors.white),
+                                  ),
+                                  trailing: IconButton(
+                                    icon: const Icon(
+                                      Icons.share,
+                                      color: Colors.white,
+                                      size: 18,
+                                    ),
+                                    onPressed: () async {
+                                      await Share.share(
+                                        dua['text'],
+                                        subject: 'دعاء من تطبيق تقوي 📿',
+                                      );
+                                    },
+                                  ),
+                                );
+                              }).toList(),
+                            ],
+                          ),
                         ),
                       );
                     },

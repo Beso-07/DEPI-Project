@@ -1,7 +1,5 @@
 import 'package:depiproject/core/constants/app_string.dart';
 import 'package:depiproject/core/constants/assets.dart';
-import 'package:depiproject/core/helpers/hive_helper.dart';
-import 'package:depiproject/features/home/views/home_view.dart';
 import 'package:depiproject/features/onboarding/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 
@@ -20,9 +18,10 @@ class _SplashViewState extends State<SplashView> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-            builder: (context) => HiveHelper.isOnboardingSeen
-                ? const HomeView()
-                : const OnBoardingScreen()),
+            builder: (context) => 
+            // HiveHelper.isOnboardingSeen
+            //     ? const HomeView()
+                const OnBoardingScreen()),
       );
     });
   }

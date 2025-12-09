@@ -1,6 +1,4 @@
 import 'package:depiproject/core/helpers/hive_helper.dart';
-import 'package:depiproject/core/widgets/logout_dialog.dart';
-import 'package:depiproject/features/qiblah/views/qiblah_view.dart';
 import 'package:depiproject/features/radio/radioView.dart';
 import 'package:depiproject/features/settings/model_view/cubit/theme_cubit.dart';
 import 'package:depiproject/features/Archives/View/archive_view.dart';

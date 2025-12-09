@@ -1,5 +1,5 @@
 import 'package:depiproject/core/constants/assets.dart';
-import 'package:depiproject/features/AsmaulHusna/view/asmaulhusna_screen.dart';
+import 'package:depiproject/features/AsmaulHusna/asmaa.dart';
 import 'package:depiproject/features/Azkar/views/azkar_view.dart';
 import 'package:depiproject/features/ahadith/view/rawi_name_view.dart';
 import 'package:depiproject/features/calender/views/calender_view.dart';
@@ -106,7 +106,7 @@ class CategoryVector extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const AsmaulHusnaScreen()),
+                              builder: (context) => const Asmaa()),
                         );
                       }),
                 ],
