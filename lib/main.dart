@@ -1,7 +1,9 @@
 import 'package:depiproject/core/helpers/hive_helper.dart';
 import 'package:depiproject/core/services/location_service.dart';
+import 'package:depiproject/features/onboarding/views/onboarding_view.dart';
 import 'package:depiproject/features/settings/model_view/cubit/theme_cubit.dart';
 import 'package:depiproject/features/home/views/home_view.dart';
+import 'package:depiproject/features/splash/views/splash_view.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +25,7 @@ void main() async {
     BlocProvider(
       create: (_) => ThemeCubit(),
       child: DevicePreview(
-        builder: (context) => const IslamicApp(),
+        builder: (context) => const OnBoardingScreen(),
       ),
     ),
   );
