@@ -1,5 +1,6 @@
 import 'package:depiproject/core/constants/colors.dart';
 import 'package:depiproject/core/widgets/main_app_bar.dart';
+import 'package:depiproject/features/prophets/views/widgets/play_youtube_video.dart';
 import 'package:flutter/material.dart';
 import 'package:depiproject/features/prophets/models/prophets_model.dart';
 
@@ -14,7 +15,7 @@ class ProphetDetailsScreen extends StatelessWidget {
       body: Column(
         children: [
           MainAppBar(title: prophet.name),
-          const SizedBox(height: 16),
+          const SizedBox(height: 24),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
@@ -24,7 +25,7 @@ class ProphetDetailsScreen extends StatelessWidget {
                     Text(
                       prophet.meaning,
                       style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                          fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -42,8 +43,15 @@ class ProphetDetailsScreen extends StatelessWidget {
                         horizontal: 32, vertical: 12),
                   ),
                   onPressed: () {
-                    print('===========================');
-                    print(prophet.url);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PlayYoutubeScreen(
+                          url: prophet.url,
+                          
+                        ),
+                      ),
+                    );
                   },
                   child: const Text(
                     "مشاهدة القصة",
@@ -61,7 +69,13 @@ class ProphetDetailsScreen extends StatelessWidget {
 
 // Future<void> _launchUrl(String url) async {
 //   final Uri uri = Uri.parse(url);
-//   if (await canLaunchUrl(uri)) {
-//     await launchUrl(uri, mode: LaunchMode.externalApplication);
+
+//   try {
+//     await launchUrl(
+//       uri,
+//       mode: LaunchMode.externalApplication,
+//     );
+//   } catch (e) {
+//     print("ERROR LAUNCHING URL: $e");
 //   }
 // }

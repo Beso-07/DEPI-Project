@@ -4,7 +4,6 @@ import 'package:depiproject/features/prophets/views/widgets/prophets_card.dart';
 import 'package:depiproject/features/prophets/views_model/prophets_cubit/prophets_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:depiproject/features/prophets/models/prophets_model.dart';
 
 class ProphetsScreen extends StatefulWidget {
   const ProphetsScreen({super.key});
